@@ -5,7 +5,7 @@ import ClientLayout from "./client-layout";
 
 export const metadata: Metadata = {
   title: {
-    default: "Your Site Name",
+    default: "OCC Catering & Events",
     template: "%s | Your Site Name",
   },
   description: "A modern, SEO-ready Next.js template with theme support.",
