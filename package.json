@@ -1,8 +1,8 @@
 {
-  "name": "makeitlook",
+  "name": "occ-events-catering",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://makeitlook.github.io/makeitlook",
+  "homepage": "https://occevents.co.uk",
   "scripts": {
     "dev": "next dev",
     "predeploy": "npm run build",

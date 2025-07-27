@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: "https://yourdomain.com", // 🔁 Replace with your actual domain (no trailing slash)
+  siteUrl: "https://occevents.co.uk", // OCC Events & Catering domain
   generateRobotsTxt: true, // ✅ Generate robots.txt file
   changefreq: "weekly", // Optional: change frequency for crawlers
   priority: 0.7, // Optional: priority for pages
@@ -19,8 +19,8 @@ module.exports = {
       },
     ],
     additionalSitemaps: [
-      "https://yourdomain.com/sitemap-0.xml",
-      // "https://yourdomain.com/extra-sitemap.xml", // Add any custom ones here
+      "https://occevents.co.uk/sitemap-0.xml",
+      // "https://occevents.co.uk/extra-sitemap.xml", // Add any custom ones here
     ],
   },
 };

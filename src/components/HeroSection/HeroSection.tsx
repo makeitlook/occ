@@ -38,8 +38,8 @@ const Banner: React.FC = () => {
           }}
           className="text-balance text-center text-5xl font-semibold tracking-tight text-primary sm:text-7xl leading-relaxed lg:leading-snug"
         >
-          Design That Speaks{" "}
-          <Highlight className="text-text-primary">Your Vision</Highlight>
+          Memorable Events Crafted by
+          <Highlight className="text-text-primary">OCC Events</Highlight>
         </motion.h1>
         <motion.p
           variants={textVariant}
@@ -48,10 +48,9 @@ const Banner: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.6 }}
           className="mt-8 text-pretty text-lg text-secondary sm:text-xl leading-8 text-center"
         >
-          At Make It Look, your ideas are turned into sophisticated, polished
-          designs. Whether it&#39;s branding, presentations, or digital content,
-          every element is fine-tuned until your vision truly stands out.
-          Let&#39;s bring your vision to life.
+          At OCC Events & Catering, we specialise in bespoke Indian and Afghan
+          menus that make every occasion unforgettable. Let&#39;s bring your
+          celebration to life.
         </motion.p>
         <motion.p
           variants={textVariant}

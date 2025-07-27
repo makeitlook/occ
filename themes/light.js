@@ -7,16 +7,18 @@ const instance = getInstance();
 
 // Custom color palette based on provided colors
 const customColors = {
-  black: "#000000",
-  oxfordBlue: "#14213d",
-  orange: "#fca311",
-  whiteSmoke: "#f2f2f2",
+  richGold: "#b5852a",
+  warmWhite: "#f9f7f4",
+  charcoalBlack: "#2e2e2e",
+  softDoveGrey: "#dcd8d4",
+  dustyTaupe: "#a68a64",
   white: "#ffffff",
 };
 
 // Map custom colors to theme
-const primary = "orange"; // Using standard tailwind orange as closest match
-const secondary = "slate"; // Using slate instead of gray for better compatibility with oxford blue
+// Use built-in palettes closest to the custom colours for extended shades
+const primary = "amber";
+const secondary = "stone";
 const success = "emerald";
 const error = "red";
 const info = "blue";
@@ -32,43 +34,43 @@ const light = {
   selectors: [":root", ".light"],
   theme: {
     colors: {
-      // Primary and Secondary colours - using custom orange
-      "elements-primary-dimmed": customColors.orange,
-      "elements-primary-main": tinycolor(customColors.orange)
+      // Primary colour - rich gold
+      "elements-primary-dimmed": customColors.richGold,
+      "elements-primary-main": tinycolor(customColors.richGold)
         .darken(0)
         .toString(),
-      "elements-primary-shadow": tinycolor(customColors.orange)
+      "elements-primary-shadow": tinycolor(customColors.richGold)
         .darken(5)
         .toString(),
-      "elements-primary-shadow-heavy": tinycolor(customColors.orange)
+      "elements-primary-shadow-heavy": tinycolor(customColors.richGold)
         .darken(10)
         .toString(),
-      "elements-primary-highlight": tinycolor(customColors.orange)
+      "elements-primary-highlight": tinycolor(customColors.richGold)
         .lighten(5)
         .toString(),
-      "elements-primary-light": tinycolor(customColors.orange)
+      "elements-primary-light": tinycolor(customColors.richGold)
         .lighten(10)
         .toString(),
       "elements-primary-contrastText": customColors.white,
-      "elements-primary-bg": tinycolor(customColors.orange)
+      "elements-primary-bg": tinycolor(customColors.richGold)
         .lighten(30)
         .toString(),
 
-      // Secondary colors - using oxford blue
-      "elements-secondary-dimmed": tinycolor(customColors.oxfordBlue)
+      // Secondary colour - dusty taupe
+      "elements-secondary-dimmed": tinycolor(customColors.dustyTaupe)
         .lighten(15)
         .toString(),
-      "elements-secondary-main": customColors.oxfordBlue,
-      "elements-secondary-shadow": tinycolor(customColors.oxfordBlue)
+      "elements-secondary-main": customColors.dustyTaupe,
+      "elements-secondary-shadow": tinycolor(customColors.dustyTaupe)
         .darken(5)
         .toString(),
-      "elements-secondary-shadow-heavy": tinycolor(customColors.oxfordBlue)
+      "elements-secondary-shadow-heavy": tinycolor(customColors.dustyTaupe)
         .darken(10)
         .toString(),
-      "elements-secondary-highlight": tinycolor(customColors.oxfordBlue)
+      "elements-secondary-highlight": tinycolor(customColors.dustyTaupe)
         .lighten(30)
         .toString(),
-      "elements-secondary-contrastText": customColors.oxfordBlue,
+      "elements-secondary-contrastText": customColors.dustyTaupe,
       ...getFullPalette("elements-secondary", secondary),
 
       // Alert
@@ -82,19 +84,19 @@ const light = {
       "helpers-warning-button": colors[warning]["600"],
       "helpers-warning-button-hover": colors[warning]["700"],
 
-      "helpers-remove-button": tinycolor(customColors.oxfordBlue)
+      "helpers-remove-button": tinycolor(customColors.charcoalBlack)
         .lighten(15)
         .toString(),
-      "helpers-remove-button-hover": customColors.oxfordBlue,
+      "helpers-remove-button-hover": customColors.charcoalBlack,
 
       "helpers-success-dimmed": colors[success]["50"],
       "helpers-success-main": colors[success]["500"],
       "helpers-success-button":
-        instance === "default" ? colors[success]["600"] : customColors.orange,
+        instance === "default" ? colors[success]["600"] : customColors.richGold,
       "helpers-success-button-hover":
         instance === "default"
           ? colors[success]["700"]
-          : tinycolor(customColors.orange).darken(10).toString(),
+          : tinycolor(customColors.richGold).darken(10).toString(),
 
       "helpers-info-dimmed": colors[info]["50"],
       "helpers-info-main": colors[info]["500"],
@@ -105,16 +107,16 @@ const light = {
       "helpers-progress-main": colors[progress]["500"],
 
       // Invalid
-      "helpers-invalid-dimmed": tinycolor(customColors.oxfordBlue)
+      "helpers-invalid-dimmed": tinycolor(customColors.charcoalBlack)
         .lighten(50)
         .toString(),
-      "helpers-invalid-main": tinycolor(customColors.oxfordBlue)
+      "helpers-invalid-main": tinycolor(customColors.charcoalBlack)
         .lighten(20)
         .toString(),
-      "helpers-invalid-button": tinycolor(customColors.oxfordBlue)
+      "helpers-invalid-button": tinycolor(customColors.charcoalBlack)
         .lighten(10)
         .toString(),
-      "helpers-invalid-button-hover": customColors.oxfordBlue,
+      "helpers-invalid-button-hover": customColors.charcoalBlack,
 
       // Text
       "text-primary": colors[neutral]["900"],
@@ -127,42 +129,42 @@ const light = {
       "text-signout": colors[error]["500"],
 
       // Dividers
-      "divider-shadow-heavy": tinycolor(customColors.oxfordBlue)
+      "divider-shadow-heavy": tinycolor(customColors.softDoveGrey)
         .lighten(60)
         .toString(),
-      "divider-shadow": tinycolor(customColors.oxfordBlue)
+      "divider-shadow": tinycolor(customColors.softDoveGrey)
         .lighten(65)
         .toString(),
-      "divider-main": tinycolor(customColors.oxfordBlue).lighten(70).toString(),
-      "divider-dimmed": tinycolor(customColors.oxfordBlue)
+      "divider-main": tinycolor(customColors.softDoveGrey).lighten(70).toString(),
+      "divider-dimmed": tinycolor(customColors.softDoveGrey)
         .lighten(75)
         .toString(),
 
       // Borders
-      "border-shadow": tinycolor(customColors.oxfordBlue)
+      "border-shadow": tinycolor(customColors.softDoveGrey)
         .lighten(65)
         .toString(),
-      "border-main": tinycolor(customColors.oxfordBlue).lighten(70).toString(),
-      "border-dimmed": tinycolor(customColors.oxfordBlue)
+      "border-main": tinycolor(customColors.softDoveGrey).lighten(70).toString(),
+      "border-dimmed": tinycolor(customColors.softDoveGrey)
         .lighten(75)
         .toString(),
       "border-white": customColors.white,
-      "button-hover": tinycolor(customColors.whiteSmoke).darken(5).toString(),
+      "button-hover": tinycolor(customColors.warmWhite).darken(5).toString(),
 
       // Backgrounds
-      "main-background": customColors.whiteSmoke,
+      "main-background": customColors.warmWhite,
       "card-background": customColors.white,
-      "modal-background": tinycolor(customColors.whiteSmoke)
+      "modal-background": tinycolor(customColors.warmWhite)
         .darken(5)
         .toString(),
 
       "neutral-dimmed-heavy": customColors.white,
-      "neutral-dimmed": customColors.whiteSmoke,
-      neutral: tinycolor(customColors.whiteSmoke).darken(5).toString(),
-      "neutral-shadow": tinycolor(customColors.whiteSmoke)
+      "neutral-dimmed": customColors.warmWhite,
+      neutral: tinycolor(customColors.warmWhite).darken(5).toString(),
+      "neutral-shadow": tinycolor(customColors.warmWhite)
         .darken(10)
         .toString(),
-      "neutral-shadow-heavy": tinycolor(customColors.whiteSmoke)
+      "neutral-shadow-heavy": tinycolor(customColors.warmWhite)
         .darken(15)
         .toString(),
     },
@@ -171,10 +173,10 @@ const light = {
     palette: {
       mode: "light",
       primary: {
-        main: customColors.orange,
+        main: customColors.richGold,
       },
       secondary: {
-        main: customColors.oxfordBlue,
+        main: customColors.dustyTaupe,
       },
       error: {
         main: colors[error]["500"],
