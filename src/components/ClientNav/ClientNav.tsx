@@ -39,7 +39,7 @@ export default function ClientNav() {
         showNavigation,
       }}
       navMode="multi"
-      variant="glass"
+      variant="standard"
       glassMorphism={false}
       showThemeSwitcher={true}
       logo={{

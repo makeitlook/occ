@@ -1,6 +1,6 @@
-# 🧰 makeitlook/template
+# OCC Events & Catering Website
 
-A modern, opinionated Next.js starter template featuring Tailwind CSS, TypeScript, and a suite of pre-configured components. Ideal for rapid development of marketing sites, portfolios, and small business websites.
+Website for **OCC Events & Catering**, a bespoke catering and events business known for its Indian and Afghan menus.
 
 ## ✨ Features
 
@@ -25,22 +25,13 @@ A modern, opinionated Next.js starter template featuring Tailwind CSS, TypeScrip
 ### Installation
 
 ```bash
-git clone https://github.com/makeitlook/template your-project-name
+git clone https://github.com/your-org/occ-events your-project-name
 cd your-project-name
 npm install
 npm run dev
 ```
 
 Then open [http://localhost:3000](http://localhost:3000) in your browser.
-
-### Using as a Template
-
-To create a new repository based on this template:
-
-1. Navigate to [makeitlook/template](https://github.com/makeitlook/template)
-2. Click on **Use this template**
-3. Select **Create a new repository**
-4. Clone your new repository and start developing!
 
 ## 🧱 Project Structure
 
@@ -76,23 +67,25 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "Your Site Name",
-    template: "%s | Your Site Name",
+    default: "OCC Events & Catering",
+    template: "%s | OCC Events & Catering",
   },
-  description: "A brief description of your site.",
-  keywords: ["keyword1", "keyword2", "keyword3"],
-  metadataBase: new URL("https://yourdomain.com"),
+  description:
+    "OCC Events & Catering offers bespoke catering with authentic Indian and Afghan menus.",
+  keywords: ["OCC Events", "Catering", "Indian Catering", "Afghan Catering"],
+  metadataBase: new URL("https://occevents.co.uk"),
   openGraph: {
-    title: "Your Site Name",
-    description: "A brief description of your site.",
-    url: "https://yourdomain.com",
-    siteName: "Your Site Name",
+    title: "OCC Events & Catering",
+    description:
+      "Bespoke catering for all occasions with delicious Indian and Afghan cuisine.",
+    url: "https://occevents.co.uk",
+    siteName: "OCC Events & Catering",
     images: [
       {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Your Site Name",
+        alt: "OCC Events & Catering",
       },
     ],
     locale: "en_GB",
@@ -249,7 +242,7 @@ export default function AboutPage() {
       <SEO
         title="About Us"
         description="Learn more about our mission and team."
-        url="https://yourdomain.com/about"
+        url="https://occevents.co.uk/about"
         image="/images/about-og.jpg"
         keywords={["About", "Company", "Team"]}
       />
@@ -321,6 +314,6 @@ import AnimatedDiv from "@/components/AnimatedDiv";
 
 This project is licensed under the [MIT License](LICENSE).
 
-Created by Make It Look
+Created by OCC Events & Catering
 
 ---

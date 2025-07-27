@@ -31,9 +31,9 @@ export default function Contact() {
                     />
                   </dt>
                   <dd>
-                    545 Mavis Island
+                    123 Event Avenue
                     <br />
-                    Chicago, IL 99191
+                    London, UK
                   </dd>
                 </div>
                 <div className="flex gap-x-4">
@@ -46,10 +46,10 @@ export default function Contact() {
                   </dt>
                   <dd>
                     <a
-                      href="tel:+1 (555) 234-5678"
+                      href="tel:+44 1234 567890"
                       className="hover:text-gray-900"
                     >
-                      +1 (555) 234-5678
+                      +44 1234 567890
                     </a>
                   </dd>
                 </div>
@@ -63,10 +63,10 @@ export default function Contact() {
                   </dt>
                   <dd>
                     <a
-                      href="mailto:hello@example.com"
+                      href="mailto:info@occevents.co.uk"
                       className="hover:text-gray-900"
                     >
-                      hello@example.com
+                      info@occevents.co.uk
                     </a>
                   </dd>
                 </div>

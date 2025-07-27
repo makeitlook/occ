@@ -6,8 +6,8 @@ export default function Home() {
     <PageLayout title="Home">
       <section id="home">
         <AnimatedDiv>
-          We`&apos;`d love to hear from you! Drop us a message and let`&apos;`s
-          create something beautiful together.
+          Welcome to OCC Events & Catering. We offer bespoke catering for all
+          occasions, specialising in authentic Indian and Afghan menus.
         </AnimatedDiv>
       </section>
     </PageLayout>

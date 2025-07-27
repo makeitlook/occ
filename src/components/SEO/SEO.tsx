@@ -11,11 +11,17 @@ interface SEOProps {
 }
 
 const defaultMetadata = {
-  title: "Your Website Name",
-  description: "A modern, performant website built with Next.js.",
-  url: "https://yourdomain.com",
+  title: "OCC Events & Catering",
+  description:
+    "Bespoke catering for all events with vibrant Indian and Afghan menus.",
+  url: "https://occevents.co.uk",
   image: "/images/og-default.png",
-  keywords: ["Next.js", "Web Development", "Template"],
+  keywords: [
+    "OCC Events",
+    "Catering",
+    "Indian Catering",
+    "Afghan Catering",
+  ],
 };
 
 export const SEO: React.FC<SEOProps> = ({

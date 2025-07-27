@@ -2,33 +2,31 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
-    default: "Your Site Name",
-    template: "%s | Your Site Name",
+    default: "OCC Events & Catering",
+    template: "%s | OCC Events & Catering",
   },
   description:
-    "Your company description goes here. Explain what your service/product does in one or two sentences.",
+    "OCC Events & Catering offers bespoke catering for all types of events with standout Indian and Afghan menus.",
   keywords: [
-    "Your Brand",
-    "Product Name",
-    "Web Services",
-    "Design",
-    "Consulting",
-    "Development",
-    "Business",
+    "OCC Events",
+    "Catering",
+    "Indian Catering",
+    "Afghan Catering",
+    "Bespoke Events",
   ],
-  metadataBase: new URL("https://yoursite.com"),
+  metadataBase: new URL("https://occevents.co.uk"),
   openGraph: {
-    title: "Your Site Name",
+    title: "OCC Events & Catering",
     description:
-      "A brief and compelling Open Graph description of your website or business for social sharing.",
-    url: "https://yoursite.com",
-    siteName: "Your Site Name",
+      "Bespoke event catering specialising in Indian and Afghan cuisine.",
+    url: "https://occevents.co.uk",
+    siteName: "OCC Events & Catering",
     images: [
       {
         url: "/images/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Your Site Logo or Social Image",
+        alt: "OCC Events & Catering",
       },
     ],
     locale: "en_GB",
