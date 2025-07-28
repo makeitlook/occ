@@ -5,12 +5,12 @@ import IconWrapper from "@/components/IconWrapper/IconWrapper";
 
 const navigation = {
   main: [
-    { name: "About", href: "#" },
-    { name: "Services", href: "#" },
-    { name: "Portfolio", href: "#" },
-    { name: "Contact", href: "#" },
-    { name: "Privacy", href: "#" },
-    { name: "Terms", href: "#" },
+    { name: "About", href: "/about" },
+    { name: "Services", href: "/services" },
+    { name: "Gallery", href: "/gallery" },
+    { name: "Contact", href: "/contact" },
+    { name: "Privacy", href: "/privacy-policy" },
+    { name: "Terms", href: "/terms" },
   ],
   social: [
     {
