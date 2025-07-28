@@ -41,7 +41,7 @@ export default function ClientNav() {
       navMode="multi"
       variant="standard"
       glassMorphism={false}
-      showThemeSwitcher={true}
+      showThemeSwitcher={false}
       logo={{
         light: "/images/logo-light.svg",
         dark: "/images/logo-dark.svg",
