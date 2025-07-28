@@ -4,6 +4,7 @@ import GalleryPreview from "@/components/GalleryPreview/GalleryPreview";
 import HeroCarousel from "@/components/HeroSection/HeroSection";
 import PageLayout from "@/components/Layouts/PageLayout";
 import ServicesOverview from "@/components/ServicesOverview/ServicesOverview";
+import TestimonialsSection from "@/components/TestimonialsSection/TestimonialsSection";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
       <AboutPreview />
       <ServicesOverview />
       <GalleryPreview />
+      <TestimonialsSection />
     </div>
   );
 }

@@ -95,7 +95,7 @@ const GalleryPreview: React.FC = () => {
   };
 
   return (
-    <section className="relative py-24 lg:py-32 bg-gradient-to-b from-card-background via-neutral/10 to-card-background overflow-hidden">
+    <section className="relative py-24 lg:py-32 bg-gradient-to-b from-elements-secondary-dimmed/10 via-neutral/10 to-elements-secondary-dimmed/10 overflow-hidden">
       {/* Subtle background texture */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-elements-primary-main/3 to-transparent rounded-full blur-3xl" />
@@ -142,7 +142,7 @@ const GalleryPreview: React.FC = () => {
                   />
 
                   {/* Soft overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-helpers-remove-button-hover/40 via-transparent to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
 
                   {/* Caption overlay */}
                   <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-10">
@@ -175,7 +175,7 @@ const GalleryPreview: React.FC = () => {
                         sizes="(max-width: 1024px) 100vw, 33vw"
                       />
 
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-helpers-remove-button-hover/40 via-transparent to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
 
                       <div className="absolute bottom-0 left-0 right-0 p-6">
                         <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
@@ -210,7 +210,7 @@ const GalleryPreview: React.FC = () => {
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
 
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-helpers-remove-button-hover/40 via-transparent to-transparent opacity-70 group-hover:opacity-90 transition-opacity duration-500" />
 
                     <div className="absolute bottom-0 left-0 right-0 p-6">
                       <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
