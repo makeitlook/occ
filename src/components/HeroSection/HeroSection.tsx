@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, Variant, Variants } from "framer-motion";
 import Link from "next/link";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import Button from "@/components/Button/Button"; // Add Button import
 
 // Define proper types for the animation variants
 interface TextVariants extends Variants {
