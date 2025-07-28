@@ -13,7 +13,7 @@ const ClientNav = dynamic(() => import("@/components/ClientNav/ClientNav"), {
 // 🌐 Dynamically import footer
 const Footer = dynamic(() => import("@/components/Footer"), {
   ssr: false,
-  loading: () => <div className="h-40 bg-neutral" />,
+  loading: () => <div className="bg-neutral-dimmed w-full" />,
 });
 
 // 🎨 Theme provider for light/dark mode support

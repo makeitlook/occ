@@ -29,8 +29,16 @@ const navigation = {
 function AppFooter() {
   return (
     <footer className="bg-neutral-dimmed relative overflow-hidden">
+      {/* Background image layer */}
+      <div
+        className="absolute inset-0 bg-cover bg-center opacity-20 -z-20"
+        style={{
+          backgroundImage: "url('/images/pattern-bg.png')",
+        }}
+      />
+
       {/* Subtle gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-neutral-shadow/20 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-neutral-shadow/20 to-transparent pointer-events-none -z-10" />
 
       <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8 relative">
         {/* Main Navigation */}
@@ -76,7 +84,6 @@ function AppFooter() {
                   icon={item.icon}
                   className="h-6 w-6 transition-transform duration-300 group-hover:rotate-12"
                 />
-                {/* Glow effect */}
                 <div className="absolute inset-0 rounded-full bg-elements-primary-main/20 scale-0 group-hover:scale-150 transition-transform duration-300 -z-10" />
               </div>
             </a>
@@ -138,7 +145,6 @@ function AppFooter() {
           }
         }
 
-        /* Hover animations for better performance */
         .group:hover .animate-pulse {
           animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }

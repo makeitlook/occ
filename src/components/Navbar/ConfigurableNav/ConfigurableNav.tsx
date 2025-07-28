@@ -161,11 +161,11 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
       wrapper: "",
       header: "",
       navItem: {
-        base: "relative inline-flex items-center px-4 py-2 text-sm font-medium transition-all duration-300 ease-out",
+        base: "relative inline-flex items-center px-4 py-2 text-sm font-normal transition-all duration-300 ease-out",
         active: "",
         inactive: "",
         disabled: "opacity-40 cursor-not-allowed",
-        hover: "hover:scale-[1.02] hover:-translate-y-0.5",
+        hover: "", // Removed the transform hover effects
       },
       dropdown: {
         container:
@@ -302,16 +302,22 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
           <button
             className={classNames(
               styles.navItem.base,
-              styles.navItem.hover,
               item.current || isActive
-                ? styles.navItem.active
-                : styles.navItem.inactive
+                ? "text-elements-primary-main"
+                : "group text-text-secondary hover:text-elements-primary-main transition-all duration-300"
             )}
             onClick={() =>
               setDropdownOpen(dropdownOpen === item.name ? null : item.name)
             }
           >
-            {item.name}
+            <span className="relative">
+              {item.name}
+              {isActive ? (
+                <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-gradient-to-r from-elements-primary-main to-elements-secondary-main rounded-full" />
+              ) : (
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-elements-primary-main to-elements-secondary-main rounded-full transition-all duration-300 group-hover:w-full" />
+              )}
+            </span>
             <IconWrapper
               icon={LuChevronDown}
               className={classNames(
@@ -395,12 +401,20 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
           scroll={href.startsWith("#")}
           className={classNames(
             styles.navItem.base,
-            styles.navItem.hover,
-            isActive ? styles.navItem.active : styles.navItem.inactive
+            isActive
+              ? "text-elements-primary-main"
+              : "group text-text-secondary hover:text-elements-primary-main transition-all duration-300"
           )}
           onClick={closeMenu}
         >
-          {item.name}
+          <span className="relative">
+            {item.name}
+            {isActive ? (
+              <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-8 h-0.5 bg-gradient-to-r from-elements-primary-main to-elements-secondary-main rounded-full" />
+            ) : (
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-elements-primary-main to-elements-secondary-main rounded-full transition-all duration-300 group-hover:w-full" />
+            )}
+          </span>
         </Link>
       </div>
     );
