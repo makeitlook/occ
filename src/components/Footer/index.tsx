@@ -2,6 +2,7 @@ import { FiInstagram } from "react-icons/fi";
 import { SiTiktok } from "react-icons/si";
 import { IconType } from "react-icons";
 import IconWrapper from "@/components/IconWrapper/IconWrapper";
+import patternBg from "public/images/pattern-bg.png";
 
 const navigation = {
   main: [
@@ -33,7 +34,7 @@ function AppFooter() {
       <div
         className="absolute inset-0 bg-cover bg-center opacity-20 -z-20"
         style={{
-          backgroundImage: "url('/images/pattern-bg.png')",
+          backgroundImage: `url(${patternBg.src})`,
         }}
       />
 
