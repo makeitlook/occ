@@ -1,10 +1,9 @@
 "use client";
 
-import React from "react";
-import { motion, Variant, Variants } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence, Variant, Variants } from "framer-motion";
 import Link from "next/link";
-import { HeroHighlight, Highlight } from "../HeroHighlight/HeroHighlight";
-import { AnimatedBackground } from "../AnimatedBackground/AnimatedBackground";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 
 // Define proper types for the animation variants
 interface TextVariants extends Variants {
@@ -12,58 +11,302 @@ interface TextVariants extends Variants {
   visible: Variant;
 }
 
-// Animation variant for text with proper typing
+// Animation variants
 const textVariant: TextVariants = {
-  hidden: { opacity: 0, y: 20 },
+  hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0 },
 };
 
-const Banner: React.FC = () => {
+const slideVariants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? 1000 : -1000,
+    opacity: 0,
+  }),
+  center: {
+    zIndex: 1,
+    x: 0,
+    opacity: 1,
+  },
+  exit: (direction: number) => ({
+    zIndex: 0,
+    x: direction < 0 ? 1000 : -1000,
+    opacity: 0,
+  }),
+};
+
+// Sample carousel images - replace with your actual images
+const carouselImages = [
+  {
+    src: "/images/hero1.jpg",
+    alt: "Elegant Indian cuisine setup",
+    title: "Authentic Indian Cuisine",
+    subtitle: "Traditional flavors, modern presentation",
+  },
+  {
+    src: "/images/hero2.jpg",
+    alt: "Afghan wedding celebration",
+    title: "Afghan Wedding Celebrations",
+    subtitle: "Cultural authenticity meets contemporary elegance",
+  },
+  {
+    src: "/images/hero3.jpg",
+    alt: "Corporate event catering",
+    title: "Corporate Event Excellence",
+    subtitle: "Professional catering for business occasions",
+  },
+  {
+    src: "/images/hero4.jpg",
+    alt: "Private dinner party",
+    title: "Intimate Gatherings",
+    subtitle: "Personalized menus for special moments",
+  },
+];
+
+const HeroCarousel: React.FC = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+
+  // Auto-play functionality
+  useEffect(() => {
+    if (!isAutoPlaying) return;
+
+    const interval = setInterval(() => {
+      setDirection(1);
+      setCurrentIndex((prevIndex) =>
+        prevIndex === carouselImages.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [currentIndex, isAutoPlaying]);
+
+  const handleNext = () => {
+    setDirection(1);
+    setCurrentIndex(
+      currentIndex === carouselImages.length - 1 ? 0 : currentIndex + 1
+    );
+  };
+
+  const handlePrev = () => {
+    setDirection(-1);
+    setCurrentIndex(
+      currentIndex === 0 ? carouselImages.length - 1 : currentIndex - 1
+    );
+  };
+
+  const handleDotClick = (index: number) => {
+    setDirection(index > currentIndex ? 1 : -1);
+    setCurrentIndex(index);
+  };
+
   return (
-    <div className="relative mx-auto max-w-2xl py-32 sm:py-60 pt-60 justify-self-center">
-      <AnimatedBackground />
-      <HeroHighlight>
-        <motion.h1
-          initial={{
-            opacity: 0,
-            y: 20,
-          }}
-          animate={{
-            opacity: 1,
-            y: [20, -5, 0],
-          }}
+    <div className="relative h-screen w-full overflow-hidden">
+      {/* Background Image Carousel */}
+      <div className="absolute inset-0">
+        <AnimatePresence initial={false} custom={direction}>
+          <motion.div
+            key={currentIndex}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              x: { type: "spring", stiffness: 300, damping: 30 },
+              opacity: { duration: 0.4 },
+            }}
+            className="absolute inset-0"
+          >
+            <div
+              className="w-full h-full bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: `url(${carouselImages[currentIndex].src})`,
+              }}
+            />
+            {/* Dark overlay for better text readability */}
+            <div className="absolute inset-0 bg-black/40" />
+          </motion.div>
+        </AnimatePresence>
+      </div>
+
+      {/* Navigation Controls */}
+      <button
+        onClick={handlePrev}
+        onMouseEnter={() => setIsAutoPlaying(false)}
+        onMouseLeave={() => setIsAutoPlaying(true)}
+        className="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-4 bg-white/5 backdrop-blur-md border border-white/10 text-white hover:bg-white/10 transition-all duration-500 group"
+        aria-label="Previous image"
+      >
+        <ChevronLeftIcon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
+      </button>
+
+      <button
+        onClick={handleNext}
+        onMouseEnter={() => setIsAutoPlaying(false)}
+        onMouseLeave={() => setIsAutoPlaying(true)}
+        className="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-4 bg-white/5 backdrop-blur-md border border-white/10 text-white hover:bg-white/10 transition-all duration-500 group"
+        aria-label="Next image"
+      >
+        <ChevronRightIcon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
+      </button>
+
+      {/* Dot Indicators */}
+      <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 z-30 flex space-x-2 sm:space-x-4">
+        {carouselImages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => handleDotClick(index)}
+            onMouseEnter={() => setIsAutoPlaying(false)}
+            onMouseLeave={() => setIsAutoPlaying(true)}
+            className={`w-6 sm:w-8 h-px transition-all duration-500 ${
+              index === currentIndex
+                ? "bg-white"
+                : "bg-white/30 hover:bg-white/60"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
+      </div>
+
+      {/* Content Overlay */}
+      <div className="absolute inset-0 z-20 flex items-center justify-center px-4">
+        <div className="relative mx-auto max-w-4xl text-center w-full">
+          {/* Dynamic slide content */}
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="mb-4 sm:mb-8"
+          >
+            <span className="inline-block px-3 py-1 sm:px-6 sm:py-2 rounded-sm bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs sm:text-sm font-light tracking-widest uppercase">
+              {carouselImages[currentIndex].subtitle}
+            </span>
+          </motion.div>
+
+          {/* Main heading */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.8,
+              delay: 0.4,
+              ease: [0.4, 0.0, 0.2, 1],
+            }}
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-light tracking-wide text-white mb-4 sm:mb-8 leading-tight px-2"
+          >
+            Memorable Events
+            <br />
+            <span className="font-serif italic bg-gradient-to-r from-elements-primary-main to-elements-secondary-main bg-clip-text text-transparent">
+              Crafted by OCC
+            </span>
+          </motion.h1>
+
+          {/* Description */}
+          <motion.p
+            variants={textVariant}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="mx-auto max-w-2xl text-sm sm:text-lg md:text-xl text-gray-200/90 leading-relaxed mb-8 sm:mb-12 font-light tracking-wide px-4"
+          >
+            At OCC Events & Catering, we specialise in bespoke Indian and Afghan
+            menus that make every occasion unforgettable. Let's bring your
+            celebration to life.
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            variants={textVariant}
+            initial="hidden"
+            animate="visible"
+            transition={{ duration: 0.8, delay: 1.2 }}
+            className="flex flex-col sm:flex-row gap-6 justify-center items-center"
+          >
+            <Link
+              href="/contact"
+              className="group relative overflow-hidden px-10 py-4 bg-white text-neutral-900 font-medium tracking-wide rounded-sm border border-white/20 hover:bg-neutral-50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-white/10"
+            >
+              <span className="relative z-10">Get Quote</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-elements-primary-main/10 to-elements-secondary-main/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+            </Link>
+
+            <Link
+              href="/gallery"
+              className="group relative overflow-hidden px-10 py-4 bg-transparent text-white font-medium tracking-wide rounded-sm border border-white/40 hover:border-white/60 transition-all duration-500 hover:scale-105"
+            >
+              <span className="relative z-10 flex items-center">
+                View Gallery
+                <svg
+                  className="ml-3 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </span>
+              <div className="absolute inset-0 bg-white/5 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+            </Link>
+          </motion.div>
+
+          {/* Scroll indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.8 }}
+            className="absolute -bottom-40 left-1/2 -translate-x-1/2"
+          >
+            <div className="flex flex-col items-center space-y-4 text-white/60">
+              <span className="text-xs font-light tracking-[0.2em] uppercase">
+                Scroll to explore
+              </span>
+              <motion.div
+                animate={{ y: [0, 8, 0] }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                className="w-px h-12 bg-gradient-to-b from-transparent via-white/40 to-transparent"
+              />
+              <motion.div
+                animate={{ y: [0, 12, 0] }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                  delay: 0.5,
+                }}
+                className="w-1 h-1 bg-white/60 rounded-full"
+              />
+            </div>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Progress bar */}
+      <div className="absolute top-0 left-0 w-full h-1 bg-white/20 z-30">
+        <motion.div
+          key={currentIndex}
+          className="h-full bg-gradient-to-r from-elements-primary-main to-elements-secondary-main"
+          initial={{ width: "0%" }}
+          animate={{ width: "100%" }}
           transition={{
-            duration: 0.5,
-            ease: [0.4, 0.0, 0.2, 1],
+            duration: 5,
+            ease: "linear",
+            repeat: isAutoPlaying ? Infinity : 0,
           }}
-          className="text-balance text-center text-5xl font-semibold tracking-tight text-primary sm:text-7xl leading-relaxed lg:leading-snug"
-        >
-          Memorable Events Crafted by
-          <Highlight className="text-text-primary">OCC Events</Highlight>
-        </motion.h1>
-        <motion.p
-          variants={textVariant}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-8 text-pretty text-lg text-secondary sm:text-xl leading-8 text-center"
-        >
-          At OCC Events & Catering, we specialise in bespoke Indian and Afghan
-          menus that make every occasion unforgettable. Let&#39;s bring your
-          celebration to life.
-        </motion.p>
-        <motion.p
-          variants={textVariant}
-          initial="hidden"
-          animate="visible"
-          transition={{ duration: 0.4, delay: 1.3 }}
-          className="mt-10 flex items-center justify-center gap-x-6"
-        >
-          <Link href="#contact-section"></Link>
-        </motion.p>
-      </HeroHighlight>
+        />
+      </div>
     </div>
   );
 };
 
-export default Banner;
+export default HeroCarousel;
