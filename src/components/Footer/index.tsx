@@ -1,29 +1,77 @@
 import { FiInstagram } from "react-icons/fi";
-import AppFooterCopyright from "./AppFooterCopyright";
+import { SiTiktok } from "react-icons/si";
+import { IconType } from "react-icons";
+import IconWrapper from "@/components/IconWrapper/IconWrapper";
+
+const navigation = {
+  main: [
+    { name: "About", href: "#" },
+    { name: "Services", href: "#" },
+    { name: "Portfolio", href: "#" },
+    { name: "Contact", href: "#" },
+    { name: "Privacy", href: "#" },
+    { name: "Terms", href: "#" },
+  ],
+  social: [
+    {
+      name: "Instagram",
+      href: "https://www.instagram.com/__theocc/reels/",
+      icon: FiInstagram,
+    },
+    {
+      name: "TikTok",
+      href: "https://www.tiktok.com/@theoccevents",
+      icon: SiTiktok,
+    },
+  ],
+};
 
 function AppFooter() {
   return (
-    <div className="container mx-auto">
-      <div className="py-8 border-t border-border-dimmed">
-        {/* Footer social links */}
-        {/* <div className="font-medium flex flex-col justify-center items-center mb-12 sm:my-10">
-          <p className="text-xl sm:text-2xl text-text-secondary mb-5">
-            Follow Me
-          </p>
-          <ul className="">
+    <footer className="bg-neutral-dimmed">
+      <div className="mx-auto max-w-7xl overflow-hidden px-6 py-8 lg:px-8">
+        <nav
+          aria-label="Footer"
+          className="-mb-6 flex flex-wrap justify-center gap-x-12 gap-y-3 text-sm"
+        >
+          {navigation.main.map((item) => (
             <a
-              href={"https://www.instagram.com/makeitlook_"}
-              target="__blank"
-              className="cursor-pointer rounded-lgshadow-sm duration-300 shadow"
+              key={item.name}
+              href={item.href}
+              className="text-text-secondary hover:text-text-primary transition-colors duration-300"
             >
-              <FiInstagram className="h-8 w-8 text-elements-primary-main" />
+              {item.name}
             </a>
-          </ul>
-        </div> */}
-
-        <AppFooterCopyright />
+          ))}
+        </nav>
+        <div className="mt-16 flex justify-center gap-x-10">
+          {navigation.social.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              className="text-text-secondary hover:text-elements-primary-main transition-colors duration-300"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="sr-only">{item.name}</span>
+              <IconWrapper icon={item.icon} className="h-6 w-6" />
+            </a>
+          ))}
+        </div>
+        <p className="mt-10 text-center text-sm text-text-secondary">
+          &copy; {new Date().getFullYear()} OCC Events & Catering, All rights
+          reserved. Created by{" "}
+          <a
+            href="https://makeitlook.co.uk"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-elements-primary-main hover:text-elements-primary-hover transition-colors duration-300 font-medium"
+          >
+            Make It Look
+          </a>
+        </p>
       </div>
-    </div>
+    </footer>
   );
 }
 
