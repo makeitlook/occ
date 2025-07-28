@@ -2,7 +2,7 @@ import { FiInstagram } from "react-icons/fi";
 import { SiTiktok } from "react-icons/si";
 import { IconType } from "react-icons";
 import IconWrapper from "@/components/IconWrapper/IconWrapper";
-import patternBg from "public/images/pattern-bg.png";
+import patternBg from "../../../public/images/pattern-bg.png";
 
 const navigation = {
   main: [
