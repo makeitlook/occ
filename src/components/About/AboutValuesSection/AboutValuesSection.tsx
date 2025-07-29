@@ -5,9 +5,10 @@ import { motion } from "framer-motion";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
 
 interface Value {
-  icon: React.ReactNode;
+  number: string;
   title: string;
   description: string;
+  highlight: string;
 }
 
 interface AboutValuesSectionProps {
@@ -21,152 +22,157 @@ const AboutValuesSection: React.FC<AboutValuesSectionProps> = ({
 }) => {
   const values: Value[] = [
     {
-      icon: (
-        <svg
-          className="w-8 h-8 text-elements-primary-main"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
-          />
-        </svg>
-      ),
+      number: "01",
       title: "Personal Touch",
       description:
-        "Every event is crafted with individual attention, reflecting your unique story and vision.",
+        "Every event is crafted with individual attention, reflecting your unique story and vision. We believe in creating intimate connections through exceptional culinary experiences.",
+      highlight: "Individual Attention",
     },
     {
-      icon: (
-        <svg
-          className="w-8 h-8 text-elements-primary-main"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
-          />
-        </svg>
-      ),
+      number: "02",
       title: "Authentic Excellence",
       description:
-        "We honor traditional flavors while embracing modern presentation and dietary preferences.",
+        "We honor traditional flavors while embracing modern presentation and dietary preferences. Our heritage recipes meet contemporary sophistication.",
+      highlight: "Traditional Heritage",
     },
     {
-      icon: (
-        <svg
-          className="w-8 h-8 text-elements-primary-main"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-          />
-        </svg>
-      ),
+      number: "03",
       title: "Trust & Reliability",
       description:
-        "Your special moments deserve unwavering commitment. We deliver on every promise, every time.",
+        "Your special moments deserve unwavering commitment. We deliver on every promise, every time, ensuring peace of mind throughout your celebration.",
+      highlight: "Unwavering Commitment",
     },
     {
-      icon: (
-        <svg
-          className="w-8 h-8 text-elements-primary-main"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zM21 5a2 2 0 00-2-2h-4a2 2 0 00-2 2v12a4 4 0 004 4h4a2 2 0 002-2V5z"
-          />
-        </svg>
-      ),
+      number: "04",
       title: "Creative Innovation",
       description:
-        "From intimate gatherings to grand celebrations, we bring fresh ideas and artistic flair.",
+        "From intimate gatherings to grand celebrations, we bring fresh ideas and artistic flair to every plate and presentation.",
+      highlight: "Fresh Ideas",
     },
     {
-      icon: (
-        <svg
-          className="w-8 h-8 text-elements-primary-main"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
-          />
-        </svg>
-      ),
+      number: "05",
       title: "Lasting Memories",
       description:
-        "We don't just cater events; we create experiences that you and your guests will treasure forever.",
+        "We don't just cater events; we create experiences that you and your guests will treasure forever. Every detail contributes to unforgettable moments.",
+      highlight: "Unforgettable Moments",
     },
   ];
 
   return (
-    <section className="py-20 lg:py-32 bg-card-background">
-      <div className="container mx-auto px-6 lg:px-8">
+    <section className="relative py-20 lg:py-32 bg-gradient-to-b from-card-background via-neutral/10 to-card-background overflow-hidden">
+      {/* Modern geometric background */}
+      {/* <div className="absolute inset-0">
+        <div className="absolute top-1/4 left-1/4 w-px h-32 bg-gradient-to-b from-elements-primary-main/20 to-transparent rotate-45" />
+        <div className="absolute bottom-1/3 right-1/4 w-px h-24 bg-gradient-to-t from-elements-secondary-main/15 to-transparent -rotate-45" />
+        <div className="absolute top-1/2 right-12 w-2 h-2 bg-elements-primary-main/30 rounded-full" />
+        <div className="absolute bottom-1/4 left-16 w-1 h-1 bg-elements-secondary-main/40 rounded-full" />
+      </div> */}
+
+      <div className="container mx-auto px-6 lg:px-8 relative">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={containerVariants}
+          className="space-y-20"
         >
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <motion.div variants={itemVariants}>
             <SectionHeader
               badge="Our Values"
-              title="What Guides"
-              subtitle="Us"
-              description="These principles shape every decision we make and every service we provide, ensuring your experience with us is nothing short of exceptional."
-              alignment="center"
-              maxWidth="2xl"
+              title="Principles That"
+              subtitle="Define Excellence"
+              description="Five core values that guide every decision we make and every service we provide, ensuring your experience with us is nothing short of exceptional."
+              alignment="left"
+              maxWidth="4xl"
               showDecorator={true}
               itemVariants={itemVariants}
             />
           </motion.div>
 
-          {/* Values Grid */}
+          {/* Values Row - Elegant Modern Layout */}
+          <div className="mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 lg:gap-12">
+              {values.map((value, index) => (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  className="group relative"
+                >
+                  {/* Elegant Value Card */}
+                  <div className="relative h-full bg-gradient-to-b from-card-background/30 via-card-background/10 to-transparent backdrop-blur-xl border border-border-dimmed/5 rounded-3xl p-4  hover:bg-gradient-to-b hover:from-elements-primary-main/3 hover:via-card-background/20 hover:to-transparent transition-all duration-700 group-hover:shadow-2xl group-hover:shadow-elements-primary-main/5">
+                    {/* Elegant Number */}
+                    <div className="mb-8">
+                      <span className="text-6xl lg:text-7xl font-extralight text-elements-primary-main/20 group-hover:text-elements-primary-main/40 transition-all duration-700 tracking-tight">
+                        {value.number}
+                      </span>
+                    </div>
+
+                    {/* Content */}
+                    <div className="space-y-6">
+                      {/* Title with refined typography */}
+                      <h3 className="text-xl lg:text-2xl font-light text-text-primary group-hover:text-elements-primary-main transition-colors duration-500 leading-tight">
+                        {value.title}
+                      </h3>
+
+                      {/* Elegant separator */}
+                      <div className="w-12 h-px bg-gradient-to-r from-elements-primary-main/30 to-transparent group-hover:from-elements-primary-main/60 group-hover:w-16 transition-all duration-500" />
+
+                      {/* Refined highlight */}
+                      <div className="inline-flex items-center">
+                        <div className="w-1.5 h-1.5 bg-elements-primary-main/60 rounded-full mr-3 group-hover:bg-elements-primary-main transition-colors duration-300" />
+                        <span className="text-xs font-medium text-elements-primary-main/80 uppercase tracking-widest">
+                          {value.highlight}
+                        </span>
+                      </div>
+
+                      {/* Refined description */}
+                      <p className="text-sm lg:text-base text-text-tertiary leading-relaxed font-light group-hover:text-text-secondary transition-colors duration-500">
+                        {value.description}
+                      </p>
+                    </div>
+
+                    {/* Bottom glow effect */}
+                    <div className="absolute -bottom-px left-1/2 -translate-x-1/2 w-0 h-px bg-gradient-to-r from-transparent via-elements-primary-main to-transparent group-hover:w-full transition-all duration-700" />
+                  </div>
+
+                  {/* Refined connecting element */}
+                  {index < values.length - 1 && (
+                    <div className="hidden lg:flex absolute -right-6 top-1/2 -translate-y-1/2 items-center z-10">
+                      <div className="w-8 h-px bg-gradient-to-r from-border-dimmed/20 via-elements-primary-main/10 to-transparent" />
+                      <div className="w-1 h-1 bg-elements-primary-main/20 rounded-full ml-2" />
+                    </div>
+                  )}
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Elegant bottom flourish */}
+            {/* <motion.div
+              variants={itemVariants}
+              className="flex justify-center mt-16 pt-12 border-t border-gradient-to-r from-transparent via-border-dimmed/10 to-transparent"
+            >
+              <div className="flex items-center space-x-4">
+                <div className="w-8 h-px bg-gradient-to-r from-transparent to-elements-primary-main/30" />
+                <div className="w-2 h-2 bg-elements-primary-main/30 rounded-full" />
+                <div className="w-8 h-px bg-gradient-to-l from-transparent to-elements-primary-main/30" />
+              </div>
+            </motion.div> */}
+          </div>
+
+          {/* Bottom Statement */}
           <motion.div
-            variants={containerVariants}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12"
+            variants={itemVariants}
+            className="text-center max-w-4xl mx-auto"
           >
-            {values.map((value, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="group text-center"
-              >
-                <div className="bg-gradient-to-br from-elements-primary-main/5 to-elements-secondary-main/5 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 border border-border-dimmed/20">
-                  {value.icon}
-                </div>
-                <h3 className="text-xl font-medium text-text-primary mb-4">
-                  {value.title}
-                </h3>
-                <p className="text-text-secondary leading-relaxed font-light">
-                  {value.description}
-                </p>
-              </motion.div>
-            ))}
+            <div className="relative">
+              <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-12 h-px bg-gradient-to-r from-transparent via-elements-primary-main/50 to-transparent" />
+              <p className="text-xl lg:text-2xl font-light text-text-primary leading-relaxed">
+                These values aren't just words on a page—they're the foundation
+                of every dish we prepare, every event we craft, and every
+                relationship we build.
+              </p>
+            </div>
           </motion.div>
         </motion.div>
       </div>

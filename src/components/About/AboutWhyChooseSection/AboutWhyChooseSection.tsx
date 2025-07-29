@@ -51,170 +51,236 @@ const AboutWhyChooseSection: React.FC<AboutWhyChooseSectionProps> = ({
   const { count: yearsCount, ref: yearsRef } = useCounter(8, 2);
   const { count: specialtiesCount, ref: specialtiesRef } = useCounter(15, 2);
 
-  return (
-    <section className="py-20 lg:py-32 bg-gradient-to-b from-neutral/15 via-card-background to-elements-primary-main/5 overflow-hidden">
-      {/* Decorative elements */}
-      <div className="absolute top-20 right-10 w-40 h-40 bg-gradient-to-br from-elements-primary-main/4 to-elements-secondary-main/4 rounded-full blur-3xl" />
+  const trustPoints = [
+    {
+      icon: (
+        <svg
+          className="w-8 h-8 text-elements-primary-main"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={1.5}
+            d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
+          />
+        </svg>
+      ),
+      title: "Award-Winning Service",
+      description:
+        "Recognized for excellence in catering and event management by industry professionals and clients alike.",
+    },
+    {
+      icon: (
+        <svg
+          className="w-8 h-8 text-elements-primary-main"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={1.5}
+            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+          />
+        </svg>
+      ),
+      title: "98% Client Retention",
+      description:
+        "Our clients don't just book us once—they become part of our family and return for every celebration.",
+    },
+    {
+      icon: (
+        <svg
+          className="w-8 h-8 text-elements-primary-main"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={1.5}
+            d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"
+          />
+        </svg>
+      ),
+      title: "Bespoke Everything",
+      description:
+        "No two events are the same. We customize every detail to reflect your unique vision and preferences.",
+    },
+  ];
 
-      <div className="container mx-auto px-6 lg:px-8">
+  return (
+    <section className="relative py-20 lg:py-32 bg-gradient-to-b from-neutral/10 via-card-background to-neutral/10 overflow-hidden">
+      {/* Elegant background elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 right-1/4 w-px h-40 bg-gradient-to-b from-elements-primary-main/15 to-transparent rotate-12" />
+        <div className="absolute bottom-1/3 left-1/4 w-px h-32 bg-gradient-to-t from-elements-secondary-main/12 to-transparent -rotate-12" />
+        <div className="absolute top-1/2 right-16 w-2 h-2 bg-elements-primary-main/20 rounded-full" />
+        <div className="absolute bottom-1/4 left-20 w-1 h-1 bg-elements-secondary-main/30 rounded-full" />
+      </div>
+
+      <div className="container mx-auto px-6 lg:px-8 relative">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={containerVariants}
+          className="space-y-20"
         >
           {/* Section Header */}
-          <motion.div variants={itemVariants} className="text-center mb-16">
+          <motion.div variants={itemVariants}>
             <SectionHeader
               badge="Why Choose Us"
               title="Trusted by Hundreds"
               subtitle="of Clients"
               description="Our track record speaks for itself. Here's what sets us apart and why clients return to us for their most important celebrations."
-              alignment="center"
-              maxWidth="2xl"
+              alignment="left"
+              maxWidth="4xl"
               showDecorator={true}
               itemVariants={itemVariants}
             />
           </motion.div>
 
-          {/* Stats */}
+          {/* Stats - Elegant Minimal Layout */}
+          <motion.div variants={containerVariants} className="relative">
+            {/* Stats Grid */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 mb-20">
+              <motion.div
+                ref={eventsRef}
+                variants={itemVariants}
+                className="group text-center"
+              >
+                <div className="space-y-4">
+                  <div className="relative">
+                    <span className="text-5xl lg:text-6xl font-extralight text-elements-primary-main group-hover:scale-110 transition-transform duration-500 block">
+                      {eventsCount}+
+                    </span>
+                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-px bg-elements-primary-main group-hover:w-full transition-all duration-700" />
+                  </div>
+                  <p className="text-text-tertiary font-light uppercase tracking-widest text-sm">
+                    Events Celebrated
+                  </p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                ref={clientsRef}
+                variants={itemVariants}
+                className="group text-center"
+              >
+                <div className="space-y-4">
+                  <div className="relative">
+                    <span className="text-5xl lg:text-6xl font-extralight text-elements-primary-main group-hover:scale-110 transition-transform duration-500 block">
+                      {clientsCount}%
+                    </span>
+                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-px bg-elements-primary-main group-hover:w-full transition-all duration-700" />
+                  </div>
+                  <p className="text-text-tertiary font-light uppercase tracking-widest text-sm">
+                    Client Retention
+                  </p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                ref={yearsRef}
+                variants={itemVariants}
+                className="group text-center"
+              >
+                <div className="space-y-4">
+                  <div className="relative">
+                    <span className="text-5xl lg:text-6xl font-extralight text-elements-primary-main group-hover:scale-110 transition-transform duration-500 block">
+                      {yearsCount}+
+                    </span>
+                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-px bg-elements-primary-main group-hover:w-full transition-all duration-700" />
+                  </div>
+                  <p className="text-text-tertiary font-light uppercase tracking-widest text-sm">
+                    Years Excellence
+                  </p>
+                </div>
+              </motion.div>
+
+              <motion.div
+                ref={specialtiesRef}
+                variants={itemVariants}
+                className="group text-center"
+              >
+                <div className="space-y-4">
+                  <div className="relative">
+                    <span className="text-5xl lg:text-6xl font-extralight text-elements-primary-main group-hover:scale-110 transition-transform duration-500 block">
+                      {specialtiesCount}+
+                    </span>
+                    <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-px bg-elements-primary-main group-hover:w-full transition-all duration-700" />
+                  </div>
+                  <p className="text-text-tertiary font-light uppercase tracking-widest text-sm">
+                    Cuisine Specialties
+                  </p>
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Connecting Lines */}
+            <div className="hidden lg:block absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-border-dimmed/20 to-transparent" />
+          </motion.div>
+
+          {/* Trust Points - Clean List Layout */}
           <motion.div
             variants={containerVariants}
-            className="grid grid-cols-2 lg:grid-cols-4 gap-8 mb-16"
+            className="max-w-5xl mx-auto"
           >
-            <div ref={eventsRef} className="text-center">
-              <div className="bg-card-background/80 backdrop-blur-md rounded-2xl p-8 shadow-lg border border-border-dimmed/20 hover:shadow-xl transition-shadow duration-300">
-                <p className="text-3xl lg:text-4xl font-light text-elements-primary-main mb-2">
-                  {eventsCount}+
-                </p>
-                <p className="text-text-tertiary font-light">
-                  Events Celebrated
-                </p>
-              </div>
-            </div>
+            <div className="space-y-12">
+              {trustPoints.map((point, index) => (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  className="group flex items-start space-x-8 py-8 border-b border-border-dimmed/10 last:border-b-0 hover:border-elements-primary-main/20 transition-colors duration-500"
+                >
+                  {/* Icon */}
+                  <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-elements-primary-main/10 to-elements-secondary-main/10 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:bg-gradient-to-br group-hover:from-elements-primary-main/20 group-hover:to-elements-secondary-main/20 transition-all duration-500">
+                    {point.icon}
+                  </div>
 
-            <div ref={clientsRef} className="text-center">
-              <div className="bg-card-background/80 backdrop-blur-md rounded-2xl p-8 shadow-lg border border-border-dimmed/20 hover:shadow-xl transition-shadow duration-300">
-                <p className="text-3xl lg:text-4xl font-light text-elements-primary-main mb-2">
-                  {clientsCount}%
-                </p>
-                <p className="text-text-tertiary font-light">
-                  Client Retention
-                </p>
-              </div>
-            </div>
+                  {/* Content */}
+                  <div className="flex-1 space-y-3">
+                    <h3 className="text-2xl font-light text-text-primary group-hover:text-elements-primary-main transition-colors duration-300">
+                      {point.title}
+                    </h3>
+                    <p className="text-lg text-text-secondary leading-relaxed font-light group-hover:text-text-primary transition-colors duration-300 max-w-3xl">
+                      {point.description}
+                    </p>
+                  </div>
 
-            <div ref={yearsRef} className="text-center">
-              <div className="bg-card-background/80 backdrop-blur-md rounded-2xl p-8 shadow-lg border border-border-dimmed/20 hover:shadow-xl transition-shadow duration-300">
-                <p className="text-3xl lg:text-4xl font-light text-elements-primary-main mb-2">
-                  {yearsCount}+
-                </p>
-                <p className="text-text-tertiary font-light">
-                  Years Excellence
-                </p>
-              </div>
-            </div>
-
-            <div ref={specialtiesRef} className="text-center">
-              <div className="bg-card-background/80 backdrop-blur-md rounded-2xl p-8 shadow-lg border border-border-dimmed/20 hover:shadow-xl transition-shadow duration-300">
-                <p className="text-3xl lg:text-4xl font-light text-elements-primary-main mb-2">
-                  {specialtiesCount}+
-                </p>
-                <p className="text-text-tertiary font-light">
-                  Cuisine Specialties
-                </p>
-              </div>
+                  {/* Decorative Element */}
+                  <div className="hidden lg:flex flex-shrink-0 items-center">
+                    <div className="w-8 h-px bg-gradient-to-r from-elements-primary-main/30 to-transparent group-hover:from-elements-primary-main/60 group-hover:w-12 transition-all duration-500" />
+                    <div className="w-2 h-2 bg-elements-primary-main/30 rounded-full ml-2 group-hover:bg-elements-primary-main/60 group-hover:scale-125 transition-all duration-300" />
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </motion.div>
 
-          {/* Trust Statements */}
-          <motion.div
-            variants={containerVariants}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-          >
-            <motion.div
-              variants={itemVariants}
-              className="bg-card-background/80 backdrop-blur-md p-8 rounded-2xl shadow-lg border border-border-dimmed/20"
-            >
-              <div className="w-12 h-12 bg-gradient-to-br from-elements-primary-main/10 to-elements-secondary-main/10 rounded-xl flex items-center justify-center mb-6">
-                <svg
-                  className="w-6 h-6 text-elements-primary-main"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-medium text-text-primary mb-4">
-                Award-Winning Service
-              </h3>
-              <p className="text-text-secondary font-light leading-relaxed">
-                Recognized for excellence in catering and event management by
-                industry professionals and clients alike.
+          {/* Bottom Statement */}
+          <motion.div variants={itemVariants} className="text-center pt-16">
+            <div className="max-w-3xl mx-auto space-y-6">
+              <div className="w-16 h-px bg-gradient-to-r from-transparent via-elements-primary-main/50 to-transparent mx-auto" />
+              <p className="text-xl lg:text-2xl font-light text-text-primary leading-relaxed">
+                These aren't just numbers—they represent families brought
+                together, celebrations made memorable, and relationships built
+                on trust.
               </p>
-            </motion.div>
-
-            <motion.div
-              variants={itemVariants}
-              className="bg-card-background/80 backdrop-blur-md p-8 rounded-2xl shadow-lg border border-border-dimmed/20"
-            >
-              <div className="w-12 h-12 bg-gradient-to-br from-elements-primary-main/10 to-elements-secondary-main/10 rounded-xl flex items-center justify-center mb-6">
-                <svg
-                  className="w-6 h-6 text-elements-primary-main"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-                  />
-                </svg>
+              <div className="inline-flex items-center space-x-3">
+                <div className="w-2 h-2 bg-elements-primary-main/40 rounded-full" />
+                <span className="text-sm text-elements-primary-main font-medium uppercase tracking-widest">
+                  Excellence Delivered
+                </span>
+                <div className="w-2 h-2 bg-elements-primary-main/40 rounded-full" />
               </div>
-              <h3 className="text-xl font-medium text-text-primary mb-4">
-                98% Client Retention
-              </h3>
-              <p className="text-text-secondary font-light leading-relaxed">
-                Our clients don't just book us once—they become part of our
-                family and return for every celebration.
-              </p>
-            </motion.div>
-
-            <motion.div
-              variants={itemVariants}
-              className="bg-card-background/80 backdrop-blur-md p-8 rounded-2xl shadow-lg border border-border-dimmed/20 md:col-span-2 lg:col-span-1"
-            >
-              <div className="w-12 h-12 bg-gradient-to-br from-elements-primary-main/10 to-elements-secondary-main/10 rounded-xl flex items-center justify-center mb-6">
-                <svg
-                  className="w-6 h-6 text-elements-primary-main"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-medium text-text-primary mb-4">
-                Bespoke Everything
-              </h3>
-              <p className="text-text-secondary font-light leading-relaxed">
-                No two events are the same. We customize every detail to reflect
-                your unique vision and preferences.
-              </p>
-            </motion.div>
+            </div>
           </motion.div>
         </motion.div>
       </div>
