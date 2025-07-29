@@ -94,7 +94,7 @@ const SectionHeader: React.FC<SectionHeaderProps> = ({
       {badge && (
         <motion.div variants={variants}>
           <span
-            className={`inline-block px-6 py-3 rounded-sm bg-elements-primary-main/8 border border-elements-primary-main/15 text-elements-primary-main text-sm font-light tracking-[0.2em] uppercase ${alignmentClasses.badge}`}
+            className={`inline-block px-6 py-3 rounded-sm bg-elements-primary-main/20 border border-elements-primary-main/25 text-elements-primary-main text-sm font-light tracking-[0.2em] uppercase ${alignmentClasses.badge}`}
           >
             {badge}
           </span>
