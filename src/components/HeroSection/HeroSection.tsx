@@ -5,6 +5,7 @@ import { motion, AnimatePresence, Variant, Variants } from "framer-motion";
 import Link from "next/link";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
 import Button from "@/components/Button/Button"; // Add Button import
+import { carouselImages } from "@/data/hero";
 
 // Define proper types for the animation variants
 interface TextVariants extends Variants {
@@ -35,33 +36,6 @@ const slideVariants = {
   }),
 };
 
-// Sample carousel images - replace with your actual images
-const carouselImages = [
-  {
-    src: "/images/hero1.jpg",
-    alt: "Elegant Indian cuisine setup",
-    title: "Authentic Indian Cuisine",
-    subtitle: "Traditional flavors, modern presentation",
-  },
-  {
-    src: "/images/hero2.jpg",
-    alt: "Afghan wedding celebration",
-    title: "Afghan Wedding Celebrations",
-    subtitle: "Cultural authenticity meets contemporary elegance",
-  },
-  {
-    src: "/images/hero3.jpg",
-    alt: "Corporate event catering",
-    title: "Corporate Event Excellence",
-    subtitle: "Professional catering for business occasions",
-  },
-  {
-    src: "/images/hero4.jpg",
-    alt: "Private dinner party",
-    title: "Intimate Gatherings",
-    subtitle: "Personalized menus for special moments",
-  },
-];
 
 const HeroCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);

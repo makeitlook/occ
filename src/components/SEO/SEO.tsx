@@ -1,6 +1,7 @@
 "use client";
 
 import Head from "next/head";
+import { defaultMetadata } from "@/data/seo";
 
 interface SEOProps {
   title?: string;
@@ -10,19 +11,6 @@ interface SEOProps {
   keywords?: string[];
 }
 
-const defaultMetadata = {
-  title: "OCC Events & Catering",
-  description:
-    "Bespoke catering for all events with vibrant Indian and Afghan menus.",
-  url: "https://occevents.co.uk",
-  image: "/images/og-default.png",
-  keywords: [
-    "OCC Events",
-    "Catering",
-    "Indian Catering",
-    "Afghan Catering",
-  ],
-};
 
 export const SEO: React.FC<SEOProps> = ({
   title,
