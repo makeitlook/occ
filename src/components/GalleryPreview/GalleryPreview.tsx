@@ -44,7 +44,7 @@ const GalleryPreview: React.FC = () => {
   };
 
   return (
-    <section className="relative py-24 lg:py-32 bg-gradient-to-b from-elements-secondary-dimmed/10 via-neutral/10 to-elements-secondary-dimmed/10 overflow-hidden">
+    <section className="relative py-24 lg:py-32 bg-gradient-to-b from-elements-secondary-dimmed/10 via-neutral/10 to-transparent overflow-hidden">
       {/* Subtle background texture */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-br from-elements-primary-main/3 to-transparent rounded-full blur-3xl" />
