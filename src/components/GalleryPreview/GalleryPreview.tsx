@@ -5,58 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Button from "@/components/Button/Button";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
-
-// Curated gallery showcasing different aspects of luxury catering
-const galleryImages = [
-  {
-    id: 1,
-    src: "/images/gallery/summer-garden-party.jpg",
-    alt: "Elegant outdoor summer garden party setup",
-    caption: "Summer Garden Party",
-    description: "Al fresco dining under the stars",
-    layout: "hero", // Large featured image
-  },
-  {
-    id: 2,
-    src: "/images/gallery/intimate-dinner.jpg",
-    alt: "Intimate candlelit dinner for two",
-    caption: "Intimate Evening",
-    description: "Romance in every detail",
-    layout: "portrait",
-  },
-  {
-    id: 3,
-    src: "/images/gallery/culinary-artistry.jpg",
-    alt: "Exquisite plated dish presentation",
-    caption: "Culinary Artistry",
-    description: "Where flavors meet beauty",
-    layout: "square",
-  },
-  {
-    id: 4,
-    src: "/images/gallery/corporate-elegance.jpg",
-    alt: "Sophisticated corporate event setup",
-    caption: "Corporate Elegance",
-    description: "Professional dining refined",
-    layout: "landscape",
-  },
-  {
-    id: 5,
-    src: "/images/gallery/wedding-celebration.jpg",
-    alt: "Beautiful wedding reception table",
-    caption: "Wedding Celebration",
-    description: "Love served with perfection",
-    layout: "portrait",
-  },
-  {
-    id: 6,
-    src: "/images/gallery/festive-gathering.jpg",
-    alt: "Festive holiday gathering setup",
-    caption: "Festive Gathering",
-    description: "Traditions beautifully honored",
-    layout: "square",
-  },
-];
+import { galleryImages } from "@/data/gallery";
 
 const GalleryPreview: React.FC = () => {
   const containerVariants = {

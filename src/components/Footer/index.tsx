@@ -3,28 +3,11 @@ import { SiTiktok } from "react-icons/si";
 import { IconType } from "react-icons";
 import IconWrapper from "@/components/IconWrapper/IconWrapper";
 import patternBg from "../../../public/images/pattern-bg.png";
+import { footerNavigation } from "@/data/footer";
 
-const navigation = {
-  main: [
-    { name: "About", href: "/about" },
-    { name: "Services", href: "/services" },
-    { name: "Gallery", href: "/gallery" },
-    { name: "Contact", href: "/contact" },
-    { name: "Privacy", href: "/privacy-policy" },
-    { name: "Terms", href: "/terms" },
-  ],
-  social: [
-    {
-      name: "Instagram",
-      href: "https://www.instagram.com/__theocc/reels/",
-      icon: FiInstagram,
-    },
-    {
-      name: "TikTok",
-      href: "https://www.tiktok.com/@theoccevents",
-      icon: SiTiktok,
-    },
-  ],
+const socialIcons: Record<string, IconType> = {
+  Instagram: FiInstagram,
+  TikTok: SiTiktok,
 };
 
 function AppFooter() {
@@ -47,7 +30,7 @@ function AppFooter() {
           aria-label="Footer"
           className="flex flex-wrap justify-center gap-x-12 gap-y-4 text-sm mb-12"
         >
-          {navigation.main.map((item, index) => (
+          {footerNavigation.main.map((item, index) => (
             <a
               key={item.name}
               href={item.href}
@@ -66,7 +49,7 @@ function AppFooter() {
 
         {/* Social Icons */}
         <div className="flex justify-center gap-x-8 mb-12">
-          {navigation.social.map((item, index) => (
+          {footerNavigation.social.map((item, index) => (
             <a
               key={item.name}
               href={item.href}
@@ -74,7 +57,7 @@ function AppFooter() {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                animationDelay: `${(navigation.main.length + index) * 100}ms`,
+                animationDelay: `${(footerNavigation.main.length + index) * 100}ms`,
                 animation: "fadeInUp 0.6s ease-out forwards",
                 opacity: 0,
               }}
@@ -82,7 +65,7 @@ function AppFooter() {
               <span className="sr-only">{item.name}</span>
               <div className="relative">
                 <IconWrapper
-                  icon={item.icon}
+                  icon={socialIcons[item.name]}
                   className="h-6 w-6 transition-transform duration-300 group-hover:rotate-12"
                 />
                 <div className="absolute inset-0 rounded-full bg-elements-primary-main/20 scale-0 group-hover:scale-150 transition-transform duration-300 -z-10" />
@@ -96,7 +79,7 @@ function AppFooter() {
           className="text-center"
           style={{
             animationDelay: `${
-              (navigation.main.length + navigation.social.length) * 100
+              (footerNavigation.main.length + footerNavigation.social.length) * 100
             }ms`,
             animation: "fadeInUp 0.6s ease-out forwards",
             opacity: 0,
