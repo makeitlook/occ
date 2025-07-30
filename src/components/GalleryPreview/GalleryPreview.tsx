@@ -96,10 +96,10 @@ const GalleryPreview: React.FC = () => {
                   {/* Caption overlay */}
                   <div className="absolute bottom-0 left-0 right-0 p-8 lg:p-10">
                     <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                      <p className="text-white/80 text-sm font-light tracking-wide mb-2 uppercase">
+                      <p className="text-text-clear/80 text-sm font-light tracking-wide mb-2 uppercase">
                         {galleryImages[0].description}
                       </p>
-                      <h3 className="text-white text-2xl lg:text-3xl font-light tracking-wide">
+                      <h3 className="text-text-clear text-2xl lg:text-3xl font-light tracking-wide">
                         {galleryImages[0].caption}
                       </h3>
                     </div>
@@ -128,10 +128,10 @@ const GalleryPreview: React.FC = () => {
 
                       <div className="absolute bottom-0 left-0 right-0 p-6">
                         <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                          <p className="text-white/80 text-xs font-light tracking-wide mb-1 uppercase">
+                          <p className="text-text-clear/80 text-xs font-light tracking-wide mb-1 uppercase">
                             {image.description}
                           </p>
-                          <h3 className="text-white text-lg font-light tracking-wide">
+                          <h3 className="text-text-clear text-lg font-light tracking-wide">
                             {image.caption}
                           </h3>
                         </div>
@@ -163,10 +163,10 @@ const GalleryPreview: React.FC = () => {
 
                     <div className="absolute bottom-0 left-0 right-0 p-6">
                       <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
-                        <p className="text-white/80 text-xs font-light tracking-wide mb-1 uppercase">
+                        <p className="text-text-clear/80 text-xs font-light tracking-wide mb-1 uppercase">
                           {image.description}
                         </p>
-                        <h3 className="text-white text-lg font-light tracking-wide">
+                        <h3 className="text-text-clear text-lg font-light tracking-wide">
                           {image.caption}
                         </h3>
                       </div>

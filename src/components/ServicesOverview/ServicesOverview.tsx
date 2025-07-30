@@ -99,10 +99,10 @@ const ServicesOverview: React.FC = () => {
             <div className="absolute inset-0 flex flex-col justify-end p-6 lg:p-8">
               {/* Default State - Just Title */}
               <div className="transform transition-all duration-500 ease-out group-hover:-translate-y-8 group-hover:opacity-0">
-                <h3 className="text-2xl lg:text-3xl font-light text-white mb-2 tracking-wide">
+                <h3 className="text-2xl lg:text-3xl font-light text-text-clear mb-2 tracking-wide">
                   {service.title}
                 </h3>
-                <div className="w-12 h-0.5 bg-white/60 rounded-full" />
+                <div className="w-12 h-0.5 bg-border-white/60 rounded-full" />
               </div>
 
               {/* Hover State - Full Content */}
@@ -110,14 +110,14 @@ const ServicesOverview: React.FC = () => {
                 <div className="space-y-6">
                   {/* Title with Icon */}
                   <div className="space-y-3">
-                    <h3 className="text-2xl lg:text-3xl font-light text-white tracking-wide">
+                    <h3 className="text-2xl lg:text-3xl font-light text-text-clear tracking-wide">
                       {service.title}
                     </h3>
                     <div className="w-16 h-0.5 bg-gradient-to-r from-elements-primary-main to-elements-secondary-main rounded-full" />
                   </div>
 
                   {/* Description */}
-                  <p className="text-white/90 leading-relaxed font-light text-sm lg:text-base">
+                  <p className="text-text-clear/90 leading-relaxed font-light text-sm lg:text-base">
                     {service.description}
                   </p>
 
@@ -127,7 +127,7 @@ const ServicesOverview: React.FC = () => {
                     href={`/services/${service.title
                       .toLowerCase()
                       .replace(/\s+/g, "-")}`}
-                    extraClassNames="!px-6 !py-2 !text-sm border-white/60 hover:border-white text-white"
+                    extraClassNames="!px-6 !py-2 !text-sm border-border-white/60 hover:border-border-white text-text-clear"
                     icon={
                       <svg
                         className="w-3 h-3 transition-transform duration-300 group-hover:translate-x-1"
@@ -151,9 +151,9 @@ const ServicesOverview: React.FC = () => {
 
               {/* Hover Indicator */}
               <div className="absolute top-6 right-6 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-200">
-                <div className="w-8 h-8 border border-white/40 rounded-full flex items-center justify-center">
+                <div className="w-8 h-8 border border-border-white/40 rounded-full flex items-center justify-center">
                   <svg
-                    className="w-4 h-4 text-white"
+                    className="w-4 h-4 text-text-clear"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -170,8 +170,8 @@ const ServicesOverview: React.FC = () => {
             </div>
 
             {/* Subtle Border Between Items */}
-            <div className="absolute right-0 top-0 bottom-0 w-px bg-white/10 hidden lg:block last:hidden" />
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-white/10 md:hidden" />
+            <div className="absolute right-0 top-0 bottom-0 w-px bg-border-white/10 hidden lg:block last:hidden" />
+            <div className="absolute bottom-0 left-0 right-0 h-px bg-border-white/10 md:hidden" />
           </motion.div>
         ))}
       </motion.div>
