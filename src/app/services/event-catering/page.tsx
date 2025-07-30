@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { motion } from "framer-motion";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
@@ -413,7 +415,7 @@ const EventCatering = () => {
                   </div>
 
                   <blockquote className="text-lg text-gray-600 italic leading-relaxed mb-6 font-light">
-                    "{testimonial.quote}"
+                    {testimonial.quote}
                   </blockquote>
 
                   <div>
