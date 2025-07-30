@@ -227,41 +227,33 @@ const AboutWhyChooseSection: React.FC<AboutWhyChooseSectionProps> = ({
             <div className="hidden lg:block absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-border-dimmed/20 to-transparent" />
           </motion.div>
 
-          {/* Trust Points - Clean List Layout */}
+          {/* Trust Points - Horizontal Layout */}
           <motion.div
             variants={containerVariants}
-            className="max-w-5xl mx-auto"
+            className="flex flex-col lg:flex-row justify-between gap-12 max-w-6xl mx-auto pt-8 border-t border-border-dimmed/10"
           >
-            <div className="space-y-12">
-              {trustPoints.map((point, index) => (
-                <motion.div
-                  key={index}
-                  variants={itemVariants}
-                  className="group flex items-start space-x-8 py-8 border-b border-border-dimmed/10 last:border-b-0 hover:border-elements-primary-main/20 transition-colors duration-500"
-                >
-                  {/* Icon */}
-                  <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-elements-primary-main/10 to-elements-secondary-main/10 rounded-2xl flex items-center justify-center group-hover:scale-110 group-hover:bg-gradient-to-br group-hover:from-elements-primary-main/20 group-hover:to-elements-secondary-main/20 transition-all duration-500">
-                    {point.icon}
-                  </div>
+            {trustPoints.map((point, index) => (
+              <motion.div
+                key={index}
+                variants={itemVariants}
+                className="group flex-1 flex items-start gap-6 border-b lg:border-b-0 lg:border-r last:border-r-0 border-border-dimmed/10 pb-8 lg:pb-0 lg:pr-8"
+              >
+                {/* Icon */}
+                <div className="flex-shrink-0 w-16 h-16 bg-gradient-to-br from-elements-primary-main/10 to-elements-secondary-main/10 rounded-2xl flex items-center justify-center">
+                  {point.icon}
+                </div>
 
-                  {/* Content */}
-                  <div className="flex-1 space-y-3">
-                    <h3 className="text-2xl font-light text-text-primary group-hover:text-elements-primary-main transition-colors duration-300">
-                      {point.title}
-                    </h3>
-                    <p className="text-lg text-text-secondary leading-relaxed font-light group-hover:text-text-primary transition-colors duration-300 max-w-3xl">
-                      {point.description}
-                    </p>
-                  </div>
-
-                  {/* Decorative Element */}
-                  <div className="hidden lg:flex flex-shrink-0 items-center">
-                    <div className="w-8 h-px bg-gradient-to-r from-elements-primary-main/30 to-transparent group-hover:from-elements-primary-main/60 group-hover:w-12 transition-all duration-500" />
-                    <div className="w-2 h-2 bg-elements-primary-main/30 rounded-full ml-2 group-hover:bg-elements-primary-main/60 group-hover:scale-125 transition-all duration-300" />
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+                {/* Content */}
+                <div className="space-y-3">
+                  <h3 className="text-lg font-medium text-text-primary group-hover:text-elements-primary-main transition-colors duration-300">
+                    {point.title}
+                  </h3>
+                  <p className="text-sm text-text-secondary font-light leading-relaxed">
+                    {point.description}
+                  </p>
+                </div>
+              </motion.div>
+            ))}
           </motion.div>
 
           {/* Bottom Statement */}

@@ -1,7 +1,7 @@
 "use client";
 
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
 
@@ -16,17 +16,20 @@ const AboutIntroSection: React.FC<AboutIntroSectionProps> = ({
   itemVariants,
   imageVariants,
 }) => {
+  const imageRef = useRef(null);
+  const inView = useInView(imageRef, { once: true, amount: 0.2 });
+
   return (
-    <section className="relative py-20 lg:py-48 bg-gradient-to-b from-neutral via-card-background to-neutral overflow-hidden">
+    <section className="relative py-24 lg:py-48 bg-gradient-to-b from-neutral via-card-background to-neutral overflow-hidden">
       <div className="container mx-auto px-6 lg:px-8 relative">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
           variants={containerVariants}
-          className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start"
+          className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-start"
         >
-          {/* Text Content - Left Side */}
+          {/* Text Content */}
           <div>
             <SectionHeader
               badge="About The OCC"
@@ -41,9 +44,9 @@ const AboutIntroSection: React.FC<AboutIntroSectionProps> = ({
 
             <motion.p
               variants={itemVariants}
-              className="text-base leading-relaxed text-text-tertiary font-light mb-8"
+              className="text-base leading-relaxed text-text-tertiary font-light py-8"
             >
-              Our approach is simple: combine traditional flavors with modern
+              Our approach is simple: combine traditional flavours with modern
               elegance, delivered with the personal touch that makes each event
               uniquely yours. From intimate gatherings to grand celebrations, we
               bring authenticity and artistry to every plate.
@@ -51,42 +54,38 @@ const AboutIntroSection: React.FC<AboutIntroSectionProps> = ({
 
             <motion.div
               variants={itemVariants}
-              className="flex items-center space-x-4"
+              className="flex items-center space-x-6 mt-6"
             >
-              <div className="flex -space-x-2">
-                <div className="w-10 h-10 bg-elements-primary-main/20 rounded-full border-2 border-card-background"></div>
-                <div className="w-10 h-10 bg-elements-secondary-main/20 rounded-full border-2 border-card-background"></div>
-                <div className="w-10 h-10 bg-elements-primary-main/30 rounded-full border-2 border-card-background"></div>
-              </div>
-              <p className="text-sm text-text-tertiary font-light">
-                Trusted by families and businesses across the region
+              <motion.span
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.6 }}
+                className="text-4xl font-semibold text-elements-primary-main"
+              >
+                125+
+              </motion.span>
+              <p className="text-sm text-text-tertiary font-light max-w-xs">
+                Events crafted with care, flavour, and unforgettable memories.
               </p>
             </motion.div>
           </div>
 
-          {/* Images - Right Side */}
-          <motion.div variants={imageVariants} className="space-y-6">
-            {/* First Image */}
-            <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
-              <Image
-                src="/images/about/intro-main.jpg"
-                alt="Elegant dining setup showcasing OCC Events culinary artistry"
-                width={600}
-                height={450}
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            {/* Second Image */}
-            <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
-              <Image
-                src="/images/about/intro-secondary.jpg"
-                alt="Traditional spices and cooking preparation"
-                width={600}
-                height={450}
-                className="w-full h-full object-cover"
-              />
-            </div>
+          {/* Single Image with Smooth Animation */}
+          <motion.div
+            ref={imageRef}
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="rounded-xl overflow-hidden shadow-xl"
+          >
+            <Image
+              src="/images/about/intro-main.jpg"
+              alt="Elegant dining setup showcasing OCC Events"
+              width={700}
+              height={500}
+              className="w-full h-full object-cover"
+              priority
+            />
           </motion.div>
         </motion.div>
       </div>
