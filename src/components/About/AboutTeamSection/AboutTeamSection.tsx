@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
+import { aboutTeamData } from "@/data";
 
 interface TeamMember {
   name: string;
@@ -21,32 +22,7 @@ const AboutTeamSection: React.FC<AboutTeamSectionProps> = ({
   containerVariants,
   itemVariants,
 }) => {
-  const teamMembers: TeamMember[] = [
-    {
-      name: "Amara Singh",
-      role: "Founder & Executive Chef",
-      image: "/images/team/amara.jpg",
-      bio: "With over 15 years of culinary excellence, Amara brings authentic Indian and Afghan flavors to every celebration.",
-    },
-    {
-      name: "James Mitchell",
-      role: "Operations Director",
-      image: "/images/team/james.jpg",
-      bio: "James ensures every event runs seamlessly, coordinating logistics with precision and care.",
-    },
-    {
-      name: "Priya Patel",
-      role: "Creative Director",
-      image: "/images/team/priya.jpg",
-      bio: "Priya transforms visions into reality, crafting bespoke experiences that reflect each client's unique story.",
-    },
-    {
-      name: "David Chen",
-      role: "Head of Service",
-      image: "/images/team/david.jpg",
-      bio: "David leads our service team with warmth and professionalism, ensuring every guest feels valued.",
-    },
-  ];
+  const teamMembers: TeamMember[] = aboutTeamData.members;
 
   return (
     <section className="relative py-24 bg-gradient-to-b from-neutral/20 via-card-background to-neutral/20 overflow-hidden">
@@ -63,10 +39,10 @@ const AboutTeamSection: React.FC<AboutTeamSectionProps> = ({
           {/* Section Header */}
           <motion.div variants={itemVariants} className="text-center mb-20">
             <SectionHeader
-              badge="Our Team"
-              title="The Hearts Behind"
-              subtitle="Every Event"
-              description="Meet the passionate individuals who bring creativity, expertise, and genuine care to every celebration we have the honor to be part of."
+              badge={aboutTeamData.header.badge}
+              title={aboutTeamData.header.title}
+              subtitle={aboutTeamData.header.subtitle}
+              description={aboutTeamData.header.description}
               alignment="center"
               maxWidth="2xl"
               showDecorator={true}

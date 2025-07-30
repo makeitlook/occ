@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import Button from "@/components/Button/Button";
+import { aboutCTAData } from "@/data";
 
 interface AboutCTASectionProps {
   itemVariants: any;
@@ -15,7 +16,7 @@ const AboutCTASection: React.FC<AboutCTASectionProps> = ({ itemVariants }) => {
       <div
         className="absolute inset-0 bg-cover bg-center z-0"
         style={{
-          backgroundImage: "url('/images/cta-background.jpg')", // replace with your image
+          backgroundImage: `url('${aboutCTAData.backgroundImage}')`,
         }}
       >
         {/* Primary colour overlay */}
@@ -34,13 +35,14 @@ const AboutCTASection: React.FC<AboutCTASectionProps> = ({ itemVariants }) => {
           className="text-center"
         >
           <h2 className="text-3xl lg:text-5xl font-light leading-tight mb-6">
-            Ready to Create Your{" "}
-            <span className="font-serif italic text-white">Perfect Event?</span>
+            {aboutCTAData.heading.preface}{" "}
+            <span className="font-serif italic text-white">
+              {aboutCTAData.heading.highlight}
+            </span>
           </h2>
 
           <p className="text-lg lg:text-xl font-light opacity-90 max-w-2xl mx-auto mb-10 leading-relaxed">
-            Let’s bring your vision to life with our signature blend of
-            authentic flavours and heartfelt service.
+            {aboutCTAData.description}
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
