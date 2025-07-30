@@ -197,10 +197,10 @@ const AboutPreview: React.FC = () => {
               />
 
               {/* Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-neutral-shadow-heavy/20 via-transparent to-transparent" />
 
               {/* Decorative Frame */}
-              <div className="absolute inset-4 border border-white/20 rounded-lg pointer-events-none" />
+              <div className="absolute inset-4 border border-border-white/20 rounded-lg pointer-events-none" />
             </div>
 
             {/* Floating Quote Card */}

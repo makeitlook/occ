@@ -2,12 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, Variant, Variants } from "framer-motion";
-import Link from "next/link";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
-import Button from "@/components/Button/Button"; // Add Button import
+import Button from "@/components/Button/Button";
 import { carouselImages } from "@/data/hero";
 
-// Define proper types for the animation variants
 interface TextVariants extends Variants {
   hidden: Variant;
   visible: Variant;
@@ -100,7 +98,7 @@ const HeroCarousel: React.FC = () => {
               }}
             />
             {/* Dark overlay for better text readability */}
-            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-neutral-shadow-heavy/40" />
           </motion.div>
         </AnimatePresence>
       </div>
@@ -110,7 +108,7 @@ const HeroCarousel: React.FC = () => {
         onClick={handlePrev}
         onMouseEnter={() => setIsAutoPlaying(false)}
         onMouseLeave={() => setIsAutoPlaying(true)}
-        className="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-4 bg-white/5 backdrop-blur-md border border-white/10 text-white hover:bg-white/10 transition-all duration-500 group"
+        className="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-4 bg-border-white/5 backdrop-blur-md border border-border-white/10 text-text-clear hover:bg-border-white/10 transition-all duration-500 group"
         aria-label="Previous image"
       >
         <ChevronLeftIcon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
@@ -120,7 +118,7 @@ const HeroCarousel: React.FC = () => {
         onClick={handleNext}
         onMouseEnter={() => setIsAutoPlaying(false)}
         onMouseLeave={() => setIsAutoPlaying(true)}
-        className="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-4 bg-white/5 backdrop-blur-md border border-white/10 text-white hover:bg-white/10 transition-all duration-500 group"
+        className="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-4 bg-border-white/5 backdrop-blur-md border border-border-white/10 text-text-clear hover:bg-border-white/10 transition-all duration-500 group"
         aria-label="Next image"
       >
         <ChevronRightIcon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
@@ -136,8 +134,8 @@ const HeroCarousel: React.FC = () => {
             onMouseLeave={() => setIsAutoPlaying(true)}
             className={`w-6 sm:w-8 h-px transition-all duration-500 ${
               index === currentIndex
-                ? "bg-white"
-                : "bg-white/30 hover:bg-white/60"
+                ? "bg-border-white"
+                : "bg-border-white/30 hover:bg-border-white/60"
             }`}
             aria-label={`Go to slide ${index + 1}`}
           />
@@ -155,7 +153,7 @@ const HeroCarousel: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-4 sm:mb-8"
           >
-            <span className="inline-block px-3 py-1 sm:px-6 sm:py-2 rounded-sm bg-white/10 backdrop-blur-md border border-white/20 text-white text-xs sm:text-sm font-light tracking-widest uppercase">
+            <span className="inline-block px-3 py-1 sm:px-6 sm:py-2 rounded-sm bg-border-white/10 backdrop-blur-md border border-border-white/20 text-text-clear text-xs sm:text-sm font-light tracking-widest uppercase">
               {carouselImages[currentIndex].subtitle}
             </span>
           </motion.div>
@@ -169,7 +167,7 @@ const HeroCarousel: React.FC = () => {
               delay: 0.4,
               ease: [0.4, 0.0, 0.2, 1],
             }}
-            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-light tracking-wide text-white mb-4 sm:mb-8 leading-tight px-2"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extralight tracking-wide text-text-clear mb-4 sm:mb-8 leading-tight px-2"
           >
             Memorable Events
             <br />
@@ -184,7 +182,7 @@ const HeroCarousel: React.FC = () => {
             initial="hidden"
             animate="visible"
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="mx-auto max-w-2xl text-sm sm:text-lg md:text-xl text-gray-200/90 leading-relaxed mb-8 sm:mb-12 font-light tracking-wide px-4"
+            className="mx-auto max-w-2xl text-sm sm:text-lg md:text-xl text-text-clear/90 leading-relaxed mb-8 sm:mb-12 font-light tracking-wide px-4"
           >
             At OCC Events & Catering, we specialise in bespoke Indian and Afghan
             menus that make every occasion unforgettable. Let's bring your
@@ -199,22 +197,13 @@ const HeroCarousel: React.FC = () => {
             transition={{ duration: 0.8, delay: 1.2 }}
             className="flex flex-col sm:flex-row gap-6 justify-center items-center"
           >
-            <Link
+            <Button
+              type="hero-primary"
               href="/contact"
-              className="group relative overflow-hidden px-10 py-4 bg-white text-neutral-900 font-medium tracking-wide rounded-sm border border-white/20 hover:bg-neutral-50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-white/10"
-            >
-              <span className="relative z-10">Get Quote</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-elements-primary-main/10 to-elements-secondary-main/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-            </Link>
-
-            <Link
-              href="/gallery"
-              className="group relative overflow-hidden px-10 py-4 bg-transparent text-white font-medium tracking-wide rounded-sm border border-white/40 hover:border-white/60 transition-all duration-500 hover:scale-105"
-            >
-              <span className="relative z-10 flex items-center">
-                View Gallery
+              extraClassNames="!px-10 !py-4"
+              icon={
                 <svg
-                  className="ml-3 w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -226,9 +215,33 @@ const HeroCarousel: React.FC = () => {
                     d="M17 8l4 4m0 0l-4 4m4-4H3"
                   />
                 </svg>
-              </span>
-              <div className="absolute inset-0 bg-white/5 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
-            </Link>
+              }
+            >
+              Get Quote
+            </Button>
+
+            <Button
+              type="hero-secondary"
+              href="/gallery"
+              extraClassNames="!px-10 !py-4"
+              icon={
+                <svg
+                  className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={1.5}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              }
+            >
+              View Gallery
+            </Button>
           </motion.div>
 
           {/* Scroll indicator */}
@@ -238,8 +251,8 @@ const HeroCarousel: React.FC = () => {
             transition={{ duration: 1, delay: 1.8 }}
             className="absolute -bottom-40 left-1/2 -translate-x-1/2"
           >
-            <div className="flex flex-col items-center space-y-4 text-white/60">
-              <span className="text-xs font-light tracking-[0.2em] uppercase">
+            <div className="flex flex-col items-center space-y-4 text-text-clear/60">
+              <span className="text-sm font-light tracking-[0.2em] uppercase">
                 Scroll to explore
               </span>
               <motion.div
@@ -249,7 +262,7 @@ const HeroCarousel: React.FC = () => {
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
-                className="w-px h-12 bg-gradient-to-b from-transparent via-white/40 to-transparent"
+                className="w-px h-12 bg-gradient-to-b from-transparent via-border-white/40 to-transparent"
               />
               <motion.div
                 animate={{ y: [0, 12, 0] }}
@@ -259,7 +272,7 @@ const HeroCarousel: React.FC = () => {
                   ease: "easeInOut",
                   delay: 0.5,
                 }}
-                className="w-1 h-1 bg-white/60 rounded-full"
+                className="w-1 h-1 bg-border-white/60 rounded-full"
               />
             </div>
           </motion.div>
@@ -267,7 +280,7 @@ const HeroCarousel: React.FC = () => {
       </div>
 
       {/* Progress bar */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-white/20 z-30">
+      <div className="absolute top-0 left-0 w-full h-1 bg-border-white/20 z-30">
         <motion.div
           key={currentIndex}
           className="h-full bg-gradient-to-r from-elements-primary-main to-elements-secondary-main"

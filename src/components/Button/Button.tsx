@@ -14,13 +14,12 @@ const chooseButtonClassName = (type: string) => {
       return "inline-flex justify-center rounded-md px-4 py-2 text-sm font-medium text-text-secondary hover:text-text-primary items-center";
     case "icon":
       return "inline-flex justify-center items-center rounded-md p-2 text-text-secondary hover:text-text-primary hover:bg-button-hover";
-    // New hero-style buttons
     case "hero-primary":
-      return "group relative overflow-hidden inline-flex justify-center items-center px-6 py-3 sm:px-10 sm:py-4 bg-white text-neutral-900 font-medium tracking-wide rounded-sm border border-white/20 hover:bg-neutral-50 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-white/10 text-sm sm:text-base";
+      return "group relative overflow-hidden inline-flex justify-center items-center px-6 py-3 sm:px-10 sm:py-4 bg-card-background text-text-primary font-medium tracking-wide rounded-sm border border-border-white/20 hover:bg-neutral-dimmed transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-border-white/10 text-sm sm:text-base";
     case "hero-secondary":
-      return "group relative overflow-hidden inline-flex justify-center items-center px-6 py-3 sm:px-10 sm:py-4 bg-transparent text-white font-medium tracking-wide rounded-sm border border-white/40 hover:border-white/60 transition-all duration-500 hover:scale-105 text-sm sm:text-base";
+      return "group relative overflow-hidden inline-flex justify-center items-center px-6 py-3 sm:px-10 sm:py-4 bg-transparent text-text-clear font-medium tracking-wide rounded-sm border border-border-white/40 hover:border-border-white/60 transition-all duration-500 hover:scale-105 text-sm sm:text-base";
     case "elegant-primary":
-      return "group relative overflow-hidden inline-flex justify-center items-center px-8 py-3 bg-elements-primary-main text-white font-medium tracking-wide rounded-sm hover:bg-elements-primary-shadow transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-elements-primary-main/25";
+      return "group relative overflow-hidden inline-flex justify-center items-center px-8 py-3 bg-elements-primary-main text-text-clear font-medium tracking-wide rounded-sm hover:bg-elements-primary-shadow transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-elements-primary-main/25";
     case "elegant-secondary":
       return "group relative overflow-hidden inline-flex justify-center items-center px-8 py-3 bg-transparent text-text-primary font-medium tracking-wide rounded-sm border border-border-dimmed hover:border-text-primary transition-all duration-500 hover:scale-105";
     default:
@@ -82,7 +81,7 @@ const Button = ({
         <div className="absolute inset-0 bg-gradient-to-r from-elements-primary-main/10 to-elements-secondary-main/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
       )}
       {(type === "hero-secondary" || type === "elegant-secondary") && (
-        <div className="absolute inset-0 bg-white/5 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+        <div className="absolute inset-0 bg-border-white/5 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
       )}
     </>
   );
