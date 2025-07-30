@@ -28,7 +28,12 @@ const KeyFeatures: React.FC = () => {
   const keyFeatures = [
     {
       icon: (
-        <svg className="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg
+          className="w-8 h-8 text-elements-primary-main"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -38,11 +43,17 @@ const KeyFeatures: React.FC = () => {
         </svg>
       ),
       title: "Custom Menus",
-      description: "Bespoke menus tailored to your preferences, dietary requirements, and cultural traditions.",
+      description:
+        "Bespoke menus tailored to your preferences, dietary requirements, and cultural traditions.",
     },
     {
       icon: (
-        <svg className="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg
+          className="w-8 h-8 text-elements-primary-main"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -52,11 +63,17 @@ const KeyFeatures: React.FC = () => {
         </svg>
       ),
       title: "Expert Chefs",
-      description: "Skilled culinary professionals who bring restaurant-quality cooking to your venue.",
+      description:
+        "Skilled culinary professionals who bring restaurant-quality cooking to your venue.",
     },
     {
       icon: (
-        <svg className="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg
+          className="w-8 h-8 text-elements-primary-main"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -66,11 +83,17 @@ const KeyFeatures: React.FC = () => {
         </svg>
       ),
       title: "Elegant Presentation",
-      description: "Beautiful plating and styling that makes every dish a visual masterpiece.",
+      description:
+        "Beautiful plating and styling that makes every dish a visual masterpiece.",
     },
     {
       icon: (
-        <svg className="w-8 h-8 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg
+          className="w-8 h-8 text-elements-primary-main"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
           <path
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -80,21 +103,24 @@ const KeyFeatures: React.FC = () => {
         </svg>
       ),
       title: "Reliable Service",
-      description: "Professional, punctual service that lets you enjoy your event worry-free.",
+      description:
+        "Professional, punctual service that lets you enjoy your event worry-free.",
     },
   ];
 
   return (
-    <section className="py-20 lg:py-32 bg-gradient-to-b from-gray-50 via-white to-gray-50 overflow-hidden">
+    <section className="relative py-20 lg:py-32 bg-gradient-to-br from-neutral-dimmed via-main-background to-neutral overflow-hidden">
       {/* Decorative elements */}
-      <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-amber-100/30 to-orange-100/30 rounded-full blur-3xl" />
+      <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-br from-elements-primary-highlight/20 to-elements-secondary-highlight/20 rounded-full blur-3xl" />
+      <div className="absolute bottom-20 right-10 w-24 h-24 bg-gradient-to-tl from-elements-secondary-highlight/15 to-elements-primary-light/15 rounded-full blur-2xl" />
 
-      <div className="container mx-auto px-6 lg:px-8">
+      <div className="container mx-auto px-6 lg:px-8 relative">
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.1 }}
           variants={staggerContainer}
+          className="max-w-7xl mx-auto"
         >
           <SectionHeader
             badge="Our Excellence"
@@ -102,23 +128,36 @@ const KeyFeatures: React.FC = () => {
             subtitle="The OCC"
             description="Four pillars of excellence that make every event exceptional"
             alignment="center"
-            maxWidth="2xl"
+            maxWidth="3xl"
             showDecorator={true}
             itemVariants={fadeInUp}
           />
 
-          <motion.div variants={staggerContainer} className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mt-16">
+          <motion.div
+            variants={staggerContainer}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-16 mt-16 lg:mt-24"
+          >
             {keyFeatures.map((feature, index) => (
               <motion.div
                 key={index}
                 variants={fadeInUp}
-                className="bg-white/80 backdrop-blur-md rounded-2xl p-6 lg:p-8 shadow-lg hover:shadow-xl transition-all duration-500 border border-gray-200/50 hover:border-amber-200 text-center group"
+                className="group relative text-center"
               >
-                <div className="w-20 h-20 bg-gradient-to-br from-amber-50 to-orange-50 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 border border-gray-200/50">
+                {/* Icon */}
+                <div className="w-20 h-20 mx-auto mb-8 bg-gradient-to-br from-elements-primary-bg/30 to-elements-secondary-highlight/20 rounded-full flex items-center justify-center group-hover:scale-110 transition-all duration-500 backdrop-blur-sm border border-elements-secondary-highlight/20">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-medium text-gray-900 mb-4">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed font-light">{feature.description}</p>
+
+                {/* Content */}
+                <div className="space-y-4">
+                  <h3 className="text-xl font-light text-text-primary group-hover:text-elements-primary-main transition-colors duration-300">
+                    {feature.title}
+                  </h3>
+                  <div className="w-12 h-px bg-gradient-to-r from-transparent via-elements-secondary-main to-transparent mx-auto opacity-60"></div>
+                  <p className="text-text-secondary leading-relaxed font-light">
+                    {feature.description}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </motion.div>

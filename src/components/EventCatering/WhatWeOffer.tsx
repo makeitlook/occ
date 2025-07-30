@@ -27,7 +27,7 @@ const WhatWeOffer: React.FC = () => {
 
   return (
     <section className="py-20 lg:py-32 bg-white">
-      <div className="container mx-auto px-6 lg:px-8">
+      <div className="container px-6 lg:px-8">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -40,30 +40,30 @@ const WhatWeOffer: React.FC = () => {
             title="Bringing Authentic Flavors"
             subtitle="to Every Occasion"
             description=""
-            alignment="center"
-            maxWidth="4xl"
+            alignment="left"
+            maxWidth="full"
             showDecorator={true}
             itemVariants={fadeInUp}
           />
 
           <motion.div
             variants={fadeInUp}
-            className="space-y-6 text-lg text-gray-600 leading-relaxed font-light"
+            className="space-y-6 text-lg text-gray-600 leading-relaxed font-light py-12"
           >
             <p>
               The OCC Events & Catering specializes in creating unforgettable
               dining experiences for weddings, engagements, corporate events,
               and private celebrations. Our passion for authentic Indian and
-              Afghan cuisine, combined with modern presentation and
-              professional service, ensures your event is truly special.
+              Afghan cuisine, combined with modern presentation and professional
+              service, ensures your event is truly special.
             </p>
 
             <p>
               Every menu is personally crafted to reflect your vision, dietary
               preferences, and cultural traditions. From intimate family
-              gatherings to grand celebrations, we bring the same level of
-              care and attention to detail that has made us the trusted choice
-              for discerning hosts across the region.
+              gatherings to grand celebrations, we bring the same level of care
+              and attention to detail that has made us the trusted choice for
+              discerning hosts across the region.
             </p>
           </motion.div>
         </motion.div>

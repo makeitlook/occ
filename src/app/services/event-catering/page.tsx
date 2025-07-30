@@ -10,13 +10,12 @@ import CallToAction from "@/components/EventCatering/CallToAction";
 
 const EventCatering = () => {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen">
       <Hero />
       <WhatWeOffer />
       <KeyFeatures />
       <Venues />
       <Testimonials />
-      <CallToAction />
     </div>
   );
 };
