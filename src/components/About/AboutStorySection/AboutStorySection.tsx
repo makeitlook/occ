@@ -4,6 +4,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
+import { aboutStoryData } from "@/data";
 
 interface AboutStorySectionProps {
   containerVariants: any;
@@ -51,23 +52,7 @@ const AboutStorySection: React.FC<AboutStorySectionProps> = ({
             <div className="lg:col-span-7 space-y-16">
               <div className="space-y-12">
                 {/* Timeline Item */}
-                {[
-                  {
-                    date: "2016 • The Beginning",
-                    text: "The OCC began with a simple dream: to share the rich culinary traditions of India and Afghanistan with our community. What started as intimate gatherings for friends and family has blossomed into something extraordinary.",
-                    color: "bg-elements-primary-main",
-                  },
-                  {
-                    date: "The Foundation",
-                    text: "Our founder, Amara Singh, grew up surrounded by aromatic spices and time-honored recipes passed down through generations. She recognised that food is more than sustenance — it's the heart of every celebration.",
-                    color: "bg-elements-secondary-main",
-                  },
-                  {
-                    date: "Today • Our Promise",
-                    text: "We're proud to be the trusted choice for celebrations throughout the region. While we've grown, our commitment remains unchanged: every dish is prepared with love, every event is planned with care.",
-                    color: "bg-elements-primary-main",
-                  },
-                ].map(({ date, text, color }, i) => (
+                {aboutStoryData.timeline.map(({ date, text, color }, i) => (
                   <motion.div
                     key={i}
                     variants={itemVariants}
@@ -88,11 +73,7 @@ const AboutStorySection: React.FC<AboutStorySectionProps> = ({
 
               {/* Stats */}
               <div className="grid grid-cols-3 gap-8 pt-12 border-t border-border-dimmed/20">
-                {[
-                  { label: "Events", value: "500+" },
-                  { label: "Years", value: "8+" },
-                  { label: "Satisfaction", value: "98%" },
-                ].map((stat, i) => (
+                {aboutStoryData.stats.map((stat, i) => (
                   <div key={i} className="text-center">
                     <p className="text-3xl font-light text-elements-primary-main mb-2">
                       {stat.value}
@@ -113,8 +94,8 @@ const AboutStorySection: React.FC<AboutStorySectionProps> = ({
                 className="group relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl"
               >
                 <Image
-                  src="/images/about/story-image.jpg"
-                  alt="Traditional spices and ingredients"
+                  src={aboutStoryData.image.src}
+                  alt={aboutStoryData.image.alt}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-700"
                   sizes="(max-width: 768px) 100vw, 40vw"
@@ -134,18 +115,16 @@ const AboutStorySection: React.FC<AboutStorySectionProps> = ({
                 className="relative pl-8 border-l-4 border-elements-primary-main/50"
               >
                 <blockquote className="text-xl italic text-text-primary font-light leading-relaxed mb-4">
-                  "Every spice tells a story, every dish carries tradition, and
-                  every event we cater becomes a bridge between cultures and
-                  hearts."
+                  {aboutStoryData.quote}
                 </blockquote>
                 <div className="flex items-center space-x-4 mt-4">
                   <div className="w-12 h-12 bg-gradient-to-br from-elements-primary-main/20 to-elements-secondary-main/20 rounded-full" />
                   <div>
                     <p className="text-base font-medium text-text-primary">
-                      Amara Singh
+                      {aboutStoryData.author}
                     </p>
                     <p className="text-sm text-text-tertiary">
-                      Founder & Executive Chef
+                      {aboutStoryData.authorTitle}
                     </p>
                   </div>
                 </div>

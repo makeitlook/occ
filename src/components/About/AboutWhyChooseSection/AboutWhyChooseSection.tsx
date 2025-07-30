@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
+import { aboutWhyChooseData } from "@/data";
 
 // Counter animation hook
 const useCounter = (end: number, duration: number = 2) => {
@@ -46,10 +47,22 @@ const AboutWhyChooseSection: React.FC<AboutWhyChooseSectionProps> = ({
   itemVariants,
 }) => {
   // Counter hooks for stats
-  const { count: eventsCount, ref: eventsRef } = useCounter(500, 2.5);
-  const { count: clientsCount, ref: clientsRef } = useCounter(98, 3);
-  const { count: yearsCount, ref: yearsRef } = useCounter(8, 2);
-  const { count: specialtiesCount, ref: specialtiesRef } = useCounter(15, 2);
+  const { count: eventsCount, ref: eventsRef } = useCounter(
+    aboutWhyChooseData.stats.events,
+    2.5
+  );
+  const { count: clientsCount, ref: clientsRef } = useCounter(
+    aboutWhyChooseData.stats.clients,
+    3
+  );
+  const { count: yearsCount, ref: yearsRef } = useCounter(
+    aboutWhyChooseData.stats.years,
+    2
+  );
+  const { count: specialtiesCount, ref: specialtiesRef } = useCounter(
+    aboutWhyChooseData.stats.specialties,
+    2
+  );
 
   const trustPoints = [
     {
@@ -68,9 +81,8 @@ const AboutWhyChooseSection: React.FC<AboutWhyChooseSectionProps> = ({
           />
         </svg>
       ),
-      title: "Award-Winning Service",
-      description:
-        "Recognized for excellence in catering and event management by industry professionals and clients alike.",
+      title: aboutWhyChooseData.trustPoints[0].title,
+      description: aboutWhyChooseData.trustPoints[0].description,
     },
     {
       icon: (
@@ -88,9 +100,8 @@ const AboutWhyChooseSection: React.FC<AboutWhyChooseSectionProps> = ({
           />
         </svg>
       ),
-      title: "98% Client Retention",
-      description:
-        "Our clients don't just book us once—they become part of our family and return for every celebration.",
+      title: aboutWhyChooseData.trustPoints[1].title,
+      description: aboutWhyChooseData.trustPoints[1].description,
     },
     {
       icon: (
@@ -108,9 +119,8 @@ const AboutWhyChooseSection: React.FC<AboutWhyChooseSectionProps> = ({
           />
         </svg>
       ),
-      title: "Bespoke Everything",
-      description:
-        "No two events are the same. We customize every detail to reflect your unique vision and preferences.",
+      title: aboutWhyChooseData.trustPoints[2].title,
+      description: aboutWhyChooseData.trustPoints[2].description,
     },
   ];
 
@@ -135,10 +145,10 @@ const AboutWhyChooseSection: React.FC<AboutWhyChooseSectionProps> = ({
           {/* Section Header */}
           <motion.div variants={itemVariants}>
             <SectionHeader
-              badge="Why Choose Us"
-              title="Trusted by Hundreds"
-              subtitle="of Clients"
-              description="Our track record speaks for itself. Here's what sets us apart and why clients return to us for their most important celebrations."
+              badge={aboutWhyChooseData.header.badge}
+              title={aboutWhyChooseData.header.title}
+              subtitle={aboutWhyChooseData.header.subtitle}
+              description={aboutWhyChooseData.header.description}
               alignment="left"
               maxWidth="4xl"
               showDecorator={true}

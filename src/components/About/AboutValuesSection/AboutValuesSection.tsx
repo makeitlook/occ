@@ -3,6 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
+import { aboutValuesData } from "@/data";
 
 interface Value {
   number: string;
@@ -20,43 +21,7 @@ const AboutValuesSection: React.FC<AboutValuesSectionProps> = ({
   containerVariants,
   itemVariants,
 }) => {
-  const values: Value[] = [
-    {
-      number: "01",
-      title: "Personal Touch",
-      description:
-        "Every event is crafted with individual attention, reflecting your unique story and vision. We believe in creating intimate connections through exceptional culinary experiences.",
-      highlight: "Individual Attention",
-    },
-    {
-      number: "02",
-      title: "Authentic Excellence",
-      description:
-        "We honor traditional flavors while embracing modern presentation and dietary preferences. Our heritage recipes meet contemporary sophistication.",
-      highlight: "Traditional Heritage",
-    },
-    {
-      number: "03",
-      title: "Trust & Reliability",
-      description:
-        "Your special moments deserve unwavering commitment. We deliver on every promise, every time, ensuring peace of mind throughout your celebration.",
-      highlight: "Unwavering Commitment",
-    },
-    {
-      number: "04",
-      title: "Creative Innovation",
-      description:
-        "From intimate gatherings to grand celebrations, we bring fresh ideas and artistic flair to every plate and presentation.",
-      highlight: "Fresh Ideas",
-    },
-    {
-      number: "05",
-      title: "Lasting Memories",
-      description:
-        "We don't just cater events; we create experiences that you and your guests will treasure forever. Every detail contributes to unforgettable moments.",
-      highlight: "Unforgettable Moments",
-    },
-  ];
+  const values: Value[] = aboutValuesData.values;
 
   return (
     <section className="relative py-24 bg-gradient-to-b from-card-background via-neutral/20 to-card-background overflow-hidden">
@@ -71,10 +36,10 @@ const AboutValuesSection: React.FC<AboutValuesSectionProps> = ({
           {/* Section Header */}
           <motion.div variants={itemVariants}>
             <SectionHeader
-              badge="Our Values"
-              title="Principles That"
-              subtitle="Define Excellence"
-              description="Five core values that guide every decision we make and every service we provide, ensuring your experience with us is nothing short of exceptional."
+              badge={aboutValuesData.header.badge}
+              title={aboutValuesData.header.title}
+              subtitle={aboutValuesData.header.subtitle}
+              description={aboutValuesData.header.description}
               alignment="left"
               maxWidth="4xl"
               showDecorator={true}
