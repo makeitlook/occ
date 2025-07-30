@@ -1,34 +1,34 @@
 export const services = [
   {
     id: 1,
-    title: "Private Dining",
-    description:
-      "Intimate culinary experiences crafted for your closest gatherings with personalized attention to every detail.",
-    image: "/images/private-dining.jpg",
+    title: "Service 1",
+    description: "Service 1 description.",
+    image:
+      "https://images.unsplash.com/photo-1527181152855-fc03fc7949c8?auto=format&fit=crop&w=700&q=80",
     overlay: "from-black/60 to-black/20",
   },
   {
     id: 2,
-    title: "Event Catering",
-    description:
-      "Seamless service for celebrations that deserve extraordinary cuisine and flawless execution.",
-    image: "/images/event-catering.jpg",
+    title: "Service 2",
+    description: "Service 2 description.",
+    image:
+      "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=700&q=80",
     overlay: "from-black/60 to-black/20",
   },
   {
     id: 3,
-    title: "Partnered Venues",
-    description:
-      "Exclusive locations and trusted partnerships for unforgettable events in stunning settings.",
-    image: "/images/partnered-venues.jpg",
+    title: "Service 3",
+    description: "Service 3 description.",
+    image:
+      "https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?auto=format&fit=crop&w=700&q=80",
     overlay: "from-black/60 to-black/20",
   },
   {
     id: 4,
-    title: "Bespoke Catering",
-    description:
-      "Personalized culinary journeys tailored to your unique vision and dietary preferences.",
-    image: "/images/bespoke-catering.jpg",
+    title: "Service 4",
+    description: "Service 4 description.",
+    image:
+      "https://images.unsplash.com/photo-1486428261073-47babd128658?auto=format&fit=crop&w=700&q=80",
     overlay: "from-black/60 to-black/20",
   },
 ];

@@ -3,6 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
+import { whyChoose } from "@/data/about";
 
 // Counter animation hook
 const useCounter = (end: number, duration: number = 2) => {
@@ -19,7 +20,7 @@ const useCounter = (end: number, duration: number = 2) => {
         if (!startTime) startTime = currentTime;
         const progress = Math.min(
           (currentTime - startTime) / (duration * 1000),
-          1
+          1,
         );
 
         const easeOutQuart = 1 - Math.pow(1 - progress, 4);
@@ -51,68 +52,7 @@ const AboutWhyChooseSection: React.FC<AboutWhyChooseSectionProps> = ({
   const { count: yearsCount, ref: yearsRef } = useCounter(8, 2);
   const { count: specialtiesCount, ref: specialtiesRef } = useCounter(15, 2);
 
-  const trustPoints = [
-    {
-      icon: (
-        <svg
-          className="w-8 h-8 text-elements-primary-main"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
-          />
-        </svg>
-      ),
-      title: "Award-Winning Service",
-      description:
-        "Recognized for excellence in catering and event management by industry professionals and clients alike.",
-    },
-    {
-      icon: (
-        <svg
-          className="w-8 h-8 text-elements-primary-main"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-          />
-        </svg>
-      ),
-      title: "98% Client Retention",
-      description:
-        "Our clients don't just book us once—they become part of our family and return for every celebration.",
-    },
-    {
-      icon: (
-        <svg
-          className="w-8 h-8 text-elements-primary-main"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={1.5}
-            d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 100 4m0-4v2m0-6V4"
-          />
-        </svg>
-      ),
-      title: "Bespoke Everything",
-      description:
-        "No two events are the same. We customize every detail to reflect your unique vision and preferences.",
-    },
-  ];
+  const trustPoints = whyChoose.trustPoints;
 
   return (
     <section className="relative py-20 lg:py-32 bg-gradient-to-b from-neutral/10 via-card-background to-neutral/10 overflow-hidden">
@@ -135,10 +75,10 @@ const AboutWhyChooseSection: React.FC<AboutWhyChooseSectionProps> = ({
           {/* Section Header */}
           <motion.div variants={itemVariants}>
             <SectionHeader
-              badge="Why Choose Us"
-              title="Trusted by Hundreds"
-              subtitle="of Clients"
-              description="Our track record speaks for itself. Here's what sets us apart and why clients return to us for their most important celebrations."
+              badge={whyChoose.header.badge}
+              title={whyChoose.header.title}
+              subtitle={whyChoose.header.subtitle}
+              description={whyChoose.header.description}
               alignment="left"
               maxWidth="4xl"
               showDecorator={true}
@@ -261,9 +201,7 @@ const AboutWhyChooseSection: React.FC<AboutWhyChooseSectionProps> = ({
             <div className="max-w-3xl mx-auto space-y-6">
               <div className="w-16 h-px bg-gradient-to-r from-transparent via-elements-primary-main/50 to-transparent mx-auto" />
               <p className="text-xl lg:text-2xl font-light text-text-primary leading-relaxed">
-                These aren't just numbers—they represent families brought
-                together, celebrations made memorable, and relationships built
-                on trust.
+                {whyChoose.bottomText}
               </p>
               <div className="inline-flex items-center space-x-3">
                 <div className="w-2 h-2 bg-elements-primary-main/40 rounded-full" />

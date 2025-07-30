@@ -21,7 +21,7 @@ const useCounter = (end: number, duration: number = 2) => {
         if (!startTime) startTime = currentTime;
         const progress = Math.min(
           (currentTime - startTime) / (duration * 1000),
-          1
+          1,
         );
 
         // Easing function for smooth animation
@@ -189,7 +189,7 @@ const AboutPreview: React.FC = () => {
             <div className="relative aspect-[4/5] rounded-lg overflow-hidden shadow-2xl">
               {/* Main Image */}
               <Image
-                src="/images/about-preview.jpg"
+                src="https://images.unsplash.com/photo-1559622214-ef2ead9f0c49?auto=format&fit=crop&w=800&q=80"
                 alt="Elegant dining setup showcasing OCC Events culinary artistry"
                 fill
                 className="object-cover"

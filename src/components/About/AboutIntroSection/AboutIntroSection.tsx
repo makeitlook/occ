@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import Image from "next/image";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
+import { aboutIntro } from "@/data/about";
 
 interface AboutIntroSectionProps {
   containerVariants: any;
@@ -32,10 +33,10 @@ const AboutIntroSection: React.FC<AboutIntroSectionProps> = ({
           {/* Text Content */}
           <div>
             <SectionHeader
-              badge="About The OCC"
-              title="Crafting Moments"
-              subtitle="Creating Memories"
-              description="At The OCC Events and Catering, we believe every celebration deserves to be extraordinary. Born from a passion for authentic Indian and Afghan cuisine, we've grown into a trusted partner for life's most meaningful moments."
+              badge={aboutIntro.header.badge}
+              title={aboutIntro.header.title}
+              subtitle={aboutIntro.header.subtitle}
+              description={aboutIntro.header.description}
               alignment="left"
               maxWidth="full"
               showDecorator={true}
@@ -46,10 +47,7 @@ const AboutIntroSection: React.FC<AboutIntroSectionProps> = ({
               variants={itemVariants}
               className="text-base leading-relaxed text-text-tertiary font-light py-8"
             >
-              Our approach is simple: combine traditional flavours with modern
-              elegance, delivered with the personal touch that makes each event
-              uniquely yours. From intimate gatherings to grand celebrations, we
-              bring authenticity and artistry to every plate.
+              {aboutIntro.paragraph}
             </motion.p>
 
             <motion.div
@@ -62,10 +60,10 @@ const AboutIntroSection: React.FC<AboutIntroSectionProps> = ({
                 transition={{ duration: 0.6 }}
                 className="text-4xl font-semibold text-elements-primary-main"
               >
-                125+
+                {aboutIntro.statNumber}+
               </motion.span>
               <p className="text-sm text-text-tertiary font-light max-w-xs">
-                Events crafted with care, flavour, and unforgettable memories.
+                {aboutIntro.statLabel}
               </p>
             </motion.div>
           </div>
@@ -79,8 +77,8 @@ const AboutIntroSection: React.FC<AboutIntroSectionProps> = ({
             className="rounded-xl overflow-hidden shadow-xl"
           >
             <Image
-              src="/images/about/intro-main.jpg"
-              alt="Elegant dining setup showcasing OCC Events"
+              src={aboutIntro.image.src}
+              alt={aboutIntro.image.alt}
               width={700}
               height={500}
               className="w-full h-full object-cover"
