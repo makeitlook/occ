@@ -270,7 +270,7 @@ const Venues: React.FC = () => {
           <motion.div variants={fadeInUp} className="text-center mt-16">
             <Button
               type="elegant-secondary"
-              href="/partnered-venues"
+              href="/services/partnered-venues"
               extraClassNames="group !px-12 !py-4"
               icon={
                 <svg

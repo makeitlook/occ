@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 const chooseButtonClassName = (type: string) => {
@@ -22,6 +24,8 @@ const chooseButtonClassName = (type: string) => {
       return "group relative overflow-hidden inline-flex justify-center items-center px-8 py-3 bg-elements-primary-main text-text-clear font-medium tracking-wide rounded-sm hover:bg-elements-primary-shadow transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-elements-primary-main/25";
     case "elegant-secondary":
       return "group relative overflow-hidden inline-flex justify-center items-center px-8 py-3 bg-transparent text-text-primary font-medium tracking-wide rounded-sm border border-border-dimmed hover:border-text-primary transition-all duration-500 hover:scale-105";
+    case "elegant-outline":
+      return "group relative overflow-hidden inline-flex justify-center items-center px-8 py-3 bg-transparent font-medium tracking-wide rounded-sm border transition-all duration-500 hover:scale-105";
     default:
       return "";
   }
