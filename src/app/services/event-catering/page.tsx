@@ -16,6 +16,7 @@ const EventCatering = () => {
       <KeyFeatures />
       <Venues />
       <Testimonials />
+      <CallToAction />
     </div>
   );
 };
