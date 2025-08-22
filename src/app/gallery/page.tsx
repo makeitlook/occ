@@ -1,6 +1,6 @@
-// Gallery.tsx (Main Gallery Page)
 "use client";
 
+// Gallery.tsx (Main Gallery Page)
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";

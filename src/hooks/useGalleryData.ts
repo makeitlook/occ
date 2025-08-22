@@ -1,7 +1,7 @@
 // hooks/useGalleryData.ts
 import { useState, useMemo } from "react";
 import { GalleryItem, GalleryCategory } from "@/types/gallery";
-import { galleryItems } from "@/data/gallery";
+import { galleryItems } from "@/data";
 
 const CATEGORIES: GalleryCategory[] = [
   { id: "all", label: "All Media", count: galleryItems.length },
