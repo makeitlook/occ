@@ -1,7 +1,6 @@
-// hooks/useVenueData.ts (Updated with Modal Data)
 import { Venue } from "@/types/venue";
 
-const VENUES_DATA: Venue[] = [
+export const venues: Venue[] = [
   {
     id: 1,
     name: "The Royal Observatory",
@@ -184,9 +183,3 @@ const VENUES_DATA: Venue[] = [
     },
   },
 ];
-
-export const useVenueData = () => {
-  return {
-    venues: VENUES_DATA,
-  };
-};
