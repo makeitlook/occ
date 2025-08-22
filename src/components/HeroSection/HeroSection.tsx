@@ -20,7 +20,7 @@ const textVariant: TextVariants = {
 
 const Banner: React.FC = () => {
   return (
-    <div className="relative mx-auto max-w-2xl py-32 sm:py-60 pt-60 justify-self-center">
+    <div className="relative mx-auto max-w-2xl bg-card-background text-text-primary rounded-lg shadow-md p-4 pt-60 justify-self-center">
       <AnimatedBackground />
       <HeroHighlight>
         <motion.h1

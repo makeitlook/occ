@@ -52,7 +52,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <body>
+      <body className="bg-card-background text-text-primary">
         <ClientLayout>{children}</ClientLayout>
       </body>
     </html>

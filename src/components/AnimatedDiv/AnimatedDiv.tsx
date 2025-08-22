@@ -2,6 +2,9 @@
 
 import { motion } from "framer-motion";
 
+const baseContainer =
+  "bg-card-background text-text-primary rounded-lg shadow-md p-4";
+
 export default function AnimatedDiv({
   children,
   className = "",
@@ -20,7 +23,7 @@ export default function AnimatedDiv({
         ease: "easeOut",
         delay,
       }}
-      className={className}
+      className={`${baseContainer} ${className}`}
     >
       {children}
     </motion.div>

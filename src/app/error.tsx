@@ -16,7 +16,7 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-neutral-dimmed-heavy">
+    <div className="flex items-center justify-center min-h-screen bg-card-background text-text-primary p-4">
       <ErrorMessage message={error.message} reset={reset} />
     </div>
   );

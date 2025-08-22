@@ -66,13 +66,15 @@ const Modal: React.FC<ModalProps> = ({
         >
           <motion.div
             variants={modalVariants}
-            className={`relative w-full max-w-2xl max-h-[80vh] bg-card-background rounded-lg shadow-2xl overflow-y-auto text-text-primary ${className}`}
+            className={`relative w-full max-w-2xl max-h-[80vh] bg-card-background text-text-primary rounded-lg shadow-md overflow-y-auto ${className}`}
             role="dialog"
             aria-modal="true"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Header */}
-            <div className="flex justify-between items-center p-4 border-b border-border-main">
+            <div
+              className="flex justify-between items-center border-b border-border-main p-4"
+            >
               <h2 className="text-lg font-medium">{title}</h2>
               <motion.button
                 onClick={onClose}
@@ -101,16 +103,16 @@ const Modal: React.FC<ModalProps> = ({
                 type: "tween",
                 duration: 0.3,
               }}
-              className="p-6 space-y-4 text-text-secondary"
+              className="p-4 space-y-4"
             >
               {children}
             </motion.div>
 
             {/* Footer */}
-            <div className="p-4 border-t border-border-main flex justify-end">
+            <div className="border-t border-border-main flex justify-end p-4">
               <button
                 onClick={onClose}
-                className="px-4 py-2 bg-elements-primary-main text-elements-primary-contrastText rounded-md hover:bg-elements-primary-shadow transition duration-200"
+                className="rounded-lg shadow-md p-4 inline-flex items-center justify-center text-sm font-medium transition-colors bg-elements-primary-main text-elements-primary-contrastText hover:bg-elements-primary-shadow"
               >
                 Close
               </button>

@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import Button from "@/components/Button/Button";
 import { motion } from "framer-motion";
 import { MdErrorOutline } from "react-icons/md";
 import { useEffect, useState } from "react";
@@ -21,14 +21,14 @@ export default function ServerErrorPage() {
 
   if (!showPage) {
     return (
-      <div className="flex justify-center items-center min-h-screen bg-neutral-dimmed-heavy">
+      <div className="flex justify-center items-center min-h-screen bg-card-background text-text-primary p-4">
         <TailSpin height="50" width="50" color="#ffffff" />
       </div>
     );
   }
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-neutral-dimmed-heavy text-center px-4">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-card-background text-text-primary text-center p-4">
       <motion.div
         initial={{ scale: 1 }}
         animate={{ scale: 1.2 }}
@@ -43,12 +43,9 @@ export default function ServerErrorPage() {
         We`&apos;`re working to fix this. Please try again later or return to
         the homepage.
       </p>
-      <Link
-        href="/"
-        className="mt-6 inline-block px-6 py-3 bg-elements-secondary-main text-white rounded-md hover:bg-elements-secondary-hover transition"
-      >
+      <Button href="/" extraClassNames="mt-6" type="continue">
         Go Home
-      </Link>
+      </Button>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 export default function ComingSoon() {
   return (
-    <main className="grid place-items-center min-h-[90dvh] bg-card-background px-6">
+    <main className="grid place-items-center min-h-[90dvh] bg-card-background text-text-primary rounded-lg shadow-md p-4">
       <div className="text-center">
         <p className="text-base font-semibold text-elements-primary-main">
           Coming Soon

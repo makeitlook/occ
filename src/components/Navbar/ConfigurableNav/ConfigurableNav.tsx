@@ -157,7 +157,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
       wrapper: "",
       header: "",
       navItem: {
-        base: "inline-flex items-center px-1 text-md font-medium",
+        base: "inline-flex items-center p-4 text-md font-medium rounded-lg shadow-md",
         active: "",
         inactive: "",
         disabled: "opacity-50 cursor-not-allowed",
@@ -170,7 +170,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
         container: "",
         backdrop: "",
         item: {
-          base: "flex flex-col py-2 text-md font-medium",
+          base: "flex flex-col p-4 text-md font-medium rounded-lg shadow-md",
           active: "",
           inactive: "",
         },
@@ -180,10 +180,9 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
     // Apply variant styles
     switch (variant) {
       case "glass":
-        styles.container = glassMorphism
-          ? "backdrop-blur-md bg-card-background/70 border-b border-border-dimmed shadow-lg rounded-xl mx-auto px-6"
-          : "backdrop-blur-md bg-card-background/70 border-b border-border-dimmed shadow-lg rounded-xl mx-auto px-6";
-        styles.mobileMenu.container = "rounded-b-xl";
+        styles.container =
+          "backdrop-blur-md bg-card-background/70 border-b border-border-dimmed rounded-lg shadow-md mx-auto p-4 text-text-primary";
+        styles.mobileMenu.container = "bg-card-background text-text-primary rounded-b-lg shadow-md";
         styles.navItem.active = [
           "border-elements-primary-main",
           "text-text-primary",
@@ -198,25 +197,25 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
         ].join(" ");
         break;
 
-        break;
       case "solid":
-        styles.container = "bg-elements-primary-shadow";
+        styles.container =
+          "bg-elements-primary-shadow text-elements-primary-contrastText rounded-lg shadow-md p-4";
         styles.navItem.active =
           "border-elements-secondary-main text-text-clear";
         styles.navItem.inactive =
           "border-transparent text-text-clear hover:border-elements-secondary-main hover:text-elements-secondary-main";
-        styles.mobileMenu.container = "bg-elements-primary-shadow";
+        styles.mobileMenu.container = "bg-elements-primary-shadow text-elements-primary-contrastText rounded-b-lg shadow-md";
         break;
       case "standard":
       default:
         styles.container = transparent
           ? "bg-transparent"
-          : "bg-neutral-dimmed-heavy";
+          : "bg-card-background text-text-primary rounded-lg shadow-md p-4";
         styles.navItem.active =
           "border-elements-primary-main text-text-primary";
         styles.navItem.inactive =
           "border-transparent text-text-secondary hover:border-text-tertiary hover:text-text-primary";
-        styles.mobileMenu.container = "bg-neutral-dimmed-heavy";
+        styles.mobileMenu.container = "bg-card-background text-text-primary rounded-b-lg shadow-md";
         break;
     }
 
@@ -225,14 +224,13 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
       if (variant === "glass") {
         styles.wrapper = "fixed w-full top-0 z-50 sm:px-40 sm:pt-5";
         // Add consistent height to prevent jumping
-        styles.container = glassMorphism
-          ? "backdrop-blur-md bg-card-background/70 border-b border-border-dimmed shadow-lg rounded-xl mx-auto px-6 min-h-[80px]" // Fixed height
-          : "backdrop-blur-md bg-card-background/70 border-b border-border-dimmed shadow-lg rounded-xl mx-auto px-6 min-h-[80px]"; // Fixed height
+        styles.container =
+          "backdrop-blur-md bg-card-background/70 border-b border-border-dimmed rounded-lg shadow-md mx-auto p-4 min-h-[80px]"; // Fixed height
       } else {
         styles.wrapper = "fixed w-full top-0 z-50";
         styles.container = transparent
           ? "bg-transparent min-h-[80px]"
-          : "bg-neutral-dimmed-heavy min-h-[80px]"; // Fixed height
+          : "bg-card-background text-text-primary rounded-lg shadow-md p-4 min-h-[80px]"; // Fixed height
       }
       styles.navItem.base += " border-b-2";
     } else {
@@ -270,7 +268,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
     return (
       <Link
         href={cta.href || (cta.phoneNumber ? `tel:${cta.phoneNumber}` : "#")}
-        className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-elements-secondary-main hover:bg-elements-secondary-hover"
+        className="inline-flex items-center p-4 text-sm font-medium rounded-lg shadow-md text-elements-primary-contrastText bg-elements-secondary-main hover:bg-elements-secondary-hover"
         onClick={closeMenu}
       >
         {cta.phoneNumber && (
@@ -338,7 +336,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.2 }}
-                  className="w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-neutral-dimmed-heavy text-sm leading-6 shadow-md ring-2 ring-divider-dimmed"
+                  className="w-screen max-w-md flex-auto overflow-hidden rounded-lg bg-card-background text-text-primary text-sm leading-6 shadow-md ring-2 ring-divider-dimmed"
                 >
                   <div className="p-2">
                     {item.children.map((subItem, index) => {
@@ -477,7 +475,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
         >
           <button
             className={classNames(
-              "flex w-full items-center justify-between rounded-lg p-3 text-left text-md font-medium focus:outline-none transition-all duration-200",
+              "flex w-full items-center justify-between rounded-lg p-4 shadow-md text-left text-md font-medium focus:outline-none transition-all duration-200",
               variant === "glass"
                 ? "hover:bg-neutral/20 active:bg-neutral/30"
                 : "hover:bg-neutral-dimmed active:bg-neutral-shadow",
@@ -548,7 +546,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
                           href={subHref}
                           scroll={href.startsWith("#")}
                           className={classNames(
-                            "group flex items-center rounded-lg p-3 text-sm font-medium transition-all duration-200",
+                            "group flex items-center rounded-lg p-4 shadow-md text-sm font-medium transition-all duration-200",
                             variant === "glass"
                               ? "hover:bg-neutral/20 active:bg-neutral/30 text-text-secondary hover:text-text-primary"
                               : "hover:bg-neutral-dimmed active:bg-neutral-shadow",
@@ -600,7 +598,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
           href={href}
           scroll={href.startsWith("#")}
           className={classNames(
-            "flex items-center rounded-lg p-3 text-md font-medium transition-all duration-200 border-l-4",
+            "flex items-center rounded-lg p-4 shadow-md text-md font-medium transition-all duration-200 border-l-4",
             variant === "glass"
               ? "hover:bg-neutral/20 active:bg-neutral/30"
               : "hover:bg-neutral-dimmed active:bg-neutral-shadow",
@@ -666,7 +664,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
 
     return (
       <button
-        className="inline-flex items-center justify-center rounded-md p-2 text-text-secondary focus:outline-none"
+        className="inline-flex items-center justify-center rounded-lg p-4 text-text-secondary focus:outline-none"
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
       >
         <span className="sr-only">
@@ -699,7 +697,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
     >
       <header className={styles.container}>
         <div className="relative">
-          <div className={variant === "glass" ? "" : "px-2 sm:px-6"}>
+          <div className={variant === "glass" ? "" : "p-4"}>
             <div className="flex h-20 items-center justify-between">
               {/* Logo section */}
               <div className="flex flex-shrink-0 items-center z-10">
@@ -760,7 +758,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
                   className={
                     variant === "glass"
                       ? "py-8 space-y-4"
-                      : "px-4 py-6 space-y-4"
+                      : "p-4 space-y-4"
                   }
                   style={
                     variant === "glass"

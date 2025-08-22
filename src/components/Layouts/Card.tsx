@@ -22,17 +22,14 @@ export default function Card({
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
-      className={
-        "divide-divider-main bg-card-background rounded-lg shadow-sm my-6 " +
-        className
-      }
+      className={`bg-card-background text-text-primary rounded-lg shadow-md p-4 divide-divider-main my-6 ${className}`}
     >
       {header && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.2, duration: 0.4 }}
-          className="px-6 py-4 sm:px-6 font-medium border-b border-border-main"
+          className={`p-4 font-medium border-b border-border-main`}
         >
           {header}
           {subtitle && (
@@ -52,7 +49,7 @@ export default function Card({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.4 }}
-        className="px-6 py-4 sm:px-6"
+        className={`p-4`}
       >
         {children}
       </motion.div>

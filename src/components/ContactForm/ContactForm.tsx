@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import PrivacyPolicyModal from "@/components/Modal/PrivacyPolicyModal";
 import { motion } from "framer-motion";
 import Modal from "@/components/Modal/Modal";
+import Button from "@/components/Button/Button";
 
 // Toast Component
 const Toast = ({
@@ -14,7 +15,7 @@ const Toast = ({
 }) => {
   return (
     <div
-      className={`fixed top-4 left-1/2 transform -translate-x-1/2 w-80 px-4 py-2 rounded-md text-text-clear ${
+      className={`fixed top-4 left-1/2 transform -translate-x-1/2 w-80 px-4 py-2 rounded-lg shadow-md text-text-clear ${
         type === "success" ? "bg-green-500" : "bg-red-500"
       }`}
       style={{ zIndex: 9999 }}
@@ -177,7 +178,7 @@ const ContactForm: React.FC<FormsProps> = ({
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="block w-full rounded-md bg-card-background px-3.5 py-2 text-sm text-text-primary outline outline-1 outline-border-main placeholder:text-text-dimmed focus:outline-2 focus:outline-elements-primary-main transition-all duration-300"
+                  className="block w-full rounded-lg bg-card-background px-3.5 py-2 text-sm text-text-primary outline outline-1 outline-border-main placeholder:text-text-dimmed focus:outline-2 focus:outline-elements-primary-main transition-all duration-300"
                 />
               </div>
             </div>
@@ -198,7 +199,7 @@ const ContactForm: React.FC<FormsProps> = ({
                   placeholder="Your Company (Optional)"
                   value={formData.company}
                   onChange={handleChange}
-                  className="block w-full rounded-md bg-card-background px-3.5 py-2 text-sm text-text-primary outline outline-1 outline-border-main placeholder:text-text-dimmed focus:outline-2 focus:outline-elements-primary-main transition-all duration-300"
+                  className="block w-full rounded-lg bg-card-background px-3.5 py-2 text-sm text-text-primary outline outline-1 outline-border-main placeholder:text-text-dimmed focus:outline-2 focus:outline-elements-primary-main transition-all duration-300"
                 />
               </div>
             </div>
@@ -220,7 +221,7 @@ const ContactForm: React.FC<FormsProps> = ({
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="block w-full rounded-md bg-card-background px-3.5 py-2 text-sm text-text-primary outline outline-1 outline-border-main placeholder:text-text-dimmed focus:outline-2 focus:outline-elements-primary-main transition-all duration-300"
+                  className="block w-full rounded-lg bg-card-background px-3.5 py-2 text-sm text-text-primary outline outline-1 outline-border-main placeholder:text-text-dimmed focus:outline-2 focus:outline-elements-primary-main transition-all duration-300"
                 />
               </div>
             </div>
@@ -242,7 +243,7 @@ const ContactForm: React.FC<FormsProps> = ({
                   required
                   value={formData.phone}
                   onChange={handleChange}
-                  className="block w-full rounded-md bg-card-background px-3.5 py-2 text-sm text-text-primary outline outline-1 outline-border-main placeholder:text-text-dimmed focus:outline-2 focus:outline-elements-primary-main transition-all duration-300"
+                  className="block w-full rounded-lg bg-card-background px-3.5 py-2 text-sm text-text-primary outline outline-1 outline-border-main placeholder:text-text-dimmed focus:outline-2 focus:outline-elements-primary-main transition-all duration-300"
                 />
               </div>
             </div>
@@ -264,7 +265,7 @@ const ContactForm: React.FC<FormsProps> = ({
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  className="block w-full text-sm rounded-md bg-card-background px-3.5 py-2 text-text-primary outline outline-1 outline-border-main placeholder:text-text-dimmed focus:outline-2 focus:outline-elements-primary-main transition-all duration-300"
+                  className="block w-full text-sm rounded-lg bg-card-background px-3.5 py-2 text-text-primary outline outline-1 outline-border-main placeholder:text-text-dimmed focus:outline-2 focus:outline-elements-primary-main transition-all duration-300"
                 />
               </div>
             </div>
@@ -277,7 +278,7 @@ const ContactForm: React.FC<FormsProps> = ({
                   id="privacy-policy"
                   checked={agreed}
                   onChange={() => setAgreed(!agreed)}
-                  className="rounded text-elements-primary-main focus:ring-elements-primary-shadow"
+                  className="rounded-lg text-elements-primary-main focus:ring-elements-primary-shadow"
                 />
               </div>
               <label
@@ -299,13 +300,13 @@ const ContactForm: React.FC<FormsProps> = ({
 
           {/* Submit Button */}
           <div className="mt-10">
-            <button
-              type="submit"
+            <Button
+              type="continue"
+              extraClassNames="w-full"
               disabled={isSubmitting}
-              className="block w-full rounded-md bg-elements-primary-main px-3.5 py-2.5 text-center text-sm font-semibold text-elements-primary-contrastText shadow-sm hover:bg-elements-primary-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-elements-primary-main transition-all duration-300 disabled:opacity-70"
             >
               {isSubmitting ? "Submitting..." : "Submit"}
-            </button>
+            </Button>
           </div>
         </form>
       </div>

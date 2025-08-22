@@ -22,9 +22,9 @@ const PageLayout: React.FC<PageLayoutProps> = ({
     <PageTransition>
       <div
         className={`
-          bg-background overflow-x-hidden
+          bg-card-background text-text-primary rounded-lg shadow-md overflow-x-hidden
           ${fullHeight ? "min-h-screen flex flex-col" : ""}
-          ${noPadding ? "" : "px-4 sm:px-6 lg:px-8 pt-28 sm:pt-36 pb-12"}
+          ${noPadding ? "" : "p-4"}
         `}
       >
         <div

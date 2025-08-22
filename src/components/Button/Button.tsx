@@ -1,21 +1,24 @@
 import React from "react";
 
+const baseButtonClass =
+  "rounded-lg shadow-md p-4 inline-flex items-center justify-center text-sm font-medium transition-colors";
+
 const chooseButtonClassName = (type: string) => {
   switch (type) {
     case "warning":
-      return "inline-flex justify-center rounded-md bg-helpers-error-button px-4 py-2 text-sm text-elements-primary-contrastText font-medium shadow-sm ring-1 ring-inset ring-helpers-error-button hover:bg-helpers-error-button-hover items-center";
+      return `${baseButtonClass} bg-helpers-error-button text-elements-primary-contrastText ring-1 ring-inset ring-helpers-error-button hover:bg-helpers-error-button-hover`;
     case "undo":
-      return "inline-flex justify-center rounded-md bg-neutral-dimmed px-4 py-2 text-sm font-medium ring-1 ring-border-shadow ring-neutral-shadow hover:bg-button-hover items-center text-text-secondary";
+      return `${baseButtonClass} bg-neutral-dimmed text-text-secondary ring-1 ring-border-shadow ring-neutral-shadow hover:bg-button-hover`;
     case "continue":
-      return "inline-flex justify-center rounded-md bg-elements-primary-main px-4 py-2 text-sm font-medium text-elements-primary-contrastText hover:bg-elements-primary-shadow items-center";
+      return `${baseButtonClass} bg-elements-primary-main text-elements-primary-contrastText hover:bg-elements-primary-shadow`;
     case "remove":
-      return "inline-flex justify-center rounded-md bg-helpers-remove-button px-4 py-2 text-sm text-elements-primary-contrastText font-medium shadow-sm ring-1 ring-inset ring-helpers-remove-button hover:bg-helpers-remove-button-hover items-center";
+      return `${baseButtonClass} bg-helpers-remove-button text-elements-primary-contrastText ring-1 ring-inset ring-helpers-remove-button hover:bg-helpers-remove-button-hover`;
     case "text":
-      return "inline-flex justify-center rounded-md px-4 py-2 text-sm font-medium text-text-secondary hover:text-text-primary items-center";
+      return `${baseButtonClass} bg-transparent text-text-secondary hover:text-text-primary`;
     case "icon":
-      return "inline-flex justify-center items-center rounded-md p-2 text-text-secondary hover:text-text-primary hover:bg-button-hover";
+      return `${baseButtonClass} bg-transparent text-text-secondary hover:text-text-primary hover:bg-button-hover`;
     default:
-      return "";
+      return baseButtonClass;
   }
 };
 
