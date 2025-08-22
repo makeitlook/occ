@@ -30,7 +30,7 @@ const GalleryItem: React.FC<GalleryItemProps> = ({
       {/* Image/Video Container */}
       <div className="relative aspect-[4/3] overflow-hidden">
         <Image
-          src={item.type === "video" ? item.thumbnail : item.src}
+          src={item.type === "video" ? item.thumbnail ?? item.src : item.src}
           alt={item.title}
           fill
           sizes="100vw"

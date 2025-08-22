@@ -271,7 +271,7 @@ const AboutWhyChooseSection: React.FC<AboutWhyChooseSectionProps> = ({
             <div className="max-w-3xl mx-auto space-y-6">
               <div className="w-16 h-px bg-gradient-to-r from-transparent via-elements-primary-main/50 to-transparent mx-auto" />
               <p className="text-xl lg:text-2xl font-light text-text-primary leading-relaxed">
-                These aren't just numbers—they represent families brought
+                These aren&apos;t just numbers—they represent families brought
                 together, celebrations made memorable, and relationships built
                 on trust.
               </p>

@@ -29,7 +29,7 @@ const CallToAction: React.FC = () => {
             <span className="font-serif italic">Unforgettable?</span>
           </h2>
           <p className="text-xl font-light mb-8 opacity-90 leading-relaxed">
-            Let's bring your vision to life with exceptional cuisine and
+            Let&apos;s bring your vision to life with exceptional cuisine and
             flawless service. Get in touch today for a personalized quote.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

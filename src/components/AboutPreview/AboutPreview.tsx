@@ -115,7 +115,7 @@ const AboutPreview: React.FC = () => {
             <motion.div variants={itemVariants}>
               <p className="text-base leading-relaxed text-text-tertiary font-light">
                 From intimate gatherings to grand celebrations, every detail is
-                meticulously crafted to reflect your vision. We don't just cater
+                meticulously crafted to reflect your vision. We don&apos;t just cater
                 events – we create lasting memories through the universal
                 language of exceptional food.
               </p>
@@ -224,8 +224,8 @@ const AboutPreview: React.FC = () => {
                   ))}
                 </div>
                 <p className="text-sm text-text-secondary italic font-light">
-                  "Exceptional service and exquisite flavors that made our
-                  celebration truly memorable."
+                  &quot;Exceptional service and exquisite flavors that made our
+                  celebration truly memorable.&quot;
                 </p>
                 <div className="text-xs text-text-tertiary font-medium">
                   — Sarah & James, Wedding Clients

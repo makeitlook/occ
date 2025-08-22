@@ -185,7 +185,7 @@ const HeroCarousel: React.FC = () => {
             className="mx-auto max-w-2xl text-sm sm:text-lg md:text-xl text-text-clear/90 leading-relaxed mb-8 sm:mb-12 font-light tracking-wide px-4"
           >
             At OCC Events & Catering, we specialise in bespoke Indian and Afghan
-            menus that make every occasion unforgettable. Let's bring your
+            menus that make every occasion unforgettable. Let&apos;s bring your
             celebration to life.
           </motion.p>
 
