@@ -2,6 +2,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Venue } from "@/types/venue";
 
@@ -29,10 +30,13 @@ const VenueCard: React.FC<VenueCardProps> = ({
       {/* Venue Card */}
       <div className="relative h-96 rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 group-hover:-translate-y-2">
         {/* Background Image */}
-        <img
+        <Image
           src={venue.image}
           alt={venue.name}
-          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+          fill
+          sizes="100vw"
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          loading="lazy"
         />
 
         {/* Overlay */}
@@ -85,7 +89,7 @@ const VenueCard: React.FC<VenueCardProps> = ({
         </div>
 
         {/* Click indicator - Updated text */}
-        <div className="absolute top-6 right-6 w-10 h-10 bg-card-background/90 backdrop-blur-md rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="absolute top-6 right-6 w-10 h-10 bg-card-background/90 backdrop-blur-md rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200">
           <svg
             className="w-5 h-5 text-elements-primary-main"
             fill="none"
@@ -108,8 +112,8 @@ const VenueCard: React.FC<VenueCardProps> = ({
         </div>
 
         {/* Hover overlay with "View Details" text */}
-        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-300 rounded-3xl flex items-center justify-center">
-          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-card-background/95 backdrop-blur-md rounded-2xl px-6 py-3 border border-elements-secondary-highlight/20">
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-200 rounded-3xl flex items-center justify-center">
+          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-card-background/95 backdrop-blur-md rounded-2xl px-6 py-3 border border-elements-secondary-highlight/20">
             <span className="text-text-primary font-medium">View Details</span>
           </div>
         </div>

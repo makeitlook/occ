@@ -2,6 +2,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Venue } from "@/types/venue";
 import Button from "@/components/Button/Button";
@@ -67,7 +68,7 @@ const VenueModal: React.FC<VenueModalProps> = ({ venue, isOpen, onClose }) => {
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+            transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
             className="fixed inset-0 z-50 flex items-center justify-center p-4"
           >
             <div className="bg-card-background rounded-3xl max-w-7xl w-full max-h-[95vh] overflow-hidden shadow-2xl border border-border-dimmed">
@@ -75,10 +76,13 @@ const VenueModal: React.FC<VenueModalProps> = ({ venue, isOpen, onClose }) => {
               <div className="flex flex-col lg:flex-row h-[95vh]">
                 {/* Left Side - Image Gallery (50%) */}
                 <div className="relative lg:w-1/2 h-64 lg:h-full bg-gradient-to-br from-elements-primary-light/10 to-elements-secondary-main/10 flex-shrink-0">
-                  <img
+                  <Image
                     src={venue.gallery[currentImageIndex]}
                     alt={`${venue.name} - Image ${currentImageIndex + 1}`}
-                    className="w-full h-full object-cover"
+                    fill
+                    sizes="100vw"
+                    className="object-cover"
+                    loading="lazy"
                   />
 
                   {/* Image Navigation */}
