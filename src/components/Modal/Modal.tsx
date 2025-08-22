@@ -2,6 +2,7 @@
 
 import React, { ReactNode } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
+import Button from "@/components/Button/Button";
 
 interface ModalProps {
   isOpen: boolean;
@@ -108,12 +109,9 @@ const Modal: React.FC<ModalProps> = ({
 
             {/* Footer */}
             <div className="p-4 border-t border-border-main flex justify-end">
-              <button
-                onClick={onClose}
-                className="px-4 py-2 bg-elements-primary-main text-elements-primary-contrastText rounded-md hover:bg-elements-primary-shadow transition duration-200"
-              >
+              <Button onClick={onClose} type="continue">
                 Close
-              </button>
+              </Button>
             </div>
           </motion.div>
         </motion.div>

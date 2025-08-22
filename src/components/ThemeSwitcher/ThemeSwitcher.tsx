@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { useTheme } from "next-themes";
 import { motion } from "framer-motion";
+import Button from "@/components/Button/Button";
 
 const ThemeSwitcher = () => {
   const { resolvedTheme, setTheme } = useTheme();
@@ -17,10 +18,11 @@ const ThemeSwitcher = () => {
   if (!mounted) return null;
 
   return (
-    <button
+    <Button
+      type="icon"
       onClick={() => setTheme(isDark ? "light" : "dark")}
-      className="relative p-2.5 rounded-full transition-colors hover:bg-muted"
       aria-label="Toggle theme"
+      extraClassNames="p-2.5"
     >
       <motion.div
         initial={false}
@@ -50,7 +52,7 @@ const ThemeSwitcher = () => {
           </svg>
         )}
       </motion.div>
-    </button>
+    </Button>
   );
 };
 

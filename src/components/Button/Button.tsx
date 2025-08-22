@@ -2,39 +2,43 @@
 
 import React from "react";
 
+const baseButtonClasses =
+  "inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium shadow-sm transition-colors";
+
 const chooseButtonClassName = (type: string) => {
   switch (type) {
     case "warning":
-      return "inline-flex justify-center rounded-md bg-helpers-error-button px-4 py-2 text-sm text-elements-primary-contrastText font-medium shadow-sm ring-1 ring-inset ring-helpers-error-button hover:bg-helpers-error-button-hover items-center";
+      return `${baseButtonClasses} bg-helpers-error-button text-elements-primary-contrastText ring-1 ring-inset ring-helpers-error-button hover:bg-helpers-error-button-hover`;
     case "undo":
-      return "inline-flex justify-center rounded-md bg-neutral-dimmed px-4 py-2 text-sm font-medium ring-1 ring-border-shadow ring-neutral-shadow hover:bg-button-hover items-center text-text-secondary";
+      return `${baseButtonClasses} bg-neutral-dimmed text-text-secondary ring-1 ring-border-shadow ring-neutral-shadow hover:bg-button-hover`;
     case "continue":
-      return "inline-flex justify-center rounded-md bg-elements-primary-main px-4 py-2 text-sm font-medium text-elements-primary-contrastText hover:bg-elements-primary-shadow items-center";
+      return `${baseButtonClasses} bg-elements-primary-main text-elements-primary-contrastText hover:bg-elements-primary-shadow`;
     case "remove":
-      return "inline-flex justify-center rounded-md bg-helpers-remove-button px-4 py-2 text-sm text-elements-primary-contrastText font-medium shadow-sm ring-1 ring-inset ring-helpers-remove-button hover:bg-helpers-remove-button-hover items-center";
+      return `${baseButtonClasses} bg-helpers-remove-button text-elements-primary-contrastText ring-1 ring-inset ring-helpers-remove-button hover:bg-helpers-remove-button-hover`;
     case "text":
-      return "inline-flex justify-center rounded-md px-4 py-2 text-sm font-medium text-text-secondary hover:text-text-primary items-center";
+      return `${baseButtonClasses} bg-transparent text-text-secondary hover:text-text-primary shadow-none`;
     case "icon":
-      return "inline-flex justify-center items-center rounded-md p-2 text-text-secondary hover:text-text-primary hover:bg-button-hover";
+      return `inline-flex justify-center items-center rounded-md p-2 text-text-secondary hover:text-text-primary hover:bg-button-hover transition-colors`;
     case "hero-primary":
-      return "group relative overflow-hidden inline-flex justify-center items-center px-6 py-3 sm:px-10 sm:py-4 bg-card-background text-text-primary font-medium tracking-wide rounded-sm border border-border-white/20 hover:bg-neutral-dimmed transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-border-white/10 text-sm sm:text-base";
+      return `group relative overflow-hidden ${baseButtonClasses} px-6 py-3 sm:px-10 sm:py-4 bg-card-background text-text-primary tracking-wide border border-border-white/20 hover:bg-neutral-dimmed duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-border-white/10 text-sm sm:text-base`;
     case "hero-secondary":
-      return "group relative overflow-hidden inline-flex justify-center items-center px-6 py-3 sm:px-10 sm:py-4 bg-transparent text-text-clear font-medium tracking-wide rounded-sm border border-border-white/40 hover:border-border-white/60 transition-all duration-500 hover:scale-105 text-sm sm:text-base";
+      return `group relative overflow-hidden ${baseButtonClasses} px-6 py-3 sm:px-10 sm:py-4 bg-transparent text-text-clear tracking-wide border border-border-white/40 hover:border-border-white/60 duration-500 hover:scale-105 text-sm sm:text-base`;
     case "elegant-primary":
-      return "group relative overflow-hidden inline-flex justify-center items-center px-8 py-3 bg-elements-primary-main text-text-clear font-medium tracking-wide rounded-sm hover:bg-elements-primary-shadow transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-elements-primary-main/25";
+      return `group relative overflow-hidden ${baseButtonClasses} px-8 py-3 bg-elements-primary-main text-text-clear tracking-wide hover:bg-elements-primary-shadow duration-500 hover:scale-105 hover:shadow-xl hover:shadow-elements-primary-main/25`;
     case "elegant-secondary":
-      return "group relative overflow-hidden inline-flex justify-center items-center px-8 py-3 bg-transparent text-text-primary font-medium tracking-wide rounded-sm border border-border-dimmed hover:border-text-primary transition-all duration-500 hover:scale-105";
+      return `group relative overflow-hidden ${baseButtonClasses} px-8 py-3 bg-transparent text-text-primary tracking-wide border border-border-dimmed hover:border-text-primary duration-500 hover:scale-105`;
     case "elegant-outline":
-      return "group relative overflow-hidden inline-flex justify-center items-center px-8 py-3 bg-transparent font-medium tracking-wide rounded-sm border transition-all duration-500 hover:scale-105";
+      return `group relative overflow-hidden ${baseButtonClasses} px-8 py-3 bg-transparent tracking-wide border duration-500 hover:scale-105`;
     default:
-      return "";
+      return baseButtonClasses;
   }
 };
 
 const iconClassName = "flex items-center w-4 h-4";
 
 interface ButtonProps {
-  type?: string;
+  type?: string; // variant
+  buttonType?: "button" | "submit" | "reset";
   extraClassNames?: string;
   children?: React.ReactNode;
   icon?: React.ReactElement;
@@ -48,6 +52,7 @@ interface ButtonProps {
 
 const Button = ({
   type = "continue",
+  buttonType = "button",
   children,
   icon,
   extraClassNames = "",
@@ -105,7 +110,7 @@ const Button = ({
 
   return (
     <button
-      type="button"
+      type={buttonType}
       disabled={disabled}
       className={commonClassNames}
       onClick={handleClick}

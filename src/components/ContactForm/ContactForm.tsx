@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import PrivacyPolicyModal from "@/components/Modal/PrivacyPolicyModal";
 import { motion } from "framer-motion";
 import Modal from "@/components/Modal/Modal";
+import Button from "@/components/Button/Button";
 
 // Toast Component
 const Toast = ({
@@ -285,13 +286,13 @@ const ContactForm: React.FC<FormsProps> = ({
                 className="text-sm text-text-tertiary"
               >
                 By selecting this, you agree to our{" "}
-                <button
-                  type="button"
+                <Button
+                  type="text"
                   onClick={() => setIsPrivacyModalOpen(true)}
-                  className="font-semibold text-elements-primary-main hover:underline"
+                  extraClassNames="font-semibold"
                 >
                   privacy&nbsp;policy
-                </button>
+                </Button>
                 .
               </label>
             </div>
@@ -299,13 +300,14 @@ const ContactForm: React.FC<FormsProps> = ({
 
           {/* Submit Button */}
           <div className="mt-10">
-            <button
-              type="submit"
+            <Button
+              type="continue"
+              buttonType="submit"
               disabled={isSubmitting}
-              className="block w-full rounded-md bg-elements-primary-main px-3.5 py-2.5 text-center text-sm font-semibold text-elements-primary-contrastText shadow-sm hover:bg-elements-primary-shadow focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-elements-primary-main transition-all duration-300 disabled:opacity-70"
+              extraClassNames="w-full"
             >
               {isSubmitting ? "Submitting..." : "Submit"}
-            </button>
+            </Button>
           </div>
         </form>
       </div>

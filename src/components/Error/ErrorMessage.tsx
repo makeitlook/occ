@@ -1,9 +1,9 @@
 "use client";
 
 import { MdErrorOutline } from "react-icons/md";
-import Link from "next/link";
 import { IconBaseProps } from "react-icons";
 import AnimatedDiv from "../AnimatedDiv/AnimatedDiv";
+import Button from "@/components/Button/Button";
 
 const ErrorIcon = MdErrorOutline as unknown as React.FC<IconBaseProps>;
 
@@ -24,19 +24,13 @@ export default function ErrorMessage({
         <p className="text-text-secondary mt-2">{message}</p>
         <div className="mt-6 flex gap-4">
           {reset && (
-            <button
-              onClick={reset}
-              className="px-4 py-2 bg-elements-secondary-main text-white rounded-md hover:bg-elements-secondary-hover transition"
-            >
+            <Button type="continue" onClick={reset}>
               Try Again
-            </button>
+            </Button>
           )}
-          <Link
-            href="/"
-            className="px-4 py-2 bg-neutral text-text-primary rounded-md hover:bg-neutral-shadow transition"
-          >
+          <Button type="continue" href="/">
             Go Home
-          </Link>
+          </Button>
         </div>
       </div>
     </AnimatedDiv>

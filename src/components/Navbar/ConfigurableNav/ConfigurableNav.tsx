@@ -161,7 +161,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
       wrapper: "",
       header: "",
       navItem: {
-        base: "relative inline-flex items-center px-4 py-2 text-sm font-normal transition-all duration-300 ease-out",
+        base: "relative inline-flex items-center px-4 py-2 text-sm font-normal rounded-md transition-all duration-300 ease-out",
         active: "",
         inactive: "",
         disabled: "opacity-40 cursor-not-allowed",
@@ -172,7 +172,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
           "absolute left-1/2 z-50 mt-3 flex w-screen max-w-max -translate-x-1/2",
         panel:
           "w-screen max-w-md flex-auto overflow-hidden rounded-3xl bg-neutral-dimmed-heavy/95 backdrop-blur-2xl border border-border-dimmed/10 shadow-xl shadow-neutral-900/[0.08]",
-        item: "group relative flex gap-x-4 rounded-2xl p-4 hover:bg-neutral/40 transition-all duration-300 ease-out",
+        item: "group relative flex gap-x-4 rounded-md p-4 hover:bg-neutral/40 transition-all duration-300 ease-out",
       },
       mobileMenu: {
         container: "",
@@ -180,7 +180,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
         panel:
           "sm:hidden bg-card-background/95 backdrop-blur-xl border-b border-border-dimmed/20 shadow-lg",
         item: {
-          base: "flex items-center px-4 py-3 text-base font-medium rounded-lg transition-all duration-300",
+          base: "flex items-center px-4 py-3 text-base font-medium rounded-md transition-all duration-300",
           active:
             "text-elements-primary-main relative after:absolute after:bottom-1 after:left-4 after:w-8 after:h-0.5 after:bg-gradient-to-r after:from-elements-primary-main after:to-elements-secondary-main after:rounded-full",
           inactive: "text-text-secondary hover:text-elements-primary-main",
@@ -353,7 +353,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
                         <div key={subItem.name}>
                           <div className={styles.dropdown.item}>
                             {Icon && (
-                              <div className="flex h-10 w-10 flex-none items-center justify-center rounded-2xl bg-gradient-to-br from-elements-primary-shadow/10 to-elements-secondary-shadow/10 group-hover:from-elements-primary-shadow/20 group-hover:to-elements-secondary-shadow/20 transition-all duration-300">
+                              <div className="flex h-10 w-10 flex-none items-center justify-center rounded-md bg-gradient-to-br from-elements-primary-shadow/10 to-elements-secondary-shadow/10 group-hover:from-elements-primary-shadow/20 group-hover:to-elements-secondary-shadow/20 transition-all duration-300">
                                 <Icon className="h-5 w-5 text-elements-primary-main group-hover:scale-110 transition-transform duration-300" />
                               </div>
                             )}
@@ -376,7 +376,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
                                   setDropdownOpen(null);
                                   closeMenu();
                                 }}
-                                className="absolute inset-0 rounded-2xl"
+                                className="absolute inset-0 rounded-md"
                                 aria-label={subItem.name}
                               />
                             )}
@@ -446,7 +446,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
         <div key={item.name} className="space-y-1">
           <button
             className={classNames(
-              "flex w-full items-center justify-between px-4 py-3 text-base font-medium rounded-lg transition-all duration-300 relative",
+              "flex w-full items-center justify-between px-4 py-3 text-base font-medium rounded-md transition-all duration-300 relative",
               dropdownOpen === item.name
                 ? "text-elements-primary-main after:absolute after:bottom-1 after:left-4 after:w-8 after:h-0.5 after:bg-gradient-to-r after:from-elements-primary-main after:to-elements-secondary-main after:rounded-full"
                 : "text-text-secondary hover:text-elements-primary-main"
@@ -490,7 +490,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
                         href={subHref}
                         scroll={href.startsWith("#")}
                         className={classNames(
-                          "flex items-center px-4 py-2 text-sm font-medium rounded-lg transition-all duration-300 relative",
+                          "flex items-center px-4 py-2 text-sm font-medium rounded-md transition-all duration-300 relative",
                           isSubActive
                             ? "text-elements-primary-main after:absolute after:bottom-0 after:left-4 after:w-6 after:h-0.5 after:bg-gradient-to-r after:from-elements-primary-main after:to-elements-secondary-main after:rounded-full"
                             : "text-text-secondary hover:text-elements-primary-main"
@@ -522,7 +522,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
           href={href}
           scroll={href.startsWith("#")}
           className={classNames(
-            "flex items-center px-4 py-3 text-base font-medium rounded-lg transition-all duration-300 relative",
+            "flex items-center px-4 py-3 text-base font-medium rounded-md transition-all duration-300 relative",
             isActive
               ? "text-elements-primary-main after:absolute after:bottom-1 after:left-4 after:w-8 after:h-0.5 after:bg-gradient-to-r after:from-elements-primary-main after:to-elements-secondary-main after:rounded-full"
               : "text-text-secondary hover:text-elements-primary-main"
@@ -539,7 +539,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
   const renderMobileMenuButton = () => (
     <button
       onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-      className="p-2 rounded-xl text-text-secondary hover:text-text-primary hover:bg-neutral/50 transition-all duration-200"
+      className="p-2 rounded-md text-text-secondary hover:text-text-primary hover:bg-neutral/50 transition-all duration-200"
       aria-label="Toggle menu"
     >
       <div

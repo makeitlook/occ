@@ -108,7 +108,7 @@ const HeroCarousel: React.FC = () => {
         onClick={handlePrev}
         onMouseEnter={() => setIsAutoPlaying(false)}
         onMouseLeave={() => setIsAutoPlaying(true)}
-        className="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-4 bg-border-white/5 backdrop-blur-md border border-border-white/10 text-text-clear hover:bg-border-white/10 transition-all duration-500 group"
+        className="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-4 bg-border-white/5 backdrop-blur-md border border-border-white/10 text-text-clear hover:bg-border-white/10 transition-all duration-500 group rounded-md shadow-sm"
         aria-label="Previous image"
       >
         <ChevronLeftIcon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
@@ -118,7 +118,7 @@ const HeroCarousel: React.FC = () => {
         onClick={handleNext}
         onMouseEnter={() => setIsAutoPlaying(false)}
         onMouseLeave={() => setIsAutoPlaying(true)}
-        className="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-4 bg-border-white/5 backdrop-blur-md border border-border-white/10 text-text-clear hover:bg-border-white/10 transition-all duration-500 group"
+        className="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-4 bg-border-white/5 backdrop-blur-md border border-border-white/10 text-text-clear hover:bg-border-white/10 transition-all duration-500 group rounded-md shadow-sm"
         aria-label="Next image"
       >
         <ChevronRightIcon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
@@ -185,7 +185,7 @@ const HeroCarousel: React.FC = () => {
             className="mx-auto max-w-2xl text-sm sm:text-lg md:text-xl text-text-clear/90 leading-relaxed mb-8 sm:mb-12 font-light tracking-wide px-4"
           >
             At OCC Events & Catering, we specialise in bespoke Indian and Afghan
-            menus that make every occasion unforgettable. Let's bring your
+            menus that make every occasion unforgettable. Let&apos;s bring your
             celebration to life.
           </motion.p>
 
