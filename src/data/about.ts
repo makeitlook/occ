@@ -186,5 +186,15 @@ export const aboutCTAData = {
   },
   description:
     "Let’s bring your vision to life with our signature blend of authentic flavours and heartfelt service.",
+  primaryAction: {
+    label: "Get Quote",
+    href: "/contact",
+    type: "hero-primary",
+  },
+  secondaryAction: {
+    label: "View Gallery",
+    href: "/gallery",
+    type: "hero-secondary",
+  },
 };
 

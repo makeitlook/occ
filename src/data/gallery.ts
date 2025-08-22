@@ -141,3 +141,23 @@ export const galleryItems: GalleryItem[] = [
     date: "2024",
   },
 ];
+
+export const galleryCTAData = {
+  backgroundImage: "/images/cta-background.jpg",
+  heading: {
+    preface: "Ready to Create Your Own",
+    highlight: "Memorable Moments?",
+  },
+  description:
+    "Let us help you craft an unforgettable celebration that will be remembered for years to come. From intimate gatherings to grand events, we'll make it extraordinary.",
+  primaryAction: {
+    label: "Start Planning Your Event",
+    href: "/contact",
+    type: "elegant-secondary",
+  },
+  secondaryAction: {
+    label: "View Our Services",
+    href: "/services",
+    type: "elegant-outline",
+  },
+};

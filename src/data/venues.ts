@@ -183,3 +183,18 @@ export const venues: Venue[] = [
     },
   },
 ];
+
+export const venuesCTAData = {
+  backgroundImage: "/images/cta-background.jpg",
+  heading: {
+    preface: "Need Help Finding the Perfect",
+    highlight: "Venue?",
+  },
+  description:
+    "Our venue specialists can help you discover unique locations that perfectly match your vision and requirements.",
+  primaryAction: {
+    label: "Request Venue Consultation",
+    href: "/contact",
+    type: "elegant-secondary",
+  },
+};

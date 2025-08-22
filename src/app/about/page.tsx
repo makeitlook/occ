@@ -6,7 +6,8 @@ import AboutStorySection from "@/components/About/AboutStorySection/AboutStorySe
 import AboutTeamSection from "@/components/About/AboutTeamSection/AboutTeamSection";
 import AboutValuesSection from "@/components/About/AboutValuesSection/AboutValuesSection";
 import AboutWhyChooseSection from "@/components/About/AboutWhyChooseSection/AboutWhyChooseSection";
-import AboutCTASection from "@/components/About/AboutCTASection/AboutCTASection";
+import CTASection from "@/components/CTASection/CTASection";
+import { aboutCTAData } from "@/data";
 
 const AboutPage: React.FC = () => {
   // Animation variants - shared across components
@@ -79,7 +80,15 @@ const AboutPage: React.FC = () => {
       />
 
       {/* Call to Action Section */}
-      <AboutCTASection itemVariants={itemVariants} />
+      <CTASection
+        itemVariants={itemVariants}
+        backgroundImage={aboutCTAData.backgroundImage}
+        headingPreface={aboutCTAData.heading.preface}
+        headingHighlight={aboutCTAData.heading.highlight}
+        description={aboutCTAData.description}
+        primaryAction={aboutCTAData.primaryAction}
+        secondaryAction={aboutCTAData.secondaryAction}
+      />
     </div>
   );
 };

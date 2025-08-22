@@ -5,9 +5,9 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
 import VenueGrid from "@/components/PartneredVenues/VenueGrid";
-import VenueCTA from "@/components/PartneredVenues/VenueCTA";
+import CTASection from "@/components/CTASection/CTASection";
 import VenueModal from "@/components/PartneredVenues/VenueModal";
-import { venues } from "@/data/venues";
+import { venues, venuesCTAData } from "@/data";
 import { Venue } from "@/types/venue";
 
 export default function PartneredVenues() {
@@ -99,7 +99,14 @@ export default function PartneredVenues() {
               onCardClick={handleCardClick}
             />
 
-            <VenueCTA variants={fadeInUp} />
+            <CTASection
+              itemVariants={fadeInUp}
+              backgroundImage={venuesCTAData.backgroundImage}
+              headingPreface={venuesCTAData.heading.preface}
+              headingHighlight={venuesCTAData.heading.highlight}
+              description={venuesCTAData.description}
+              primaryAction={venuesCTAData.primaryAction}
+            />
           </motion.div>
         </div>
       </section>

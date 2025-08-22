@@ -8,3 +8,5 @@ export * from "./footer";
 export * from "./seo";
 export * from "./about";
 export * from "./gallery";
+export * from "./event-catering";
+export * from "./private-dining";
