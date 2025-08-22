@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Button from "@/components/Button/Button";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
-import { galleryImages } from "@/data/gallery";
+import { galleryImages } from "@/data/gallery-preview";
 
 const GalleryPreview: React.FC = () => {
   const containerVariants = {
