@@ -2,6 +2,7 @@
 "use client";
 
 import React, { useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { GalleryItem } from "@/types/gallery";
 
@@ -59,7 +60,7 @@ const GalleryLightbox: React.FC<GalleryLightboxProps> = ({
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+            transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
             className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4"
           >
             <div className="max-w-7xl w-full max-h-[95vh] relative">
@@ -150,20 +151,26 @@ const GalleryLightbox: React.FC<GalleryLightboxProps> = ({
                 <div className="flex-1 flex items-center justify-center p-2 sm:p-4">
                   {item.type === "video" ? (
                     <div className="w-full aspect-video max-h-[70vh]">
-                      <iframe
+                    <iframe
+                      src={item.src}
+                      className="w-full h-full rounded-lg"
+                      allow="autoplay; fullscreen; picture-in-picture"
+                      title={item.title}
+                      loading="lazy"
+                    />
+                  </div>
+                ) : (
+                    <div className="relative w-full max-h-[70vh]">
+                      <Image
                         src={item.src}
-                        className="w-full h-full rounded-lg"
-                        allow="autoplay; fullscreen; picture-in-picture"
-                        title={item.title}
+                        alt={item.title}
+                        fill
+                        sizes="100vw"
+                        className="object-contain rounded-lg"
+                        loading="lazy"
                       />
                     </div>
-                  ) : (
-                    <img
-                      src={item.src}
-                      alt={item.title}
-                      className="max-w-full max-h-[70vh] object-contain rounded-lg"
-                    />
-                  )}
+                )}
                 </div>
 
                 {/* Content Info */}

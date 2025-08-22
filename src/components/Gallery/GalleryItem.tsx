@@ -2,6 +2,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { GalleryItem as GalleryItemType } from "@/types/gallery";
 
@@ -28,19 +29,22 @@ const GalleryItem: React.FC<GalleryItemProps> = ({
     >
       {/* Image/Video Container */}
       <div className="relative aspect-[4/3] overflow-hidden">
-        <img
+        <Image
           src={item.type === "video" ? item.thumbnail : item.src}
           alt={item.title}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          fill
+          sizes="100vw"
+          className="object-cover group-hover:scale-110 transition-transform duration-500"
+          loading="lazy"
         />
 
         {/* Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
 
         {/* Video Play Button */}
         {item.type === "video" && (
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-16 h-16 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+            <div className="w-16 h-16 bg-white/90 backdrop-blur-md rounded-full flex items-center justify-center group-hover:scale-110 transition-transform duration-200">
               <svg
                 className="w-8 h-8 text-gray-900 ml-1"
                 fill="currentColor"
@@ -53,7 +57,7 @@ const GalleryItem: React.FC<GalleryItemProps> = ({
         )}
 
         {/* Content Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+        <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-full group-hover:translate-y-0 transition-transform duration-200">
           <div className="bg-white/95 backdrop-blur-xl rounded-xl p-4">
             <h3 className="text-lg font-medium text-text-primary mb-2">
               {item.title}
