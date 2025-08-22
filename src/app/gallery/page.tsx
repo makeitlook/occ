@@ -6,18 +6,12 @@ import { motion } from "framer-motion";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
 import GalleryItem from "@/components/Gallery/GalleryItem";
 import GalleryLightbox from "@/components/Gallery/GalleryLightbox";
+import Button from "@/components/Button/Button";
 import { useGalleryData } from "@/hooks/useGalleryData";
 import { GalleryItem as GalleryItemType } from "@/types/gallery";
 
 export default function Gallery() {
-  const {
-    items,
-    categories,
-    selectedCategory,
-    setSelectedCategory,
-    viewMode,
-    setViewMode,
-  } = useGalleryData();
+  const { items } = useGalleryData();
 
   const [selectedItem, setSelectedItem] = useState<GalleryItemType | null>(
     null
@@ -106,90 +100,6 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* Filter & View Controls */}
-      <section className="py-12 bg-card-background border-b border-border-dimmed/30">
-        <div className="container mx-auto px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8"
-          >
-            {/* Category Filters */}
-            <motion.div variants={fadeInUp} className="flex flex-wrap gap-3">
-              {categories.map((category) => (
-                <button
-                  key={category.id}
-                  onClick={() => setSelectedCategory(category.id)}
-                  className={`px-6 py-3 rounded-xl font-medium transition-all duration-300 ${
-                    selectedCategory === category.id
-                      ? "bg-elements-primary-main text-elements-primary-contrastText shadow-lg"
-                      : "bg-card-background border border-border-dimmed text-text-secondary hover:text-elements-primary-main hover:border-elements-primary-main"
-                  }`}
-                >
-                  {category.label}
-                  <span className="ml-2 text-sm opacity-75">
-                    ({category.count})
-                  </span>
-                </button>
-              ))}
-            </motion.div>
-
-            {/* View Mode Toggle */}
-            <motion.div variants={fadeInUp} className="flex items-center gap-4">
-              <span className="text-text-secondary font-medium">View:</span>
-              <div className="flex bg-elements-primary-bg rounded-xl p-1 border border-border-dimmed">
-                <button
-                  onClick={() => setViewMode("masonry")}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                    viewMode === "masonry"
-                      ? "bg-elements-primary-main text-elements-primary-contrastText shadow-sm"
-                      : "text-text-secondary hover:text-elements-primary-main"
-                  }`}
-                >
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.5}
-                      d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
-                    />
-                  </svg>
-                </button>
-                <button
-                  onClick={() => setViewMode("grid")}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-300 ${
-                    viewMode === "grid"
-                      ? "bg-elements-primary-main text-elements-primary-contrastText shadow-sm"
-                      : "text-text-secondary hover:text-elements-primary-main"
-                  }`}
-                >
-                  <svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.5}
-                      d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 002 2m0 0v10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Gallery Grid */}
       <section className="py-24 bg-card-background">
         <div className="container mx-auto px-6 lg:px-8">
@@ -198,25 +108,15 @@ export default function Gallery() {
             whileInView="visible"
             viewport={{ once: true, amount: 0.1 }}
             variants={staggerContainer}
-            className={`${
-              viewMode === "masonry"
-                ? "columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-8 space-y-8"
-                : "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
-            }`}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
           >
             {items.map((item) => (
-              <div
+              <GalleryItem
                 key={item.id}
-                className={
-                  viewMode === "masonry" ? "break-inside-avoid mb-8" : ""
-                }
-              >
-                <GalleryItem
-                  item={item}
-                  onClick={handleItemClick}
-                  variants={scaleIn}
-                />
-              </div>
+                item={item}
+                onClick={handleItemClick}
+                variants={scaleIn}
+              />
             ))}
           </motion.div>
 
@@ -248,7 +148,7 @@ export default function Gallery() {
                 No items found
               </h3>
               <p className="text-text-secondary font-light">
-                Try selecting a different category to see more content.
+                Please check back later for more gallery content.
               </p>
             </motion.div>
           )}
@@ -256,33 +156,50 @@ export default function Gallery() {
       </section>
 
       {/* Call to Action */}
-      <section className="py-24 bg-gradient-to-br from-elements-primary-bg/30 to-elements-secondary-bg/20">
+      <section className="py-20 lg:py-32 bg-gradient-to-r from-elements-primary-dimmed/20 to-elements-primary-main/40">
         <div className="container mx-auto px-6 lg:px-8">
           <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeInUp}
-            className="max-w-3xl mx-auto text-center"
+            className="max-w-4xl mx-auto text-center"
           >
-            <h2 className="text-3xl lg:text-4xl font-light text-text-primary mb-6">
-              Ready to Create Your Own
-              <span className="block font-normal text-elements-primary-main">
-                Memorable Moments?
-              </span>
+            <h2 className="text-3xl lg:text-5xl font-light mb-6 leading-tight">
+              Ready to Create Your Own{" "}
+              <span className="font-serif italic">Memorable Moments?</span>
             </h2>
-            <p className="text-lg text-text-secondary font-light leading-relaxed mb-8">
+            <p className="text-xl font-light mb-8 opacity-90 leading-relaxed">
               Let us help you craft an unforgettable celebration that will be
               remembered for years to come. From intimate gatherings to grand
               events, we'll make it extraordinary.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button className="px-8 py-4 bg-elements-primary-main text-elements-primary-contrastText rounded-2xl font-medium hover:bg-elements-primary-dark transition-colors duration-300 shadow-lg hover:shadow-xl">
+              <Button
+                type="elegant-secondary"
+                href="/contact"
+                extraClassNames="bg-white text-amber-600 hover:bg-gray-50"
+                icon={
+                  <svg
+                    className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"
+                    />
+                  </svg>
+                }
+              >
                 Start Planning Your Event
-              </button>
-              <button className="px-8 py-4 border-2 border-elements-primary-main text-elements-primary-main rounded-2xl font-medium hover:bg-elements-primary-main hover:text-elements-primary-contrastText transition-all duration-300">
+              </Button>
+              <Button type="elegant-outline" href="/services">
                 View Our Services
-              </button>
+              </Button>
             </div>
           </motion.div>
         </div>

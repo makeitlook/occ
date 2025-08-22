@@ -60,13 +60,18 @@ const GalleryLightbox: React.FC<GalleryLightboxProps> = ({
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4"
           >
             <div className="max-w-7xl w-full max-h-[95vh] relative">
-              {/* Close Button */}
+              {/* Close Button - Enhanced for mobile */}
               <button
-                onClick={onClose}
-                className="absolute top-4 right-4 z-10 w-12 h-12 bg-black/60 backdrop-blur-md hover:bg-black/80 rounded-full flex items-center justify-center transition-colors duration-200 text-white"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onClose();
+                }}
+                className="absolute top-2 right-2 sm:top-4 sm:right-4 z-20 w-12 h-12 sm:w-12 sm:h-12 bg-black/80 backdrop-blur-md hover:bg-black/90 rounded-full flex items-center justify-center transition-colors duration-200 text-white touch-manipulation"
+                style={{ touchAction: "manipulation" }}
+                aria-label="Close lightbox"
               >
                 <svg
                   className="w-6 h-6"
@@ -77,17 +82,22 @@ const GalleryLightbox: React.FC<GalleryLightboxProps> = ({
                   <path
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    strokeWidth={1.5}
+                    strokeWidth={2}
                     d="M6 18L18 6M6 6l12 12"
                   />
                 </svg>
               </button>
 
-              {/* Navigation Buttons */}
+              {/* Navigation Buttons - Enhanced for mobile */}
               {onPrevious && (
                 <button
-                  onClick={onPrevious}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/60 backdrop-blur-md hover:bg-black/80 rounded-full flex items-center justify-center transition-colors duration-200 text-white"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onPrevious();
+                  }}
+                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-black/80 backdrop-blur-md hover:bg-black/90 rounded-full flex items-center justify-center transition-colors duration-200 text-white touch-manipulation"
+                  style={{ touchAction: "manipulation" }}
+                  aria-label="Previous image"
                 >
                   <svg
                     className="w-6 h-6"
@@ -107,8 +117,13 @@ const GalleryLightbox: React.FC<GalleryLightboxProps> = ({
 
               {onNext && (
                 <button
-                  onClick={onNext}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black/60 backdrop-blur-md hover:bg-black/80 rounded-full flex items-center justify-center transition-colors duration-200 text-white"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onNext();
+                  }}
+                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-black/80 backdrop-blur-md hover:bg-black/90 rounded-full flex items-center justify-center transition-colors duration-200 text-white touch-manipulation"
+                  style={{ touchAction: "manipulation" }}
+                  aria-label="Next image"
                 >
                   <svg
                     className="w-6 h-6"
@@ -127,9 +142,12 @@ const GalleryLightbox: React.FC<GalleryLightboxProps> = ({
               )}
 
               {/* Media Content */}
-              <div className="bg-black rounded-2xl overflow-hidden shadow-2xl max-h-[95vh] flex flex-col">
+              <div
+                className="bg-black rounded-lg sm:rounded-2xl overflow-hidden shadow-2xl max-h-[95vh] flex flex-col"
+                onClick={(e) => e.stopPropagation()}
+              >
                 {/* Media Container */}
-                <div className="flex-1 flex items-center justify-center p-4">
+                <div className="flex-1 flex items-center justify-center p-2 sm:p-4">
                   {item.type === "video" ? (
                     <div className="w-full aspect-video max-h-[70vh]">
                       <iframe
@@ -149,70 +167,72 @@ const GalleryLightbox: React.FC<GalleryLightboxProps> = ({
                 </div>
 
                 {/* Content Info */}
-                <div className="bg-card-background p-6 border-t border-border-dimmed">
+                <div className="bg-card-background p-4 sm:p-6 border-t border-border-dimmed">
                   <div className="max-w-4xl mx-auto">
-                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+                    <div className="flex flex-col gap-4">
                       <div>
-                        <h2 className="text-2xl font-light text-text-primary mb-2">
+                        <h2 className="text-xl sm:text-2xl font-light text-text-primary mb-2">
                           {item.title}
                         </h2>
-                        <p className="text-text-secondary leading-relaxed font-light">
+                        <p className="text-text-secondary leading-relaxed font-light text-sm sm:text-base">
                           {item.description}
                         </p>
                       </div>
 
-                      <div className="flex flex-col md:items-end gap-2 text-sm text-text-tertiary">
-                        <div className="flex items-center gap-2">
-                          <svg
-                            className="w-4 h-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={1.5}
-                              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                            />
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={1.5}
-                              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                            />
-                          </svg>
-                          <span>{item.location}</span>
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                        <div className="flex flex-col sm:flex-row gap-3 text-sm text-text-tertiary">
+                          <div className="flex items-center gap-2">
+                            <svg
+                              className="w-4 h-4 flex-shrink-0"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={1.5}
+                                d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                              />
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={1.5}
+                                d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                              />
+                            </svg>
+                            <span>{item.location}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <svg
+                              className="w-4 h-4 flex-shrink-0"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={1.5}
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                              />
+                            </svg>
+                            <span>{item.date}</span>
+                          </div>
                         </div>
-                        <div className="flex items-center gap-2">
-                          <svg
-                            className="w-4 h-4"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={1.5}
-                              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                            />
-                          </svg>
-                          <span>{item.date}</span>
-                        </div>
-                      </div>
-                    </div>
 
-                    {/* Tags */}
-                    <div className="flex flex-wrap gap-2 mt-4">
-                      {item.tags.map((tag, index) => (
-                        <span
-                          key={index}
-                          className="px-3 py-1 bg-elements-primary-bg text-elements-primary-main text-xs font-medium rounded-full"
-                        >
-                          {tag}
-                        </span>
-                      ))}
+                        {/* Tags */}
+                        {/* <div className="flex flex-wrap gap-2">
+                          {item.tags.map((tag, index) => (
+                            <span
+                              key={index}
+                              className="px-3 py-1 bg-elements-primary-bg text-elements-primary-main text-xs font-medium rounded-full"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div> */}
+                      </div>
                     </div>
                   </div>
                 </div>
