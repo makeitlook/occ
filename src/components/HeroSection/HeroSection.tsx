@@ -104,42 +104,45 @@ const HeroCarousel: React.FC = () => {
       </div>
 
       {/* Navigation Controls */}
-      <button
-        onClick={handlePrev}
-        onMouseEnter={() => setIsAutoPlaying(false)}
-        onMouseLeave={() => setIsAutoPlaying(true)}
-        className="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-4 bg-border-white/5 backdrop-blur-md border border-border-white/10 text-text-clear hover:bg-border-white/10 transition-all duration-500 group rounded-md shadow-sm"
-        aria-label="Previous image"
-      >
-        <ChevronLeftIcon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
-      </button>
+        <Button
+          type="icon"
+          onClick={handlePrev}
+          onMouseEnter={() => setIsAutoPlaying(false)}
+          onMouseLeave={() => setIsAutoPlaying(true)}
+          aria-label="Previous image"
+          extraClassNames="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-4 bg-border-white/5 backdrop-blur-md border border-border-white/10 text-text-clear hover:bg-border-white/10 hover:text-text-clear transition-all duration-500 group rounded-md shadow-sm"
+        >
+          <ChevronLeftIcon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
+        </Button>
 
-      <button
-        onClick={handleNext}
-        onMouseEnter={() => setIsAutoPlaying(false)}
-        onMouseLeave={() => setIsAutoPlaying(true)}
-        className="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-4 bg-border-white/5 backdrop-blur-md border border-border-white/10 text-text-clear hover:bg-border-white/10 transition-all duration-500 group rounded-md shadow-sm"
-        aria-label="Next image"
-      >
-        <ChevronRightIcon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
-      </button>
+        <Button
+          type="icon"
+          onClick={handleNext}
+          onMouseEnter={() => setIsAutoPlaying(false)}
+          onMouseLeave={() => setIsAutoPlaying(true)}
+          aria-label="Next image"
+          extraClassNames="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-4 bg-border-white/5 backdrop-blur-md border border-border-white/10 text-text-clear hover:bg-border-white/10 hover:text-text-clear transition-all duration-500 group rounded-md shadow-sm"
+        >
+          <ChevronRightIcon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
+        </Button>
 
       {/* Dot Indicators */}
       <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 z-30 flex space-x-2 sm:space-x-4">
-        {carouselImages.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => handleDotClick(index)}
-            onMouseEnter={() => setIsAutoPlaying(false)}
-            onMouseLeave={() => setIsAutoPlaying(true)}
-            className={`w-6 sm:w-8 h-px transition-all duration-500 ${
-              index === currentIndex
-                ? "bg-border-white"
-                : "bg-border-white/30 hover:bg-border-white/60"
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
+          {carouselImages.map((_, index) => (
+            <Button
+              key={index}
+              type="text"
+              onClick={() => handleDotClick(index)}
+              onMouseEnter={() => setIsAutoPlaying(false)}
+              onMouseLeave={() => setIsAutoPlaying(true)}
+              aria-label={`Go to slide ${index + 1}`}
+              extraClassNames={`w-6 sm:w-8 h-px p-0 rounded-none transition-all duration-500 ${
+                index === currentIndex
+                  ? "bg-border-white"
+                  : "bg-border-white/30 hover:bg-border-white/60"
+              }`}
+            />
+          ))}
       </div>
 
       {/* Content Overlay */}

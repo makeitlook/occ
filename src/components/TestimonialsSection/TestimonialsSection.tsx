@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
+import Button from "@/components/Button/Button";
 import { testimonials } from "@/data/testimonials";
 
 const TestimonialsSection: React.FC = () => {
@@ -170,20 +171,21 @@ const TestimonialsSection: React.FC = () => {
               </div>
 
               {/* Navigation Dots */}
-              <div className="flex justify-center space-x-3 mt-6">
-                {testimonials.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => setCurrentIndex(index)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      index === currentIndex
-                        ? "bg-elements-primary-main scale-125"
-                        : "bg-border-dimmed hover:bg-elements-primary-main/50"
-                    }`}
-                    aria-label={`Go to testimonial ${index + 1}`}
-                  />
-                ))}
-              </div>
+                <div className="flex justify-center space-x-3 mt-6">
+                  {testimonials.map((_, index) => (
+                    <Button
+                      key={index}
+                      type="text"
+                      onClick={() => setCurrentIndex(index)}
+                      aria-label={`Go to testimonial ${index + 1}`}
+                      extraClassNames={`w-3 h-3 rounded-full p-0 transition-all duration-300 ${
+                        index === currentIndex
+                          ? "bg-elements-primary-main scale-125"
+                          : "bg-border-dimmed hover:bg-elements-primary-main/50"
+                      }`}
+                    />
+                  ))}
+                </div>
             </div>
           </motion.div>
         </motion.div>

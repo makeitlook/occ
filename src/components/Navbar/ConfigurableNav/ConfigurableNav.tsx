@@ -9,6 +9,7 @@ import { useTheme } from "next-themes";
 import ThemeSwitcher from "@/components/ThemeSwitcher/ThemeSwitcher";
 import { usePathname } from "next/navigation";
 import IconWrapper from "@/components/IconWrapper/IconWrapper";
+import Button from "@/components/Button/Button";
 
 // Type definitions
 export interface NavItem {
@@ -299,12 +300,14 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
     if (item.children && item.children.length > 0) {
       return (
         <div key={item.name} className="relative">
-          <button
-            className={classNames(
+          <Button
+            type="text"
+            extraClassNames={classNames(
               styles.navItem.base,
               item.current || isActive
                 ? "text-elements-primary-main"
-                : "group text-text-secondary hover:text-elements-primary-main transition-all duration-300"
+                : "group text-text-secondary hover:text-elements-primary-main transition-all duration-300",
+              "px-0 py-0 shadow-none"
             )}
             onClick={() =>
               setDropdownOpen(dropdownOpen === item.name ? null : item.name)
@@ -325,7 +328,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
                 dropdownOpen === item.name ? "rotate-180" : "rotate-0"
               )}
             />
-          </button>
+          </Button>
 
           <AnimatePresence>
             {dropdownOpen === item.name && mounted && (
@@ -444,12 +447,14 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
     if (item.children && item.children.length > 0) {
       return (
         <div key={item.name} className="space-y-1">
-          <button
-            className={classNames(
+          <Button
+            type="text"
+            extraClassNames={classNames(
               "flex w-full items-center justify-between px-4 py-3 text-base font-medium rounded-md transition-all duration-300 relative",
               dropdownOpen === item.name
                 ? "text-elements-primary-main after:absolute after:bottom-1 after:left-4 after:w-8 after:h-0.5 after:bg-gradient-to-r after:from-elements-primary-main after:to-elements-secondary-main after:rounded-full"
-                : "text-text-secondary hover:text-elements-primary-main"
+                : "text-text-secondary hover:text-elements-primary-main",
+              "shadow-none"
             )}
             onClick={() =>
               setDropdownOpen(dropdownOpen === item.name ? null : item.name)
@@ -463,7 +468,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
                 dropdownOpen === item.name ? "rotate-180" : "rotate-0"
               )}
             />
-          </button>
+          </Button>
 
           <AnimatePresence>
             {dropdownOpen === item.name && (
@@ -537,10 +542,11 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
 
   // Enhanced mobile menu button
   const renderMobileMenuButton = () => (
-    <button
+    <Button
+      type="icon"
       onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-      className="p-2 rounded-md text-text-secondary hover:text-text-primary hover:bg-neutral/50 transition-all duration-200"
       aria-label="Toggle menu"
+      extraClassNames="p-2 text-text-secondary hover:text-text-primary hover:bg-neutral/50 transition-all duration-200"
     >
       <div
         className={classNames(
@@ -554,7 +560,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
           <IconWrapper icon={LuMenu} className="w-6 h-6" />
         )}
       </div>
-    </button>
+    </Button>
   );
 
   return (

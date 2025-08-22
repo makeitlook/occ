@@ -4,6 +4,7 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import Button from "@/components/Button/Button";
 import { GalleryItem } from "@/types/gallery";
 
 interface GalleryLightboxProps {
@@ -65,81 +66,87 @@ const GalleryLightbox: React.FC<GalleryLightboxProps> = ({
           >
             <div className="max-w-7xl w-full max-h-[95vh] relative">
               {/* Close Button - Enhanced for mobile */}
-              <button
-                onClick={(e) => {
+              <Button
+                type="icon"
+                onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                   e.stopPropagation();
                   onClose();
                 }}
-                className="absolute top-2 right-2 sm:top-4 sm:right-4 z-20 w-12 h-12 sm:w-12 sm:h-12 bg-black/80 backdrop-blur-md hover:bg-black/90 rounded-full flex items-center justify-center transition-colors duration-200 text-white touch-manipulation"
+                extraClassNames="absolute top-2 right-2 sm:top-4 sm:right-4 z-20 w-12 h-12 sm:w-12 sm:h-12 bg-black/80 backdrop-blur-md hover:bg-black/90 rounded-full transition-colors duration-200 text-white p-0"
                 style={{ touchAction: "manipulation" }}
                 aria-label="Close lightbox"
-              >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-              </button>
+                icon={
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                }
+              />
 
               {/* Navigation Buttons - Enhanced for mobile */}
               {onPrevious && (
-                <button
-                  onClick={(e) => {
+                <Button
+                  type="icon"
+                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                     e.stopPropagation();
                     onPrevious();
                   }}
-                  className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-black/80 backdrop-blur-md hover:bg-black/90 rounded-full flex items-center justify-center transition-colors duration-200 text-white touch-manipulation"
+                  extraClassNames="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-black/80 backdrop-blur-md hover:bg-black/90 rounded-full transition-colors duration-200 text-white p-0"
                   style={{ touchAction: "manipulation" }}
                   aria-label="Previous image"
-                >
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M15 19l-7-7 7-7"
-                    />
-                  </svg>
-                </button>
+                  icon={
+                    <svg
+                      className="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M15 19l-7-7 7-7"
+                      />
+                    </svg>
+                  }
+                />
               )}
 
               {onNext && (
-                <button
-                  onClick={(e) => {
+                <Button
+                  type="icon"
+                  onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
                     e.stopPropagation();
                     onNext();
                   }}
-                  className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-black/80 backdrop-blur-md hover:bg-black/90 rounded-full flex items-center justify-center transition-colors duration-200 text-white touch-manipulation"
+                  extraClassNames="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-black/80 backdrop-blur-md hover:bg-black/90 rounded-full transition-colors duration-200 text-white p-0"
                   style={{ touchAction: "manipulation" }}
                   aria-label="Next image"
-                >
-                  <svg
-                    className="w-6 h-6"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 5l7 7-7 7"
-                    />
-                  </svg>
-                </button>
+                  icon={
+                    <svg
+                      className="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M9 5l7 7-7 7"
+                      />
+                    </svg>
+                  }
+                />
               )}
 
               {/* Media Content */}

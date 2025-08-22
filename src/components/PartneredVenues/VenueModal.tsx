@@ -4,6 +4,7 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import Button from "@/components/Button/Button";
 import { Venue } from "@/types/venue";
 import Button from "@/components/Button/Button";
 
@@ -86,59 +87,64 @@ const VenueModal: React.FC<VenueModalProps> = ({ venue, isOpen, onClose }) => {
                   />
 
                   {/* Image Navigation */}
-                  {venue.gallery.length > 1 && (
-                    <>
-                      <button
-                        onClick={prevImage}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-card-background/90 backdrop-blur-md hover:bg-card-background rounded-full flex items-center justify-center transition-colors duration-200 border border-border-dimmed/30"
-                      >
-                        <svg
-                          className="w-5 h-5 text-text-primary"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={1.5}
-                            d="M15 19l-7-7 7-7"
-                          />
-                        </svg>
-                      </button>
-                      <button
-                        onClick={nextImage}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-card-background/90 backdrop-blur-md hover:bg-card-background rounded-full flex items-center justify-center transition-colors duration-200 border border-border-dimmed/30"
-                      >
-                        <svg
-                          className="w-5 h-5 text-text-primary"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={1.5}
-                            d="M9 5l7 7-7 7"
-                          />
-                        </svg>
-                      </button>
+                    {venue.gallery.length > 1 && (
+                      <>
+                        <Button
+                          type="icon"
+                          onClick={prevImage}
+                          extraClassNames="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-card-background/90 backdrop-blur-md hover:bg-card-background rounded-full transition-colors duration-200 border border-border-dimmed/30 text-text-primary p-0"
+                          icon={
+                            <svg
+                              className="w-5 h-5"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={1.5}
+                                d="M15 19l-7-7 7-7"
+                              />
+                            </svg>
+                          }
+                        />
+                        <Button
+                          type="icon"
+                          onClick={nextImage}
+                          extraClassNames="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-card-background/90 backdrop-blur-md hover:bg-card-background rounded-full transition-colors duration-200 border border-border-dimmed/30 text-text-primary p-0"
+                          icon={
+                            <svg
+                              className="w-5 h-5"
+                              fill="none"
+                              stroke="currentColor"
+                              viewBox="0 0 24 24"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={1.5}
+                                d="M9 5l7 7-7 7"
+                              />
+                            </svg>
+                          }
+                        />
 
                       {/* Image indicators */}
-                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                        {venue.gallery.map((_, index) => (
-                          <button
-                            key={index}
-                            onClick={() => setCurrentImageIndex(index)}
-                            className={`w-2.5 h-2.5 rounded-full transition-all duration-200 ${
-                              index === currentImageIndex
-                                ? "bg-elements-primary-main"
-                                : "bg-card-background/60 hover:bg-card-background/80"
-                            }`}
-                          />
-                        ))}
-                      </div>
+                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                          {venue.gallery.map((_, index) => (
+                            <Button
+                              key={index}
+                              type="text"
+                              onClick={() => setCurrentImageIndex(index)}
+                              extraClassNames={`w-2.5 h-2.5 rounded-full p-0 transition-all duration-200 ${
+                                index === currentImageIndex
+                                  ? "bg-elements-primary-main"
+                                  : "bg-card-background/60 hover:bg-card-background/80"
+                              }`}
+                            />
+                          ))}
+                        </div>
                     </>
                   )}
                 </div>
@@ -177,24 +183,26 @@ const VenueModal: React.FC<VenueModalProps> = ({ venue, isOpen, onClose }) => {
                       </div>
                     </div>
 
-                    <button
-                      onClick={onClose}
-                      className="w-8 h-8 bg-elements-primary-bg hover:bg-elements-primary-light rounded-full flex items-center justify-center transition-colors duration-200"
-                    >
-                      <svg
-                        className="w-4 h-4 text-text-primary"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={1.5}
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </button>
+                      <Button
+                        type="icon"
+                        onClick={onClose}
+                        extraClassNames="w-8 h-8 bg-elements-primary-bg hover:bg-elements-primary-light rounded-full transition-colors duration-200 text-text-primary p-0"
+                        icon={
+                          <svg
+                            className="w-4 h-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={1.5}
+                              d="M6 18L18 6M6 6l12 12"
+                            />
+                          </svg>
+                        }
+                      />
                   </div>
 
                   {/* Scrollable Content */}

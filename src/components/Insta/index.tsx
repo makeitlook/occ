@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import Button from "@/components/Button/Button";
 import { instaImages } from "@/data/insta";
 
 
@@ -10,17 +10,20 @@ const Insta = () => {
                 {instaImages.map((img, idx) => (
                     <div key={idx} className="mx-auto imageContainer">
                         <Image src={img.src} width={306} height={306} alt={img.alt} />
-                        <Link href={"https://instagram.com"} target="_blank">
-                            <button
-                                className="hidden text-white font-semibold absolute z-10"
-                                style={{
-                                    top: "45%",
-                                    right: "45%",
-                                }}
-                            >
-                                <Image src="/images/insta/instagram.svg" alt="instagram" width={36} height={36} />
-                            </button>
-                        </Link>
+                        <Button
+                          href="https://instagram.com"
+                          target="_blank"
+                          type="icon"
+                          extraClassNames="hidden absolute z-10 text-white font-semibold p-0"
+                          style={{ top: "45%", right: "45%" }}
+                        >
+                          <Image
+                            src="/images/insta/instagram.svg"
+                            alt="instagram"
+                            width={36}
+                            height={36}
+                          />
+                        </Button>
                     </div>
                 ))}
             </div>
