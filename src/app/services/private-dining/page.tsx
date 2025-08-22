@@ -4,6 +4,8 @@ import React from "react";
 import { motion } from "framer-motion";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
 import Button from "@/components/Button/Button";
+import CTASection from "@/components/CTASection/CTASection";
+import { privateDiningCTAData } from "@/data";
 
 export default function PrivateDining() {
   // Animation variants
@@ -524,98 +526,15 @@ export default function PrivateDining() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-gray-900 to-gray-800">
-        <div className="container mx-auto px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            className="max-w-4xl mx-auto text-center text-white"
-          >
-            <h2 className="text-4xl lg:text-5xl font-light mb-6 leading-tight">
-              Ready to Transform
-              <span className="block font-normal bg-gradient-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent">
-                Your Dining Room?
-              </span>
-            </h2>
-
-            <p className="text-xl font-light mb-12 opacity-90 leading-relaxed">
-              Let us bring the restaurant experience to you. Book your private
-              dining experience today and create memories that will last a
-              lifetime.
-            </p>
-
-            <div className="flex flex-col sm:flex-row gap-6 justify-center mb-12">
-              <Button
-                type="elegant-primary"
-                href="/contact"
-                extraClassNames="text-lg px-12 py-5 bg-gradient-to-r from-amber-500 to-orange-600 shadow-2xl group"
-                icon={
-                  <svg
-                    className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.5}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
-                }
-              >
-                Book Now
-              </Button>
-              <Button
-                type="elegant-outline"
-                href="tel:02012345678"
-                extraClassNames="text-lg px-12 py-5 border-2 border-white/30 text-white hover:bg-white hover:text-gray-900"
-              >
-                Call to Discuss
-              </Button>
-            </div>
-
-            <div className="flex flex-col sm:flex-row gap-8 justify-center text-white/80">
-              <div className="flex items-center justify-center gap-3">
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                  />
-                </svg>
-                <span>020 1234 5678</span>
-              </div>
-              <div className="flex items-center justify-center gap-3">
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={1.5}
-                    d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-                <span>hello@theocccatering.co.uk</span>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <CTASection
+        itemVariants={fadeInUp}
+        backgroundImage={privateDiningCTAData.backgroundImage}
+        headingPreface={privateDiningCTAData.heading.preface}
+        headingHighlight={privateDiningCTAData.heading.highlight}
+        description={privateDiningCTAData.description}
+        primaryAction={privateDiningCTAData.primaryAction}
+        secondaryAction={privateDiningCTAData.secondaryAction}
+      />
     </div>
   );
 }

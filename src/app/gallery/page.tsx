@@ -6,7 +6,8 @@ import { motion } from "framer-motion";
 import SectionHeader from "@/components/SectionHeader/SectionHeader";
 import GalleryItem from "@/components/Gallery/GalleryItem";
 import GalleryLightbox from "@/components/Gallery/GalleryLightbox";
-import Button from "@/components/Button/Button";
+import CTASection from "@/components/CTASection/CTASection";
+import { galleryCTAData } from "@/data";
 import { useGalleryData } from "@/hooks/useGalleryData";
 import { GalleryItem as GalleryItemType } from "@/types/gallery";
 
@@ -155,55 +156,15 @@ export default function Gallery() {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="py-20 lg:py-32 bg-gradient-to-r from-elements-primary-dimmed/20 to-elements-primary-main/40">
-        <div className="container mx-auto px-6 lg:px-8">
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <h2 className="text-3xl lg:text-5xl font-light mb-6 leading-tight">
-              Ready to Create Your Own{" "}
-              <span className="font-serif italic">Memorable Moments?</span>
-            </h2>
-            <p className="text-xl font-light mb-8 opacity-90 leading-relaxed">
-              Let us help you craft an unforgettable celebration that will be
-              remembered for years to come. From intimate gatherings to grand
-              events, we&apos;ll make it extraordinary.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button
-                type="elegant-secondary"
-                href="/contact"
-                extraClassNames="bg-white text-amber-600 hover:bg-gray-50"
-                icon={
-                  <svg
-                    className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={1.5}
-                      d="M17 8l4 4m0 0l-4 4m4-4H3"
-                    />
-                  </svg>
-                }
-              >
-                Start Planning Your Event
-              </Button>
-              <Button type="elegant-outline" href="/services">
-                View Our Services
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <CTASection
+        itemVariants={fadeInUp}
+        backgroundImage={galleryCTAData.backgroundImage}
+        headingPreface={galleryCTAData.heading.preface}
+        headingHighlight={galleryCTAData.heading.highlight}
+        description={galleryCTAData.description}
+        primaryAction={galleryCTAData.primaryAction}
+        secondaryAction={galleryCTAData.secondaryAction}
+      />
 
       {/* Lightbox */}
       <GalleryLightbox
