@@ -98,18 +98,18 @@ export default function PartneredVenues() {
               itemVariants={scaleIn}
               onCardClick={handleCardClick}
             />
-
-            <CTASection
-              itemVariants={fadeInUp}
-              backgroundImage={venuesCTAData.backgroundImage}
-              headingPreface={venuesCTAData.heading.preface}
-              headingHighlight={venuesCTAData.heading.highlight}
-              description={venuesCTAData.description}
-              primaryAction={venuesCTAData.primaryAction}
-            />
           </motion.div>
         </div>
       </section>
+
+      <CTASection
+        itemVariants={fadeInUp}
+        backgroundImage={venuesCTAData.backgroundImage}
+        headingPreface={venuesCTAData.heading.preface}
+        headingHighlight={venuesCTAData.heading.highlight}
+        description={venuesCTAData.description}
+        primaryAction={venuesCTAData.primaryAction}
+      />
 
       {/* Venue Modal */}
       <VenueModal
