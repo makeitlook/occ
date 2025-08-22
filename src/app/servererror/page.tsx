@@ -40,7 +40,7 @@ export default function ServerErrorPage() {
         500 - Something went wrong
       </h1>
       <p className="text-text-secondary mt-2">
-        We`&apos;`re working to fix this. Please try again later or return to
+        We&apos;re working to fix this. Please try again later or return to
         the homepage.
       </p>
       <Link

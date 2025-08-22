@@ -506,7 +506,7 @@ export default function PrivateDining() {
                   </div>
 
                   <blockquote className="text-lg text-gray-700 italic leading-relaxed mb-6">
-                    "{testimonial.quote}"
+                    &quot;{testimonial.quote}&quot;
                   </blockquote>
 
                   <div className="border-t border-gray-200 pt-4">

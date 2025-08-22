@@ -128,7 +128,7 @@ const TestimonialsSection: React.FC = () => {
                       <div className="text-center space-y-6">
                         {/* Quote */}
                         <blockquote className="text-lg lg:text-xl font-light leading-relaxed text-text-primary italic tracking-wide">
-                          "{testimonials[currentIndex].quote}"
+                          &quot;{testimonials[currentIndex].quote}&quot;
                         </blockquote>
 
                         {/* Author Information */}

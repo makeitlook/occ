@@ -172,7 +172,7 @@ export default function Gallery() {
             <p className="text-xl font-light mb-8 opacity-90 leading-relaxed">
               Let us help you craft an unforgettable celebration that will be
               remembered for years to come. From intimate gatherings to grand
-              events, we'll make it extraordinary.
+              events, we&apos;ll make it extraordinary.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button
