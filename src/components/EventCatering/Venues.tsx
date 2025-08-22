@@ -72,7 +72,7 @@ const Venues: React.FC = () => {
             badge="Venue Partners"
             title="Our Trusted"
             subtitle="Venues"
-            description="Exquisite locations where we've crafted countless memorable celebrations across London and the Southeast"
+            description="Exquisite locations where we've crafted countless memorable celebrations across London."
             alignment="center"
             maxWidth="3xl"
             showDecorator={true}
@@ -93,7 +93,7 @@ const Venues: React.FC = () => {
                     alt={venues[0].name}
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent rounded-3xl" />
                   <div className="absolute bottom-8 left-8 right-8">
                     <div className="bg-card-background/95 backdrop-blur-xl rounded-2xl p-6 border border-elements-secondary-highlight/20">
                       <h3 className="text-2xl font-light text-text-primary mb-2">
@@ -134,7 +134,7 @@ const Venues: React.FC = () => {
                     alt={venues[1].name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl" />
                   <div className="absolute bottom-4 left-4 right-4">
                     <div className="bg-card-background/90 backdrop-blur-lg rounded-xl p-4">
                       <h4 className="font-light text-text-primary text-lg mb-1">
@@ -155,7 +155,7 @@ const Venues: React.FC = () => {
                     alt={venues[2].name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl" />
                   <div className="absolute bottom-4 left-4 right-4">
                     <div className="bg-card-background/90 backdrop-blur-lg rounded-xl p-4">
                       <h4 className="font-light text-text-primary text-lg mb-1">
@@ -177,7 +177,7 @@ const Venues: React.FC = () => {
                     alt={venues[3].name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl" />
                   <div className="absolute bottom-4 left-4 right-4">
                     <div className="bg-card-background/90 backdrop-blur-lg rounded-xl p-4">
                       <h4 className="font-light text-text-primary text-lg mb-1">
@@ -198,7 +198,7 @@ const Venues: React.FC = () => {
                     alt={venues[4].name}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-2xl" />
                   <div className="absolute bottom-4 left-4 right-4">
                     <div className="bg-card-background/90 backdrop-blur-lg rounded-xl p-4">
                       <h4 className="font-light text-text-primary text-lg mb-1">
@@ -231,7 +231,7 @@ const Venues: React.FC = () => {
                       alt={venue.name}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-2xl" />
                     <div className="absolute bottom-6 left-6 right-6">
                       <div className="bg-card-background/95 backdrop-blur-xl rounded-xl p-5">
                         <h3 className="text-xl font-light text-text-primary mb-2">
