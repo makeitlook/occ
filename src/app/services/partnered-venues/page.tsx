@@ -7,11 +7,10 @@ import SectionHeader from "@/components/SectionHeader/SectionHeader";
 import VenueGrid from "@/components/PartneredVenues/VenueGrid";
 import VenueCTA from "@/components/PartneredVenues/VenueCTA";
 import VenueModal from "@/components/PartneredVenues/VenueModal";
-import { useVenueData } from "@/hooks/useVenueData";
+import { venues } from "@/data/venues";
 import { Venue } from "@/types/venue";
 
 export default function PartneredVenues() {
-  const { venues } = useVenueData();
   const [selectedVenue, setSelectedVenue] = useState<Venue | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
