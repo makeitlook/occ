@@ -34,7 +34,6 @@ const slideVariants = {
   }),
 };
 
-
 const HeroCarousel: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState(0);
@@ -108,7 +107,7 @@ const HeroCarousel: React.FC = () => {
         onClick={handlePrev}
         onMouseEnter={() => setIsAutoPlaying(false)}
         onMouseLeave={() => setIsAutoPlaying(true)}
-        className="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-4 bg-border-white/5 backdrop-blur-md border border-border-white/10 text-text-clear hover:bg-border-white/10 transition-all duration-500 group"
+        className="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-4 bg-border-white/5 backdrop-blur-md border border-border-white/10 text-text-primary hover:bg-border-white/10 transition-all duration-500 group"
         aria-label="Previous image"
       >
         <ChevronLeftIcon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
@@ -118,7 +117,7 @@ const HeroCarousel: React.FC = () => {
         onClick={handleNext}
         onMouseEnter={() => setIsAutoPlaying(false)}
         onMouseLeave={() => setIsAutoPlaying(true)}
-        className="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-4 bg-border-white/5 backdrop-blur-md border border-border-white/10 text-text-clear hover:bg-border-white/10 transition-all duration-500 group"
+        className="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-4 bg-border-white/5 backdrop-blur-md border border-border-white/10 text-text-primary hover:bg-border-white/10 transition-all duration-500 group"
         aria-label="Next image"
       >
         <ChevronRightIcon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
@@ -153,7 +152,7 @@ const HeroCarousel: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-4 sm:mb-8"
           >
-            <span className="inline-block px-3 py-1 sm:px-6 sm:py-2 rounded-sm bg-border-white/10 backdrop-blur-md border border-border-white/20 text-text-clear text-xs sm:text-sm font-light tracking-widest uppercase">
+            <span className="inline-block px-3 py-1 sm:px-6 sm:py-2 rounded-sm bg-border-white/10 backdrop-blur-md border border-border-white/20 text-text-primary text-xs sm:text-sm font-light tracking-widest uppercase">
               {carouselImages[currentIndex].subtitle}
             </span>
           </motion.div>
@@ -167,7 +166,7 @@ const HeroCarousel: React.FC = () => {
               delay: 0.4,
               ease: [0.4, 0.0, 0.2, 1],
             }}
-            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extralight tracking-wide text-text-clear mb-4 sm:mb-8 leading-tight px-2"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extralight tracking-wide text-text-primary mb-4 sm:mb-8 leading-tight px-2"
           >
             Memorable Events
             <br />
@@ -182,7 +181,7 @@ const HeroCarousel: React.FC = () => {
             initial="hidden"
             animate="visible"
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="mx-auto max-w-2xl text-sm sm:text-lg md:text-xl text-text-clear/90 leading-relaxed mb-8 sm:mb-12 font-light tracking-wide px-4"
+            className="mx-auto max-w-2xl text-sm sm:text-lg md:text-xl text-text-primary/90 leading-relaxed mb-8 sm:mb-12 font-light tracking-wide px-4"
           >
             At OCC Events & Catering, we specialise in bespoke Indian and Afghan
             menus that make every occasion unforgettable. Let&apos;s bring your
@@ -251,7 +250,7 @@ const HeroCarousel: React.FC = () => {
             transition={{ duration: 1, delay: 1.8 }}
             className="absolute -bottom-40 left-1/2 -translate-x-1/2"
           >
-            <div className="flex flex-col items-center space-y-4 text-text-clear/60">
+            <div className="flex flex-col items-center space-y-4 text-text-primary/60">
               <span className="text-sm font-light tracking-[0.2em] uppercase">
                 Scroll to explore
               </span>

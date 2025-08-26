@@ -30,20 +30,17 @@ export const aboutStoryData = {
   timeline: [
     {
       date: "2016 • The Beginning",
-      text:
-        "The OCC began with a simple dream: to share the rich culinary traditions of India and Afghanistan with our community. What started as intimate gatherings for friends and family has blossomed into something extraordinary.",
+      text: "The OCC began with a simple dream: to share the rich culinary traditions of India and Afghanistan with our community. What started as intimate gatherings for friends and family has blossomed into something extraordinary.",
       color: "bg-elements-primary-main",
     },
     {
       date: "The Foundation",
-      text:
-        "Our founder, Amara Singh, grew up surrounded by aromatic spices and time-honored recipes passed down through generations. She recognised that food is more than sustenance — it's the heart of every celebration.",
+      text: "Our founder, grew up surrounded by aromatic spices and time-honored recipes passed down through generations. She recognised that food is more than sustenance — it's the heart of every celebration.",
       color: "bg-elements-secondary-main",
     },
     {
       date: "Today • Our Promise",
-      text:
-        "We're proud to be the trusted choice for celebrations throughout the region. While we've grown, our commitment remains unchanged: every dish is prepared with love, every event is planned with care.",
+      text: "We're proud to be the trusted choice for celebrations throughout the region. While we've grown, our commitment remains unchanged: every dish is prepared with love, every event is planned with care.",
       color: "bg-elements-primary-main",
     },
   ],
@@ -58,8 +55,8 @@ export const aboutStoryData = {
   },
   quote:
     "Every spice tells a story, every dish carries tradition, and every event we cater becomes a bridge between cultures and hearts.",
-  author: "Amara Singh",
-  authorTitle: "Founder & Executive Chef",
+  author: "Name",
+  authorTitle: "Title",
 };
 
 export const aboutTeamData = {
@@ -72,28 +69,28 @@ export const aboutTeamData = {
   },
   members: [
     {
-      name: "Amara Singh",
-      role: "Founder & Executive Chef",
+      name: "Name",
+      role: "Title",
       image: "/images/team/amara.jpg",
-      bio: "With over 15 years of culinary excellence, Amara brings authentic Indian and Afghan flavors to every celebration.",
+      bio: "With over 15 years of culinary excellence, Name brings authentic Indian and Afghan flavors to every celebration.",
     },
     {
-      name: "James Mitchell",
-      role: "Operations Director",
+      name: "Name",
+      role: "Title",
       image: "/images/team/james.jpg",
-      bio: "James ensures every event runs seamlessly, coordinating logistics with precision and care.",
+      bio: "Name ensures every event runs seamlessly, coordinating logistics with precision and care.",
     },
     {
-      name: "Priya Patel",
-      role: "Creative Director",
+      name: "Name",
+      role: "Title",
       image: "/images/team/priya.jpg",
-      bio: "Priya transforms visions into reality, crafting bespoke experiences that reflect each client's unique story.",
+      bio: "Name transforms visions into reality, crafting bespoke experiences that reflect each client's unique story.",
     },
     {
-      name: "David Chen",
-      role: "Head of Service",
+      name: "Name",
+      role: "Title",
       image: "/images/team/david.jpg",
-      bio: "David leads our service team with warmth and professionalism, ensuring every guest feels valued.",
+      bio: "Name leads our service team with warmth and professionalism, ensuring every guest feels valued.",
     },
   ],
 };
@@ -197,4 +194,3 @@ export const aboutCTAData = {
     type: "hero-secondary",
   },
 };
-
