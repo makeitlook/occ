@@ -70,7 +70,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
   logo,
   showThemeSwitcher = false,
   mobileFullScreen = false,
-  transparent = false,
+  transparent = true, // Default to transparent for hero section
   glassMorphism = false,
   className = "",
 }) => {
@@ -90,14 +90,21 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
   const pathname = usePathname();
   const [activeSection, setActiveSection] = useState<string | null>(null);
 
+  // Define homepage check early so it's available everywhere
+  const isHomepage = pathname === "/";
+
   // Function to close the mobile menu
   const closeMenu = () => setMobileMenuOpen(false);
 
-  // Scroll detection for dynamic navbar styling
+  // Enhanced scroll detection for hero section transition
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      // Trigger solid background after scrolling past 50vh (hero section height)
+      const heroHeight = window.innerHeight * 0.5;
+      setScrolled(window.scrollY > heroHeight);
     };
+
+    handleScroll(); // Check initial scroll position
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -154,7 +161,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
   // Exit early if navigation should not be shown or not mounted
   if (!showNavigation || !mounted) return null;
 
-  // Component styling based on variant and position
+  // Component styling based on variant and position with enhanced transparency logic
   const getNavStyles = () => {
     let styles = {
       container: "",
@@ -165,7 +172,7 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
         active: "",
         inactive: "",
         disabled: "opacity-40 cursor-not-allowed",
-        hover: "", // Removed the transform hover effects
+        hover: "",
       },
       dropdown: {
         container:
@@ -188,37 +195,46 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
       },
     };
 
-    // Apply variant styles
+    // Enhanced transparency logic based on scroll state
+    const isTransparent = transparent && !scrolled && !mobileMenuOpen;
+
+    // Apply variant styles with improved transparency handling
     switch (variant) {
       case "glass":
-        styles.container =
-          scrolled || !transparent
-            ? "bg-card-background/70 backdrop-blur-xl border-b border-border-dimmed/20 shadow-lg shadow-neutral-900/5"
-            : "bg-transparent";
+        styles.container = isTransparent
+          ? "bg-transparent"
+          : "bg-card-background/80 backdrop-blur-xl border-b border-border-dimmed/20 shadow-lg shadow-neutral-900/5";
         styles.navItem.active =
           "text-elements-primary-main relative after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-8 after:h-0.5 after:bg-gradient-to-r after:from-elements-primary-main after:to-elements-secondary-main after:rounded-full";
         styles.navItem.inactive =
-          "text-text-secondary hover:text-elements-primary-main transition-all duration-300";
+          isTransparent && isHomepage
+            ? "text-white hover:text-elements-primary-main transition-all duration-300"
+            : "text-text-secondary hover:text-elements-primary-main transition-all duration-300";
         break;
 
       case "minimal":
-        styles.container = "bg-transparent";
+        styles.container = isTransparent
+          ? "bg-transparent"
+          : "bg-card-background/60 backdrop-blur-md border-b border-border-dimmed/10";
         styles.navItem.active =
           "text-elements-primary-main font-semibold relative after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-8 after:h-0.5 after:bg-gradient-to-r after:from-elements-primary-main after:to-elements-secondary-main after:rounded-full";
         styles.navItem.inactive =
-          "text-text-secondary hover:text-elements-primary-main transition-all duration-300";
+          isTransparent && isHomepage
+            ? "text-white hover:text-elements-primary-main transition-all duration-300"
+            : "text-text-secondary hover:text-elements-primary-main transition-all duration-300";
         break;
 
       case "standard":
       default:
-        styles.container =
-          scrolled || !transparent
-            ? "bg-card-background/90 backdrop-blur-xl border-b border-border-dimmed/10 shadow-sm"
-            : "bg-transparent";
+        styles.container = isTransparent
+          ? "bg-transparent"
+          : "bg-card-background/90 backdrop-blur-xl border-b border-border-dimmed/10 shadow-sm";
         styles.navItem.active =
           "text-elements-primary-main relative after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:w-8 after:h-0.5 after:bg-gradient-to-r after:from-elements-primary-main after:to-elements-secondary-main after:rounded-full";
         styles.navItem.inactive =
-          "text-text-secondary hover:text-elements-primary-main transition-all duration-300";
+          isTransparent && isHomepage
+            ? "text-white hover:text-elements-primary-main transition-all duration-300"
+            : "text-text-secondary hover:text-elements-primary-main transition-all duration-300";
         break;
     }
 
@@ -256,11 +272,17 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
   const CTAButton = () => {
     if (!cta.show) return null;
 
+    const isTransparent = transparent && !scrolled && !mobileMenuOpen;
+    const isHomepage = pathname === "/";
+
     return (
       <div className="relative">
         <Link
           href={cta.href || (cta.phoneNumber ? `tel:${cta.phoneNumber}` : "#")}
-          className="relative inline-flex items-center px-6 py-2.5 text-sm font-semibold text-text-primary transition-all duration-300 hover:-translate-y-0.5 hover:text-elements-primary-main group"
+          className={classNames(
+            "relative inline-flex items-center px-6 py-2.5 text-sm font-semibold transition-all duration-300 hover:-translate-y-0.5 hover:text-elements-primary-main group",
+            isTransparent && isHomepage ? "text-white" : "text-text-primary"
+          )}
           onClick={closeMenu}
         >
           {cta.phoneNumber && (
@@ -304,6 +326,8 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
               styles.navItem.base,
               item.current || isActive
                 ? "text-elements-primary-main"
+                : transparent && !scrolled && !mobileMenuOpen && isHomepage
+                ? "group text-white hover:text-elements-primary-main transition-all duration-300"
                 : "group text-text-secondary hover:text-elements-primary-main transition-all duration-300"
             )}
             onClick={() =>
@@ -403,6 +427,8 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
             styles.navItem.base,
             isActive
               ? "text-elements-primary-main"
+              : transparent && !scrolled && !mobileMenuOpen && isHomepage
+              ? "group text-white hover:text-elements-primary-main transition-all duration-300"
               : "group text-text-secondary hover:text-elements-primary-main transition-all duration-300"
           )}
           onClick={closeMenu}
@@ -536,36 +562,49 @@ const ConfigurableNavigation: React.FC<NavProps> = ({
   };
 
   // Enhanced mobile menu button
-  const renderMobileMenuButton = () => (
-    <button
-      onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-      className="p-2 rounded-xl text-text-secondary hover:text-text-primary hover:bg-neutral/50 transition-all duration-200"
-      aria-label="Toggle menu"
-    >
-      <div
+  const renderMobileMenuButton = () => {
+    const isTransparent = transparent && !scrolled && !mobileMenuOpen;
+    const isHomepage = pathname === "/";
+
+    return (
+      <button
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
         className={classNames(
-          "transition-transform duration-200",
-          mobileMenuOpen ? "rotate-90" : "rotate-0"
+          "p-2 rounded-xl transition-all duration-200 hover:bg-neutral/50",
+          isTransparent && isHomepage
+            ? "text-white hover:text-text-primary"
+            : "text-text-secondary hover:text-text-primary"
         )}
+        aria-label="Toggle menu"
       >
-        {mobileMenuOpen ? (
-          <IconWrapper icon={LuX} className="w-6 h-6" />
-        ) : (
-          <IconWrapper icon={LuMenu} className="w-6 h-6" />
-        )}
-      </div>
-    </button>
-  );
+        <div
+          className={classNames(
+            "transition-transform duration-200",
+            mobileMenuOpen ? "rotate-90" : "rotate-0"
+          )}
+        >
+          {mobileMenuOpen ? (
+            <IconWrapper icon={LuX} className="w-6 h-6" />
+          ) : (
+            <IconWrapper icon={LuMenu} className="w-6 h-6" />
+          )}
+        </div>
+      </button>
+    );
+  };
 
   return (
     <div
       className={classNames(
-        "fixed w-full top-0 z-50 transition-all duration-300",
+        "fixed w-full top-0 z-50 transition-all duration-500 ease-out",
         className
       )}
     >
       <header
-        className={classNames("transition-all duration-300", styles.container)}
+        className={classNames(
+          "transition-all duration-500 ease-out",
+          styles.container
+        )}
       >
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-20 items-center justify-between">

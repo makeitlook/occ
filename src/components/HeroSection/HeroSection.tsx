@@ -1,159 +1,53 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence, Variant, Variants } from "framer-motion";
-import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/outline";
+import React from "react";
+import { motion } from "framer-motion";
 import Button from "@/components/Button/Button";
-import { carouselImages } from "@/data/hero";
-
-interface TextVariants extends Variants {
-  hidden: Variant;
-  visible: Variant;
-}
 
 // Animation variants
-const textVariant: TextVariants = {
+const textVariant = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0 },
 };
 
-const slideVariants = {
-  enter: (direction: number) => ({
-    x: direction > 0 ? 1000 : -1000,
-    opacity: 0,
-  }),
-  center: {
-    zIndex: 1,
-    x: 0,
-    opacity: 1,
-  },
-  exit: (direction: number) => ({
-    zIndex: 0,
-    x: direction < 0 ? 1000 : -1000,
-    opacity: 0,
-  }),
-};
-
-const HeroCarousel: React.FC = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
-
-  // Auto-play functionality
-  useEffect(() => {
-    if (!isAutoPlaying) return;
-
-    const interval = setInterval(() => {
-      setDirection(1);
-      setCurrentIndex((prevIndex) =>
-        prevIndex === carouselImages.length - 1 ? 0 : prevIndex + 1
-      );
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [currentIndex, isAutoPlaying]);
-
-  const handleNext = () => {
-    setDirection(1);
-    setCurrentIndex(
-      currentIndex === carouselImages.length - 1 ? 0 : currentIndex + 1
-    );
-  };
-
-  const handlePrev = () => {
-    setDirection(-1);
-    setCurrentIndex(
-      currentIndex === 0 ? carouselImages.length - 1 : currentIndex - 1
-    );
-  };
-
-  const handleDotClick = (index: number) => {
-    setDirection(index > currentIndex ? 1 : -1);
-    setCurrentIndex(index);
-  };
-
+const HeroSection: React.FC = () => {
   return (
     <div className="relative h-screen w-full overflow-hidden">
-      {/* Background Image Carousel */}
+      {/* Background Video */}
       <div className="absolute inset-0">
-        <AnimatePresence initial={false} custom={direction}>
-          <motion.div
-            key={currentIndex}
-            custom={direction}
-            variants={slideVariants}
-            initial="enter"
-            animate="center"
-            exit="exit"
-            transition={{
-              x: { type: "spring", stiffness: 300, damping: 30 },
-              opacity: { duration: 0.4 },
-            }}
-            className="absolute inset-0"
+        <motion.div
+          className="absolute inset-0"
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.5, ease: "easeOut" }}
+        >
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover"
           >
-            <div
-              className="w-full h-full bg-cover bg-center bg-no-repeat"
-              style={{
-                backgroundImage: `url(${carouselImages[currentIndex].src})`,
-              }}
-            />
-            {/* Dark overlay for better text readability */}
-            <div className="absolute inset-0 bg-neutral-shadow-heavy/40" />
-          </motion.div>
-        </AnimatePresence>
-      </div>
-
-      {/* Navigation Controls */}
-      <button
-        onClick={handlePrev}
-        onMouseEnter={() => setIsAutoPlaying(false)}
-        onMouseLeave={() => setIsAutoPlaying(true)}
-        className="absolute left-2 sm:left-8 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-4 bg-border-white/5 backdrop-blur-md border border-border-white/10 text-text-primary hover:bg-border-white/10 transition-all duration-500 group"
-        aria-label="Previous image"
-      >
-        <ChevronLeftIcon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
-      </button>
-
-      <button
-        onClick={handleNext}
-        onMouseEnter={() => setIsAutoPlaying(false)}
-        onMouseLeave={() => setIsAutoPlaying(true)}
-        className="absolute right-2 sm:right-8 top-1/2 -translate-y-1/2 z-30 p-2 sm:p-4 bg-border-white/5 backdrop-blur-md border border-border-white/10 text-text-primary hover:bg-border-white/10 transition-all duration-500 group"
-        aria-label="Next image"
-      >
-        <ChevronRightIcon className="w-4 h-4 sm:w-5 sm:h-5 group-hover:scale-110 transition-transform duration-300" />
-      </button>
-
-      {/* Dot Indicators */}
-      <div className="absolute bottom-4 sm:bottom-8 left-1/2 -translate-x-1/2 z-30 flex space-x-2 sm:space-x-4">
-        {carouselImages.map((_, index) => (
-          <button
-            key={index}
-            onClick={() => handleDotClick(index)}
-            onMouseEnter={() => setIsAutoPlaying(false)}
-            onMouseLeave={() => setIsAutoPlaying(true)}
-            className={`w-6 sm:w-8 h-px transition-all duration-500 ${
-              index === currentIndex
-                ? "bg-border-white"
-                : "bg-border-white/30 hover:bg-border-white/60"
-            }`}
-            aria-label={`Go to slide ${index + 1}`}
-          />
-        ))}
+            <source src="/hero.mp4" type="video/mp4" />
+            <source src="/hero.webm" type="video/webm" />
+          </video>
+          {/* Dark overlay */}
+          <div className="absolute inset-0 bg-black/70" />
+        </motion.div>
       </div>
 
       {/* Content Overlay */}
       <div className="absolute inset-0 z-20 flex items-center justify-center px-4">
         <div className="relative mx-auto max-w-4xl text-center w-full">
-          {/* Dynamic slide content */}
+          {/* Subtitle badge */}
           <motion.div
-            key={currentIndex}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="mb-4 sm:mb-8"
           >
-            <span className="inline-block px-3 py-1 sm:px-6 sm:py-2 rounded-sm bg-border-white/10 backdrop-blur-md border border-border-white/20 text-text-primary text-xs sm:text-sm font-light tracking-widest uppercase">
-              {carouselImages[currentIndex].subtitle}
+            <span className="inline-block px-3 py-1 sm:px-6 sm:py-2 rounded-sm bg-border-white/10 backdrop-blur-md border border-border-white/20 text-white text-xs sm:text-sm font-light tracking-widest uppercase">
+              Premium Catering
             </span>
           </motion.div>
 
@@ -166,12 +60,12 @@ const HeroCarousel: React.FC = () => {
               delay: 0.4,
               ease: [0.4, 0.0, 0.2, 1],
             }}
-            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extralight tracking-wide text-text-primary mb-4 sm:mb-8 leading-tight px-2"
+            className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-extralight tracking-wide text-white mb-4 sm:mb-8 leading-tight px-2"
           >
-            Memorable Events
+            Big Enough to Deliver
             <br />
             <span className="font-serif italic bg-gradient-to-r from-elements-primary-main to-elements-secondary-main bg-clip-text text-transparent">
-              Crafted by OCC
+              Small Enough to Care
             </span>
           </motion.h1>
 
@@ -181,11 +75,10 @@ const HeroCarousel: React.FC = () => {
             initial="hidden"
             animate="visible"
             transition={{ duration: 0.8, delay: 0.8 }}
-            className="mx-auto max-w-2xl text-sm sm:text-lg md:text-xl text-text-primary/90 leading-relaxed mb-8 sm:mb-12 font-light tracking-wide px-4"
+            className="mx-auto max-w-2xl text-sm sm:text-lg md:text-xl text-white leading-relaxed mb-8 sm:mb-12 font-light tracking-wide px-4"
           >
-            At OCC Events & Catering, we specialise in bespoke Indian and Afghan
-            menus that make every occasion unforgettable. Let&apos;s bring your
-            celebration to life.
+            At the OCC, we create unforgettable events by combining exceptional
+            food, flawless service, and genuine hospitality.
           </motion.p>
 
           {/* CTA Buttons */}
@@ -216,7 +109,7 @@ const HeroCarousel: React.FC = () => {
                 </svg>
               }
             >
-              Get Quote
+              Get in Touch
             </Button>
 
             <Button
@@ -250,7 +143,7 @@ const HeroCarousel: React.FC = () => {
             transition={{ duration: 1, delay: 1.8 }}
             className="absolute -bottom-40 left-1/2 -translate-x-1/2"
           >
-            <div className="flex flex-col items-center space-y-4 text-text-primary/60">
+            <div className="flex flex-col items-center space-y-4 text-white">
               <span className="text-sm font-light tracking-[0.2em] uppercase">
                 Scroll to explore
               </span>
@@ -277,23 +170,8 @@ const HeroCarousel: React.FC = () => {
           </motion.div>
         </div>
       </div>
-
-      {/* Progress bar */}
-      <div className="absolute top-0 left-0 w-full h-1 bg-border-white/20 z-30">
-        <motion.div
-          key={currentIndex}
-          className="h-full bg-gradient-to-r from-elements-primary-main to-elements-secondary-main"
-          initial={{ width: "0%" }}
-          animate={{ width: "100%" }}
-          transition={{
-            duration: 5,
-            ease: "linear",
-            repeat: isAutoPlaying ? Infinity : 0,
-          }}
-        />
-      </div>
     </div>
   );
 };
 
-export default HeroCarousel;
+export default HeroSection;

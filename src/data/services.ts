@@ -1,10 +1,10 @@
 export const services = [
   {
     id: 1,
-    title: "Private Dining",
+    title: "Restaurant",
     description:
-      "Intimate culinary experiences crafted for your closest gatherings with personalized attention to every detail.",
-    image: "/images/private-dining.jpg",
+      "Intimate culinary experiences crafted for your closest gatherings with personalised attention to every detail.",
+    image: "/images/restaurant.jpg",
     overlay: "from-black/60 to-black/20",
   },
   {

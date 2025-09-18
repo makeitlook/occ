@@ -43,7 +43,7 @@ const ServicesOverview: React.FC = () => {
   };
 
   return (
-    <section className="relative py-20 lg:py-32 bg-card-background overflow-hidden">
+    <section className="relative pt-20 lg:pt-32 bg-card-background overflow-hidden">
       <div className="container mx-auto px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -94,6 +94,9 @@ const ServicesOverview: React.FC = () => {
             <div
               className={`absolute inset-0 bg-gradient-to-t ${service.overlay} transition-opacity duration-500 group-hover:opacity-80`}
             />
+
+            {/* Dark Hover Overlay for Better Text Readability */}
+            <div className="absolute inset-0 bg-neutral-shadow-heavy/0 transition-all duration-500 ease-out group-hover:bg-black/60" />
 
             {/* Content Container */}
             <div className="absolute inset-0 flex flex-col justify-end p-6 lg:p-8">
@@ -177,7 +180,7 @@ const ServicesOverview: React.FC = () => {
       </motion.div>
 
       {/* Bottom CTA */}
-      <div className="container mx-auto px-6 lg:px-8">
+      {/* <div className="container mx-auto px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -208,7 +211,7 @@ const ServicesOverview: React.FC = () => {
             View All Services
           </Button>
         </motion.div>
-      </div>
+      </div> */}
     </section>
   );
 };

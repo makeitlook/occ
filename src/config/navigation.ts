@@ -53,14 +53,14 @@ export function useNavigationConfig(): {
             icon: LuFile,
             description: "Catering for weddings and events",
           },
-          {
-            name: "Private Dining",
-            sectionId: "private-dining",
-            path: "/services/private-dining",
-            current: pathname === "/services/private-dining",
-            icon: LuFile,
-            description: "Restaurant-quality meals at home",
-          },
+          // {
+          //   name: "Private Dining",
+          //   sectionId: "private-dining",
+          //   path: "/services/private-dining",
+          //   current: pathname === "/services/private-dining",
+          //   icon: LuFile,
+          //   description: "Restaurant-quality meals at home",
+          // },
           {
             name: "Partnered Venues",
             sectionId: "partnered-venues",

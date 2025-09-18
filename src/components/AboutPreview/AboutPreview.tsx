@@ -101,10 +101,11 @@ const AboutPreview: React.FC = () => {
               badge="About Our Story"
               title="Crafting Extraordinary"
               subtitle="Culinary Experiences"
-              description="At The OCC Events and Catering, we believe that exceptional
-                dining is an art form. Our passionate team brings together
-                traditional flavors and contemporary presentation to create
-                unforgettable culinary journeys."
+              description="At the OCC , we believe every event deserves more than just a meal —
+            it deserves a culinary experience that brings people together and
+            leaves lasting memories. Our promise is to deliver exceptional food,
+            flawless service, and genuine hospitality at every event, big or
+            small."
               alignment="left"
               maxWidth="4xl"
               showDecorator={true}
@@ -115,8 +116,8 @@ const AboutPreview: React.FC = () => {
             <motion.div variants={itemVariants}>
               <p className="text-base leading-relaxed text-text-tertiary font-light">
                 From intimate gatherings to grand celebrations, every detail is
-                meticulously crafted to reflect your vision. We don&apos;t just cater
-                events – we create lasting memories through the universal
+                meticulously crafted to reflect your vision. We don&apos;t just
+                cater events – we create lasting memories through the universal
                 language of exceptional food.
               </p>
             </motion.div>
