@@ -26,6 +26,8 @@ const chooseButtonClassName = (type: string) => {
       return "group relative overflow-hidden inline-flex justify-center items-center px-8 py-3 bg-transparent text-text-primary font-medium tracking-wide rounded-sm border border-border-dimmed hover:border-text-primary transition-all duration-500 hover:scale-105";
     case "elegant-outline":
       return "group relative overflow-hidden inline-flex justify-center items-center px-8 py-3 bg-transparent font-medium tracking-wide rounded-sm border transition-all duration-500 hover:scale-105";
+    case "whatsapp":
+      return "group relative overflow-hidden inline-flex justify-center items-center px-8 py-3 bg-[#25D366] text-white font-medium tracking-wide rounded-sm hover:bg-[#128C7E] transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-[#25D366]/25";
     default:
       return "";
   }
@@ -86,6 +88,9 @@ const Button = ({
       )}
       {(type === "hero-secondary" || type === "elegant-secondary") && (
         <div className="absolute inset-0 bg-border-white/5 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+      )}
+      {type === "whatsapp" && (
+        <div className="absolute inset-0 bg-gradient-to-r from-[#128C7E]/20 to-[#075E54]/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
       )}
     </>
   );

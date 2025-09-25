@@ -1,7 +1,7 @@
-// components/VenueModal/VenueModal.tsx (50/50 Split Layout)
+// components/VenueModal/VenueModal.tsx
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Venue } from "@/types/venue";
@@ -16,7 +16,13 @@ interface VenueModalProps {
 const VenueModal: React.FC<VenueModalProps> = ({ venue, isOpen, onClose }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
-  // Close modal on escape key
+  // Simple breakpoint check (avoids mobile body-lock bugs)
+  const isDesktop = useMemo(() => {
+    if (typeof window === "undefined") return false;
+    return window.matchMedia("(min-width: 1024px)").matches;
+  }, []);
+
+  // Close modal on escape key + manage body scroll locking (desktop only)
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === "Escape") onClose();
@@ -24,14 +30,19 @@ const VenueModal: React.FC<VenueModalProps> = ({ venue, isOpen, onClose }) => {
 
     if (isOpen) {
       document.addEventListener("keydown", handleEscape);
-      document.body.style.overflow = "hidden";
+      // Lock body only on desktop to prevent iOS scroll issues
+      if (isDesktop) {
+        document.documentElement.style.overflow = "hidden";
+        document.body.style.overflow = "hidden";
+      }
     }
 
     return () => {
       document.removeEventListener("keydown", handleEscape);
-      document.body.style.overflow = "unset";
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
     };
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose, isDesktop]);
 
   // Reset image index when venue changes
   useEffect(() => {
@@ -60,40 +71,106 @@ const VenueModal: React.FC<VenueModalProps> = ({ venue, isOpen, onClose }) => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm z-50"
+            className="fixed inset-0 bg-black/60 z-50"
           />
 
           {/* Modal */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            initial={{ opacity: 0, scale: 0.96, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
-            className="fixed inset-0 z-50 flex items-center justify-center p-4"
+            exit={{ opacity: 0, scale: 0.96, y: 20 }}
+            transition={{ duration: 0.3, ease: [0.4, 0, 0.2, 1] }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-0 lg:p-6"
           >
-            <div className="bg-card-background rounded-3xl max-w-7xl w-full max-h-[95vh] overflow-hidden shadow-2xl border border-border-dimmed">
-              {/* 50/50 Split Layout */}
-              <div className="flex flex-col lg:flex-row h-[95vh]">
-                {/* Left Side - Image Gallery (50%) */}
-                <div className="relative lg:w-1/2 h-64 lg:h-full bg-gradient-to-br from-elements-primary-light/10 to-elements-secondary-main/10 flex-shrink-0">
+            {/* 
+              Mobile: full-height sheet with its own scroll (h-[100dvh] + overflow-y-auto).
+              Desktop: constrained height with overflow-hidden (details panel scrolls).
+            */}
+            <div className="bg-card-background w-full h-[100dvh] overflow-y-auto lg:h-auto lg:max-w-6xl lg:max-h-[90dvh] lg:overflow-hidden shadow-2xl border border-elements-secondary-highlight/20">
+              {/* Header */}
+              <div className="flex justify-between items-center p-6 border-b border-elements-secondary-highlight/10">
+                <div>
+                  <h2 className="text-2xl font-semibold text-text-primary mb-1">
+                    {venue.name}
+                  </h2>
+                  <div className="flex items-center gap-4 text-elements-secondary-main text-sm">
+                    <div className="flex items-center gap-1">
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={1.5}
+                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                        />
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={1.5}
+                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                        />
+                      </svg>
+                      <span>{venue.location}</span>
+                    </div>
+                    <span className="text-text-tertiary">•</span>
+                    <span>{venue.capacity}</span>
+                    <span className="text-text-tertiary">•</span>
+                    <span className="text-xs uppercase tracking-wider">
+                      {venue.type}
+                    </span>
+                  </div>
+                </div>
+
+                <button
+                  onClick={onClose}
+                  className="w-10 h-10 flex items-center justify-center text-text-secondary hover:text-text-primary hover:bg-elements-secondary-highlight/10 transition-colors duration-200"
+                >
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={1.5}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Content Area 
+                  Use flex + min-h-0 so the right panel can scroll.
+                  Mobile: column; Desktop: row.
+              */}
+              <div className="flex flex-col lg:flex-row flex-1 min-h-0">
+                {/* Image Gallery */}
+                <div className="relative lg:w-3/5 h-64 sm:h-80 lg:h-auto bg-neutral-100 flex-shrink-0">
                   <Image
                     src={venue.gallery[currentImageIndex]}
                     alt={`${venue.name} - Image ${currentImageIndex + 1}`}
                     fill
-                    sizes="100vw"
+                    sizes="(max-width: 1024px) 100vw, 60vw"
                     className="object-cover"
                     loading="lazy"
+                    priority={false}
                   />
 
-                  {/* Image Navigation */}
+                  {/* Navigation */}
                   {venue.gallery.length > 1 && (
                     <>
                       <button
                         onClick={prevImage}
-                        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-card-background/90 backdrop-blur-md hover:bg-card-background rounded-full flex items-center justify-center transition-colors duration-200 border border-border-dimmed/30"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white text-text-primary flex items-center justify-center transition-colors duration-200 shadow-lg"
                       >
                         <svg
-                          className="w-5 h-5 text-text-primary"
+                          className="w-5 h-5"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -108,10 +185,10 @@ const VenueModal: React.FC<VenueModalProps> = ({ venue, isOpen, onClose }) => {
                       </button>
                       <button
                         onClick={nextImage}
-                        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-card-background/90 backdrop-blur-md hover:bg-card-background rounded-full flex items-center justify-center transition-colors duration-200 border border-border-dimmed/30"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 hover:bg-white text-text-primary flex items-center justify-center transition-colors duration-200 shadow-lg"
                       >
                         <svg
-                          className="w-5 h-5 text-text-primary"
+                          className="w-5 h-5"
                           fill="none"
                           stroke="currentColor"
                           viewBox="0 0 24 24"
@@ -125,134 +202,80 @@ const VenueModal: React.FC<VenueModalProps> = ({ venue, isOpen, onClose }) => {
                         </svg>
                       </button>
 
-                      {/* Image indicators */}
-                      <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
-                        {venue.gallery.map((_, index) => (
-                          <button
-                            key={index}
-                            onClick={() => setCurrentImageIndex(index)}
-                            className={`w-2.5 h-2.5 rounded-full transition-all duration-200 ${
-                              index === currentImageIndex
-                                ? "bg-elements-primary-main"
-                                : "bg-card-background/60 hover:bg-card-background/80"
-                            }`}
-                          />
-                        ))}
+                      {/* Image Counter */}
+                      <div className="absolute bottom-4 right-4 bg-black/60 text-white px-3 py-1 text-sm">
+                        {currentImageIndex + 1} / {venue.gallery.length}
                       </div>
                     </>
                   )}
                 </div>
 
-                {/* Right Side - Content (50%) */}
-                <div className="lg:w-1/2 flex flex-col min-h-0 flex-1">
-                  {/* Header with Close Button */}
-                  <div className="flex justify-between items-start p-6 border-b border-border-dimmed flex-shrink-0">
-                    <div>
-                      <h2 className="text-2xl font-light text-text-primary mb-2">
-                        {venue.name}
-                      </h2>
-                      <div className="flex items-center gap-2 text-elements-secondary-main text-sm">
-                        <svg
-                          className="w-4 h-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={1.5}
-                            d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                          />
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={1.5}
-                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                          />
-                        </svg>
-                        <span>{venue.location}</span>
-                        <span className="text-text-tertiary">•</span>
-                        <span>{venue.capacity}</span>
-                      </div>
-                    </div>
-
-                    <button
-                      onClick={onClose}
-                      className="w-8 h-8 bg-elements-primary-bg hover:bg-elements-primary-light rounded-full flex items-center justify-center transition-colors duration-200"
-                    >
-                      <svg
-                        className="w-4 h-4 text-text-primary"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                      >
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={1.5}
-                          d="M6 18L18 6M6 6l12 12"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-
+                {/* Details Panel */}
+                <div className="lg:w-2/5 flex flex-col bg-card-background min-h-0">
                   {/* Scrollable Content */}
-                  <div className="flex-1 overflow-y-auto p-6 space-y-6">
+                  <div className="flex-1 overflow-y-auto p-6">
                     {/* Description */}
-                    <div>
-                      <p className="text-text-secondary leading-relaxed font-light">
+                    <div className="mb-8">
+                      <h3 className="text-lg font-semibold text-text-primary mb-3">
+                        About
+                      </h3>
+                      <p className="text-text-secondary leading-relaxed">
                         {venue.description}
                       </p>
                     </div>
 
                     {/* Amenities */}
-                    <div>
-                      <h3 className="text-lg font-medium text-text-primary mb-4">
-                        Amenities
-                      </h3>
-                      <ul className="space-y-2">
-                        {venue.amenities.map((amenity, index) => (
-                          <li key={index} className="flex items-center gap-3">
-                            <div className="w-1.5 h-1.5 bg-elements-primary-main rounded-full"></div>
-                            <span className="text-text-secondary font-light text-sm">
-                              {amenity}
-                            </span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Pricing */}
-                    <div>
-                      <h3 className="text-lg font-medium text-text-primary mb-4">
-                        Pricing
-                      </h3>
-                      <div className="bg-elements-primary-bg rounded-2xl p-4 border border-border-dimmed">
-                        <div className="space-y-3">
-                          <div className="flex justify-between items-center">
-                            <span className="text-text-secondary text-sm">
-                              Venue Hire:
-                            </span>
-                            <span className="font-medium text-elements-primary-main">
-                              {venue.pricing.baseRate}
-                            </span>
-                          </div>
-                          <div className="text-xs text-text-tertiary border-t border-border-dimmed pt-3">
-                            <p>Includes: {venue.pricing.includes}</p>
-                          </div>
+                    {venue.amenities && venue.amenities.length > 0 && (
+                      <div className="mb-8">
+                        <h3 className="text-lg font-semibold text-text-primary mb-4">
+                          Amenities
+                        </h3>
+                        <div className="grid grid-cols-1 gap-2">
+                          {venue.amenities.map((amenity, index) => (
+                            <div
+                              key={index}
+                              className="flex items-center gap-3 py-1"
+                            >
+                              <div className="w-1.5 h-1.5 bg-elements-primary-main flex-shrink-0"></div>
+                              <span className="text-text-secondary text-sm">
+                                {amenity}
+                              </span>
+                            </div>
+                          ))}
                         </div>
                       </div>
-                    </div>
+                    )}
                   </div>
 
                   {/* Action Buttons */}
-                  <div className="p-6 border-t border-border-dimmed flex-shrink-0">
-                    <div className="flex flex-col gap-3">
+                  <div className="p-6 border-t border-elements-secondary-highlight/10 bg-card-background">
+                    <div className="space-y-3">
                       <Button
                         type="elegant-primary"
-                        href="/contact"
-                        extraClassNames="w-full py-3"
+                        extraClassNames="w-full justify-center py-3 text-sm sm:text-base"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          const message = encodeURIComponent(
+                            `Hi! I'm interested in booking ${venue.name} for an event. Could you please provide more information?`
+                          );
+                          const phoneNumber = "447123456789"; // Replace with your WhatsApp business number
+                          const isMobile =
+                            /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+                              navigator.userAgent
+                            );
+
+                          if (isMobile) {
+                            window.open(
+                              `whatsapp://send?phone=${phoneNumber}&text=${message}`,
+                              "_blank"
+                            );
+                          } else {
+                            window.open(
+                              `https://web.whatsapp.com/send?phone=${phoneNumber}&text=${message}`,
+                              "_blank"
+                            );
+                          }
+                        }}
                         icon={
                           <svg
                             className="w-4 h-4"
@@ -269,12 +292,12 @@ const VenueModal: React.FC<VenueModalProps> = ({ venue, isOpen, onClose }) => {
                           </svg>
                         }
                       >
-                        Book Consultation
+                        Chat with Us
                       </Button>
                       <Button
                         type="elegant-outline"
                         href="tel:02012345678"
-                        extraClassNames="w-full py-3"
+                        extraClassNames="w-full justify-center py-3"
                         icon={
                           <svg
                             className="w-4 h-4"
