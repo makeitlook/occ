@@ -1,15 +1,18 @@
-import AnimatedDiv from "@/components/AnimatedDiv/AnimatedDiv";
-import PageLayout from "@/components/Layouts/PageLayout";
+import AboutPreview from "@/components/AboutPreview/AboutPreview";
+import GalleryPreview from "@/components/GalleryPreview/GalleryPreview";
+import HeroCarousel from "@/components/HeroSection/HeroSection";
+import ServicesOverview from "@/components/ServicesOverview/ServicesOverview";
+import TestimonialsSection from "@/components/TestimonialsSection/TestimonialsSection";
+import VideoTestimonialsSection from "@/components/TestimonialsSection/VideoTestimonialsSection";
 
 export default function Home() {
   return (
-    <PageLayout title="Home">
-      <section id="home">
-        <AnimatedDiv>
-          We`&apos;`d love to hear from you! Drop us a message and let`&apos;`s
-          create something beautiful together.
-        </AnimatedDiv>
-      </section>
-    </PageLayout>
+    <div>
+      <HeroCarousel />
+      <AboutPreview />
+      <ServicesOverview />
+      <GalleryPreview />
+      <VideoTestimonialsSection />
+    </div>
   );
 }

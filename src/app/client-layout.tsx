@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import dynamic from "next/dynamic";
 import Loader from "@/components/Loader/Loader";
+import ScrollToTop from "@/components/ScrollToTop";
 
 // 🌐 Dynamically import top navigation to avoid blocking rendering
 const ClientNav = dynamic(() => import("@/components/ClientNav/ClientNav"), {
@@ -13,7 +14,7 @@ const ClientNav = dynamic(() => import("@/components/ClientNav/ClientNav"), {
 // 🌐 Dynamically import footer
 const Footer = dynamic(() => import("@/components/Footer"), {
   ssr: false,
-  loading: () => <div className="h-40 bg-neutral" />,
+  loading: () => <div className="bg-neutral-dimmed w-full" />,
 });
 
 // 🎨 Theme provider for light/dark mode support
@@ -60,6 +61,7 @@ export default function ClientLayout({
       ) : (
         <ThemeProvider defaultTheme="light">
           <div className="flex flex-col min-h-screen overflow-x-hidden">
+            <ScrollToTop />
             <ClientNav />
 
             <main className="flex-1 h-full">{children}</main>

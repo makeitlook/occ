@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 
 const chooseButtonClassName = (type: string) => {
@@ -14,6 +16,18 @@ const chooseButtonClassName = (type: string) => {
       return "inline-flex justify-center rounded-md px-4 py-2 text-sm font-medium text-text-secondary hover:text-text-primary items-center";
     case "icon":
       return "inline-flex justify-center items-center rounded-md p-2 text-text-secondary hover:text-text-primary hover:bg-button-hover";
+    case "hero-primary":
+      return "group relative overflow-hidden inline-flex justify-center items-center px-6 py-3 sm:px-10 sm:py-4 bg-card-background text-text-primary font-medium tracking-wide rounded-sm border border-border-white/20 hover:bg-neutral-dimmed transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-border-white/10 text-sm sm:text-base";
+    case "hero-secondary":
+      return "group relative overflow-hidden inline-flex justify-center items-center px-6 py-3 sm:px-10 sm:py-4 bg-transparent text-text-clear font-medium tracking-wide rounded-sm border border-border-white/40 hover:border-border-white/60 transition-all duration-500 hover:scale-105 text-sm sm:text-base";
+    case "elegant-primary":
+      return "group relative overflow-hidden inline-flex justify-center items-center px-8 py-3 bg-elements-primary-main text-text-clear font-medium tracking-wide rounded-sm hover:bg-elements-primary-shadow transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-elements-primary-main/25";
+    case "elegant-secondary":
+      return "group relative overflow-hidden inline-flex justify-center items-center px-8 py-3 bg-transparent text-text-primary font-medium tracking-wide rounded-sm border border-border-dimmed hover:border-text-primary transition-all duration-500 hover:scale-105";
+    case "elegant-outline":
+      return "group relative overflow-hidden inline-flex justify-center items-center px-8 py-3 bg-transparent font-medium tracking-wide rounded-sm border transition-all duration-500 hover:scale-105";
+    case "whatsapp":
+      return "group relative overflow-hidden inline-flex justify-center items-center px-8 py-3 bg-[#25D366] text-white font-medium tracking-wide rounded-sm hover:bg-[#128C7E] transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-[#25D366]/25";
     default:
       return "";
   }
@@ -62,6 +76,25 @@ const Button = ({
     onClick?.(e); // Ensure onClick is called if provided
   };
 
+  // Add special effects for hero-style buttons
+  const renderButtonContent = () => (
+    <>
+      {IconWithStyles && (
+        <span className={children ? "mr-2" : ""}>{IconWithStyles}</span>
+      )}
+      <span className="relative z-10">{children}</span>
+      {(type === "hero-primary" || type === "elegant-primary") && (
+        <div className="absolute inset-0 bg-gradient-to-r from-elements-primary-main/10 to-elements-secondary-main/10 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+      )}
+      {(type === "hero-secondary" || type === "elegant-secondary") && (
+        <div className="absolute inset-0 bg-border-white/5 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+      )}
+      {type === "whatsapp" && (
+        <div className="absolute inset-0 bg-gradient-to-r from-[#128C7E]/20 to-[#075E54]/20 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+      )}
+    </>
+  );
+
   if (href) {
     return (
       <a
@@ -70,10 +103,7 @@ const Button = ({
         onClick={handleClick}
         {...props}
       >
-        {IconWithStyles && (
-          <span className={children ? "mr-2" : ""}>{IconWithStyles}</span>
-        )}
-        {children}
+        {renderButtonContent()}
       </a>
     );
   }
@@ -86,10 +116,7 @@ const Button = ({
       onClick={handleClick}
       {...props}
     >
-      {IconWithStyles && (
-        <span className={children ? "mr-2" : ""}>{IconWithStyles}</span>
-      )}
-      {children}
+      {renderButtonContent()}
     </button>
   );
 };

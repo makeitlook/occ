@@ -142,10 +142,24 @@ const config: Config = {
   ],
 };
 
+function hexToRgb(hex: string) {
+  const cleaned = hex.replace("#", "");
+  const bigint = parseInt(cleaned, 16);
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
+  return `${r} ${g} ${b}`;
+}
+
 function addVariablesForColors({ addBase, theme }: any) {
-  let allColors = flattenColorPalette(theme("colors"));
-  let newVars = Object.fromEntries(
-    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  const allColors = flattenColorPalette(theme("colors"));
+  const newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => {
+      if (typeof val === "string" && /^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/.test(val)) {
+        return [`--${key}`, hexToRgb(val)];
+      }
+      return [`--${key}`, val];
+    })
   );
 
   addBase({

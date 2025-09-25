@@ -39,13 +39,13 @@ export default function ClientNav() {
         showNavigation,
       }}
       navMode="multi"
-      variant="glass"
+      variant="standard"
       glassMorphism={false}
-      showThemeSwitcher={true}
+      showThemeSwitcher={false}
       logo={{
-        light: "/images/logo-light.svg",
-        dark: "/images/logo-dark.svg",
-        width: 130,
+        light: "/images/logo.png",
+        dark: "/images/logo.png",
+        width: 180,
         height: 40,
       }}
       mobileFullScreen={false}

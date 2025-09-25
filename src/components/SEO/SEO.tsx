@@ -1,6 +1,7 @@
 "use client";
 
 import Head from "next/head";
+import { defaultMetadata } from "@/data/seo";
 
 interface SEOProps {
   title?: string;
@@ -10,13 +11,6 @@ interface SEOProps {
   keywords?: string[];
 }
 
-const defaultMetadata = {
-  title: "Your Website Name",
-  description: "A modern, performant website built with Next.js.",
-  url: "https://yourdomain.com",
-  image: "/images/og-default.png",
-  keywords: ["Next.js", "Web Development", "Template"],
-};
 
 export const SEO: React.FC<SEOProps> = ({
   title,

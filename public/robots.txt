@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://yourdomain.com
+Host: https://occevents.co.uk
 
 # Sitemaps
-Sitemap: https://yourdomain.com/sitemap.xml
+Sitemap: https://occevents.co.uk/sitemap.xml

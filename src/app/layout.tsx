@@ -5,20 +5,22 @@ import ClientLayout from "./client-layout";
 
 export const metadata: Metadata = {
   title: {
-    default: "Your Site Name",
-    template: "%s | Your Site Name",
+    default: "OCC Events & Catering",
+    template: "%s | OCC Events & Catering",
   },
-  description: "A modern, SEO-ready Next.js template with theme support.",
-  keywords: ["Next.js", "Template", "SEO", "Dark mode", "Design System"],
-  metadataBase: new URL("https://yoursite.com"), // Replace with your actual domain
+  description:
+    "Bespoke catering for all occasions with authentic Indian and Afghan menus.",
+  keywords: ["OCC Events", "Catering", "Indian Catering", "Afghan Catering"],
+  metadataBase: new URL("https://occevents.co.uk"),
   openGraph: {
-    title: "Your Site Name",
-    description: "A modern, SEO-ready Next.js template with theme support.",
-    url: "https://yoursite.com",
-    siteName: "Your Site Name",
+    title: "OCC Events & Catering",
+    description:
+      "Bespoke event catering specialising in Indian and Afghan cuisine.",
+    url: "https://occevents.co.uk",
+    siteName: "OCC Events & Catering",
     images: [
       {
-        url: "/images/og-image.jpg", // Replace with your Open Graph image
+        url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
       },
@@ -28,8 +30,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Your Site Name",
-    description: "A modern, SEO-ready Next.js template with theme support.",
+    title: "OCC Events & Catering",
+    description:
+      "Bespoke catering for all occasions with authentic Indian and Afghan menus.",
     images: ["/images/og-image.jpg"],
   },
   icons: {
