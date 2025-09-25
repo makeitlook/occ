@@ -8,7 +8,7 @@ interface CTAButton {
   label: string;
   href: string;
   type?: string;
-  icon?: React.ReactNode;
+  icon?: React.ReactElement;
 }
 
 interface CTASectionProps {
@@ -36,7 +36,7 @@ const CTASection: React.FC<CTASectionProps> = ({
       href={action.href}
       extraClassNames="!px-10 !py-4"
       icon={
-        action.icon || (
+        action.icon ?? (
           <svg
             className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1"
             fill="none"
